@@ -21,7 +21,7 @@ code_clipboard: true
 
 # Introduction
 
-Welcome to the Edgar API! You can use our API to access Edgar API endpoints, which can get information on various E D G A R in our database.
+Welcome to the Edgar API! You can use our API to access Edgar API endpoints, which can get information on various E D G A R in our I̵̢͚͈̘͇̣̗̱̽ͅͅn̸̨̛̛̰͔̥̲̲̣̳̽͛̑̃͊͋͂̀̈́̀̌͜͝f̵̲̭̟̓ͅỉ̵̡̨̢̛̠̬͕͈̠͇͖̰̳͍̓̈̿̒̋͗̑ͅn̵̛͈͙̜̝͕͓̳̦̼͖̪̳͗́͋̇̋̈͂̓į̵͔̰̖̫̥͉̯̥̹̼̬̥͇̊͆͐́͝͝ͅt̸̻͙̞̝̤̩̐̍͂̃͂͋̈͒̊͜͜ë̷̗̲̝̳͖́ ̶̼̩̱͕̞̱͊̑̐̃̾̑̎̈́̿̊͆̏̾̑̈́͜V̵̨͈̞̭̪̲͓̪̄̂͜ǫ̶̨͉̮̯̯̖̗̘͉̓͒̐i̸͖͚͈̖̬̊͋̀͑̿͌̈́̀͜͜ͅd̵͔̯͈̱̦͙͍͕͉͉͖̲͚̂͊͂̇̑̅͜͝ͅ.
 
 We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
