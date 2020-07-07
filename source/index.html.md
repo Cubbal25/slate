@@ -21,7 +21,7 @@ code_clipboard: true
 
 # Introduction
 
-Welcome to the Edgar API! You can use our API to access Edgar API endpoints, which can get information on various E D G A R in our I̵̢͚͈̘͇̣̗̱̽ͅͅn̸̨̛̛̰͔̥̲̲̣̳̽͛̑̃͊͋͂̀̈́̀̌͜͝f̵̲̭̟̓ͅỉ̵̡̨̢̛̠̬͕͈̠͇͖̰̳͍̓̈̿̒̋͗̑ͅn̵̛͈͙̜̝͕͓̳̦̼͖̪̳͗́͋̇̋̈͂̓į̵͔̰̖̫̥͉̯̥̹̼̬̥͇̊͆͐́͝͝ͅt̸̻͙̞̝̤̩̐̍͂̃͂͋̈͒̊͜͜ë̷̗̲̝̳͖́ ̶̼̩̱͕̞̱͊̑̐̃̾̑̎̈́̿̊͆̏̾̑̈́͜V̵̨͈̞̭̪̲͓̪̄̂͜ǫ̶̨͉̮̯̯̖̗̘͉̓͒̐i̸͖͚͈̖̬̊͋̀͑̿͌̈́̀͜͜ͅd̵͔̯͈̱̦͙͍͕͉͉͖̲͚̂͊͂̇̑̅͜͝ͅ.
+Welcome to the Edgar API! You can use our API to access Edgar API endpoints, which can get information on various Edgar Files in our Database.
 
 We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
@@ -32,69 +32,69 @@ This example API documentation page was created with [Slate](https://github.com/
 > To authorize, use this code:
 
 ```ruby
-require 'kittn'
+#require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+#api = Kittn::APIClient.authorize!('meowmeowmeow')
 ```
 
 ```python
-import kittn
+import edgar
 
-api = kittn.authorize('meowmeowmeow')
+api = edgar.authorize('yourkey')
 ```
 
 ```shell
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+  -H "Authorization: yourkey"
 ```
 
 ```javascript
-const kittn = require('kittn');
+//const kittn = require('kittn');
 
-let api = kittn.authorize('meowmeowmeow');
+//let api = kittn.authorize('meowmeowmeow');
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace `yourkey` with your API key.
 
 Edgar uses API keys to allow access to the API. You can register a new Edgar API key at our [developer portal](http://example.com/developers).
 
 Edgar expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
+`Authorization: yourkey`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>yourkey</code> with your personal API key.
 </aside>
 
-# Kittens
+# Getting A Document
 
-## Get All Kittens
+## Get All Documents
 
 ```ruby
-require 'kittn'
+#require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+#api = Kittn::APIClient.authorize!('meowmeowmeow')
+#api.kittens.get
 ```
 
 ```python
-import kittn
+import edgar
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
+api = edgar.authorize('yourkey')
+api.document.get()
 ```
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl --location --request GET "https://edgar.halider.io/filing/20191230/0001193125-19-326069/S-8?="
+  -H "Authorization: yourkey"
 ```
 
 ```javascript
-const kittn = require('kittn');
+//const kittn = require('kittn');
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+//let api = kittn.authorize('meowmeowmeow');
+//let kittens = api.kittens.get();
 ```
 
 > The above command returns JSON structured like this:
@@ -128,39 +128,40 @@ This endpoint retrieves all kittens.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+Date_Filed | false | If set to true, the result will also include cats.
+Filing_Number | true | If set to false, the result will include kittens that have already been adopted.
+Document_Type | true | Something
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Remember — a happy document is an authenticated document!
 </aside>
 
 ## Get a Specific Kitten
 
 ```ruby
-require 'kittn'
+#require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+#api = Kittn::APIClient.authorize!('meowmeowmeow')
+#api.kittens.get(2)
 ```
 
 ```python
-import kittn
+import edgar
 
-api = kittn.authorize('meowmeowmeow')
+api = kittn.authorize('yourkey')
 api.kittens.get(2)
 ```
 
 ```shell
 curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+  -H "Authorization: yourkey"
 ```
 
 ```javascript
-const kittn = require('kittn');
+//const kittn = require('kittn');
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+//let api = kittn.authorize('meowmeowmeow');
+//let max = api.kittens.get(2);
 ```
 
 > The above command returns JSON structured like this:
@@ -189,7 +190,7 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to retrieve
 
-## Delete a Specific Kitten
+## Delete a Specific Kitten.
 
 ```ruby
 require 'kittn'
@@ -212,10 +213,10 @@ curl "http://example.com/api/kittens/2"
 ```
 
 ```javascript
-const kittn = require('kittn');
+//const kittn = require('kittn');
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+//let api = kittn.authorize('meowmeowmeow');
+//let max = api.kittens.delete(2);
 ```
 
 > The above command returns JSON structured like this:
