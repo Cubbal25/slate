@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: Edgar API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
@@ -22,19 +22,13 @@ code_clipboard: true
 
 Welcome to the Edgar API! You can use our API to access Edgar API endpoints, which can get information on various Edgar Files in our Database.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We have language bindings in Shell and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
 This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
 # Authentication
 
 > To authorize, use this code:
-
-```ruby
-#require 'kittn'
-
-#api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
 
 ```python
 import edgar
@@ -46,12 +40,6 @@ api = edgar.authorize('yourkey')
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here"
   -H "Authorization: yourkey"
-```
-
-```javascript
-//const kittn = require('kittn');
-
-//let api = kittn.authorize('meowmeowmeow');
 ```
 
 > Make sure to replace `yourkey` with your API key.
@@ -70,13 +58,6 @@ You must replace <code>yourkey</code> with your personal API key.
 
 ## Get All Documents
 
-```ruby
-#require 'kittn'
-
-#api = Kittn::APIClient.authorize!('meowmeowmeow')
-#api.kittens.get
-```
-
 ```python
 import edgar
 
@@ -87,13 +68,6 @@ api.document.get()
 ```shell
 curl --location --request GET "https://edgar.halider.io/filing/20191230/0001193125-19-326069/S-8?="
   -H "Authorization: yourkey"
-```
-
-```javascript
-//const kittn = require('kittn');
-
-//let api = kittn.authorize('meowmeowmeow');
-//let kittens = api.kittens.get();
 ```
 
 > The above command returns JSON structured like this:
@@ -137,30 +111,16 @@ Remember — a happy document is an authenticated document!
 
 ## Get a Specific Document
 
-```ruby
-#require 'kittn'
-
-#api = Kittn::APIClient.authorize!('meowmeowmeow')
-#api.kittens.get(2)
-```
-
 ```python
 import edgar
 
-api = kittn.authorize('yourkey')
+api = edgar.authorize('yourkey')
 api.documents.get(2)
 ```
 
 ```shell
-curl "http://example.com/api/kittens/2"
+curl "http://example.com/api/edgar/2"
   -H "Authorization: yourkey"
-```
-
-```javascript
-//const kittn = require('kittn');
-
-//let api = kittn.authorize('meowmeowmeow');
-//let max = api.kittens.get(2);
 ```
 
 > The above command returns JSON structured like this:
@@ -194,13 +154,6 @@ Document Type| The classification of the document.
 
 ## Delete a Specific Document.
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
 ```python
 import kittn
 
@@ -212,13 +165,6 @@ api.kittens.delete(2)
 curl "http://example.com/api/kittens/2"
   -X DELETE
   -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-//const kittn = require('kittn');
-
-//let api = kittn.authorize('meowmeowmeow');
-//let max = api.kittens.delete(2);
 ```
 
 > The above command returns JSON structured like this:
