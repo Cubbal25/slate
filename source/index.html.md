@@ -151,6 +151,27 @@ Date_Filed| The date the document was filed.
 Filing_Number| The identification of the specified document.
 Document Type| The classification of the document.
 
+# ABS
+
+## Start
+
+```shell
+curl --location --request GET "https://edgar.halider.io/abs" --header "yourkey"
+```
+> This returns a list of options 
+
+>{"types":[null,"autoLoan","cmbs","autoLease"]}
+
+## Options
+
+```shell
+curl --location --request GET "https:edgar.halider.io/abs/cmbs" --header "yourkey"
+```
+> This returns the document with all of the CMBS on it.
+
+>{"deals":[{"id":"1","cik":1710798,"assetType":"cmbs","names":["Wells Fargo Commercial Mortgage Trust 2017-C39"]},>>>>>{"id":"2","cik":1716602,"assetType":"cmbs","names":["CSAIL 2017-CX9 Commercial Mortgage Trust"]},{"id":"4","cik":1773339,"assetType":"cmbs","names":>["Morgan Stanley Capital I Trust 2019-H6"]},{"id":"14","cik":1547361,"assetType":"cmbs","names":["Morgan Stanley Capital I Inc."]},
+
+>etc.
 
 ## Delete a Specific Document.
 
