@@ -3,9 +3,8 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
   - python
-  - javascript
+  
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -118,25 +117,25 @@ curl --location --request GET "https://edgar.halider.io/filing/20191230/00011931
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all documents.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET http://example.com/api/edgar`
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-Date_Filed | false | If set to true, the result will also include cats.
-Filing_Number | true | If set to false, the result will include kittens that have already been adopted.
-Document_Type | true | Something
+a | false | If set to true, the result will also include cats.
+a | true | If set to false, the result will include kittens that have already been adopted.
+a | true | Something
 
 <aside class="success">
 Remember — a happy document is an authenticated document!
 </aside>
 
-## Get a Specific Kitten
+## Get a Specific Document
 
 ```ruby
 #require 'kittn'
@@ -149,7 +148,7 @@ Remember — a happy document is an authenticated document!
 import edgar
 
 api = kittn.authorize('yourkey')
-api.kittens.get(2)
+api.documents.get(2)
 ```
 
 ```shell
@@ -176,7 +175,7 @@ curl "http://example.com/api/kittens/2"
 }
 ```
 
-This endpoint retrieves a specific kitten.
+This endpoint retrieves a specific document.
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 
@@ -188,9 +187,12 @@ This endpoint retrieves a specific kitten.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+Date_Filed| The date the document was filed.
+Filing_Number| The identification of the specified document.
+Document Type| The classification of the document.
 
-## Delete a Specific Kitten.
+
+## Delete a Specific Document.
 
 ```ruby
 require 'kittn'
