@@ -1,11 +1,10 @@
 ---
-title: API Reference
+title: Edgar API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
   - python
-  - javascript
+  
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -21,9 +20,9 @@ code_clipboard: true
 
 # Introduction
 
-Welcome to the Edgar API! You can use our API to access Edgar API endpoints, which can get information on various E D G A R in our I̵̢͚͈̘͇̣̗̱̽ͅͅn̸̨̛̛̰͔̥̲̲̣̳̽͛̑̃͊͋͂̀̈́̀̌͜͝f̵̲̭̟̓ͅỉ̵̡̨̢̛̠̬͕͈̠͇͖̰̳͍̓̈̿̒̋͗̑ͅn̵̛͈͙̜̝͕͓̳̦̼͖̪̳͗́͋̇̋̈͂̓į̵͔̰̖̫̥͉̯̥̹̼̬̥͇̊͆͐́͝͝ͅt̸̻͙̞̝̤̩̐̍͂̃͂͋̈͒̊͜͜ë̷̗̲̝̳͖́ ̶̼̩̱͕̞̱͊̑̐̃̾̑̎̈́̿̊͆̏̾̑̈́͜V̵̨͈̞̭̪̲͓̪̄̂͜ǫ̶̨͉̮̯̯̖̗̘͉̓͒̐i̸͖͚͈̖̬̊͋̀͑̿͌̈́̀͜͜ͅd̵͔̯͈̱̦͙͍͕͉͉͖̲͚̂͊͂̇̑̅͜͝ͅ.
+Welcome to the Edgar API! You can use our API to access Edgar API endpoints, which can get information on various Edgar Files in our Database.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We have language bindings in Shell and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
 This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
@@ -31,70 +30,44 @@ This example API documentation page was created with [Slate](https://github.com/
 
 > To authorize, use this code:
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
 ```python
-import kittn
+import edgar
 
-api = kittn.authorize('meowmeowmeow')
+api = edgar.authorize('yourkey')
 ```
 
 ```shell
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+  -H "Authorization: yourkey"
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace `yourkey` with your API key.
 
 Edgar uses API keys to allow access to the API. You can register a new Edgar API key at our [developer portal](http://example.com/developers).
 
 Edgar expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
+`Authorization: yourkey`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>yourkey</code> with your personal API key.
 </aside>
 
-# Kittens
+# Getting A Document
 
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
+## Get All Documents
 
 ```python
-import kittn
+import edgar
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
+api = edgar.authorize('yourkey')
+api.document.get()
 ```
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+curl --location --request GET "https://edgar.halider.io/filing/20191230/0001193125-19-326069/S-8?="
+  -H "Authorization: yourkey"
 ```
 
 > The above command returns JSON structured like this:
@@ -118,49 +91,36 @@ let kittens = api.kittens.get();
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all documents.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET http://example.com/api/edgar`
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+a | false | If set to true, the result will also include cats.
+a | true | If set to false, the result will include kittens that have already been adopted.
+a | true | Something
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Remember — a happy document is an authenticated document!
 </aside>
 
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
+## Get a Specific Document
 
 ```python
-import kittn
+import edgar
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
+api = edgar.authorize('yourkey')
+api.documents.get(2)
 ```
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+curl "http://example.com/api/edgar/2"
+  -H "Authorization: yourkey"
 ```
 
 > The above command returns JSON structured like this:
@@ -175,7 +135,7 @@ let max = api.kittens.get(2);
 }
 ```
 
-This endpoint retrieves a specific kitten.
+This endpoint retrieves a specific document.
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 
@@ -187,16 +147,12 @@ This endpoint retrieves a specific kitten.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+Date_Filed| The date the document was filed.
+Filing_Number| The identification of the specified document.
+Document Type| The classification of the document.
 
-## Delete a Specific Kitten
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
+## Delete a Specific Document.
 
 ```python
 import kittn
@@ -209,13 +165,6 @@ api.kittens.delete(2)
 curl "http://example.com/api/kittens/2"
   -X DELETE
   -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
 ```
 
 > The above command returns JSON structured like this:
