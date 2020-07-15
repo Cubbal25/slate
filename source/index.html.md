@@ -121,9 +121,9 @@ r =requests.get('https://edgar.halider.io/abs',headers=ploads)
 
 >{"types":[null,"autoLoan","cmbs","autoLease"]}
 
-## Options
+# Options in ABS
 
-### CMBS
+## CMBS
 
 ```shell
 curl --location --request GET "https:edgar.halider.io/abs/cmbs" --header "yourkey"
@@ -135,8 +135,35 @@ ploads = {'X-Api-Key':'yourkey'}
 r =requests.get('https://edgar.halider.io/abs/cmbs',headers=ploads)
 ```
 
-> This returns the document with all of the CMBS on it.
+This returns the document with all of the CMBS on it.
 
 >{"deals":[{"id":"1","cik":1710798,"assetType":"cmbs","names":["Wells Fargo Commercial Mortgage Trust 2017-C39"]},>>>>>{"id":"2","cik":1716602,"assetType":"cmbs","names":["CSAIL 2017-CX9 Commercial Mortgage Trust"]},{"id":"4","cik":1773339,"assetType":"cmbs","names":>["Morgan Stanley Capital I Trust 2019-H6"]},{"id":"14","cik":1547361,"assetType":"cmbs","names":["Morgan Stanley Capital I Inc."]},
+
+>etc.
+
+### CMBS Options
+
+<aside class="notice">
+Every Parameter has a Placement number, this is where it is placed in the URL after CMBS. You can only use them in ascending order.
+</aside>
+
+
+Parameter | Description and Placement
+--------- | -----------
+DEAL | Either the ID, CIK, or Name of a specific deal, 1.
+File |  2.
+FileType | 3.
+
+```shell
+curl --location --request GET "https:edgar.halider.io/abs/cmbs/DEAL" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/abs/cmbs/DEAL',headers=ploads)
+```
+> A sample response.
+>{"deal":{"id":"1","cik":1710798,"assetType":"cmbs","names":["Wells Fargo Commercial Mortgage Trust 2017-C39"],"filings":[{"id":"2110","date":"2019-07-31","type":"ABS-EE","extracted":true},{"id":"2224","date":"2019-03-28","type":"ABS-EE","extracted":true},{"id":"3489","date":"2019-04-30","type":"ABS-EE","extracted":true},
 
 >etc.
