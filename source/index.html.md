@@ -105,7 +105,7 @@ Document Type| The classification of the document.
 
 # ABS
 
-## Start
+### Start
 
 ```shell
 curl --location --request GET "https://edgar.halider.io/abs" --header "yourkey"
@@ -121,9 +121,9 @@ r =requests.get('https://edgar.halider.io/abs',headers=ploads)
 
 >{"types":[null,"autoLoan","cmbs","autoLease"]}
 
-# Options in ABS
+## Options in ABS
 
-## CMBS
+### CMBS
 
 ```shell
 curl --location --request GET "https:edgar.halider.io/abs/cmbs" --header "yourkey"
@@ -151,7 +151,7 @@ Every Parameter has a Placement number, this is where it is placed in the URL af
 Parameter | Description and Placement
 --------- | -----------
 DEAL | Either the ID, CIK, or Name of a specific deal, 1.
-File |  2.
+FILE |  A specific File within the deal, 2.
 FileType | 3.
 
 ```shell
@@ -164,6 +164,63 @@ ploads = {'X-Api-Key':'yourkey'}
 r =requests.get('https://edgar.halider.io/abs/cmbs/DEAL',headers=ploads)
 ```
 > A sample response.
->{"deal":{"id":"1","cik":1710798,"assetType":"cmbs","names":["Wells Fargo Commercial Mortgage Trust 2017-C39"],"filings":[{"id":"2110","date":"2019-07-31","type":"ABS-EE","extracted":true},{"id":"2224","date":"2019-03-28","type":"ABS-EE","extracted":true},{"id":"3489","date":"2019-04-30","type":"ABS-EE","extracted":true},
+>{"deal":{"id":"1","cik":1710798,"assetType":"cmbs","names":["Wells Fargo Commercial Mortgage Trust 2017-C39"],"filings":{"id":"2110","date":"2019-07-31","type":"ABS-EE","extracted":true},{"id":"2224","date":"2019-03-28","type":"ABS-EE","extracted":true},{"id":"3489","date":"2019-04-30","type":"ABS-EE","extracted":true},
 
 >etc.
+
+```shell
+curl --location --request GET "https:edgar.halider.io/abs/cmbs/DEAL/FILE" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/abs/cmbs/DEAL/FILE',headers=ploads)
+```
+> A sample response.
+> Placeholder
+
+# CMBS
+
+### Start
+
+```shell
+curl --location --request GET "https:edgar.halider.io/cmbs" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/cmbs',headers=ploads)
+```
+This returns all CMBS documents.
+
+>"deals":{"name":"BMARK 2018-B2"},{"name":"MSC 2018-H3"},{"name":"CD 2018-CD7"},{"name":"UBSCM 2017-C2"},{"name":"CSAIL 2018-CX12"},{"name":"GSMS 2018-GS10"},{"name":"MSBAM 2016-C32"},{"name":"JPMCC 2016-JP4"},{"name":"JPMDB 2017-C5"},{"name":"CSMC 2016-NXSR"},{"name":"GSMS 2017-GS7"},{"name":"CGCMT 2017-C4"},{"name":"BANK 2018-BNK15"},
+
+>etc.
+
+### Options
+
+Similar to the other CMBS above, there are several options within CMBS.
+
+Parameter | Description and Placement
+--------- | -----------
+DEALNAME | Name of a specific deal, 1.
+File |  2.
+FileType | 3.
+
+```shell
+curl --location --request GET "https:edgar.halider.io/cmbs/DEALNAME" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/cmbs/DEALNAME',headers=ploads)
+```
+>Example Response.
+ 
+>{"dealName":"BMARK 2018-B2","cik":1728339,"companyName":"BENCHMARK 2018-B2 Mortgage Trust","filing":"0001539497-18-000154","filenameFull":"edgar/data/1728339/0001539497-18-000154.txt","dateFiled":"2018-02-06",
+
+>etc.
+
