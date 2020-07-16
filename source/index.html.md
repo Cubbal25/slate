@@ -31,9 +31,9 @@ This example API documentation page was created with [Slate](https://github.com/
 > To authorize, use this code:
 
 ```python
-import edgar
-
-api = edgar.authorize('yourkey')
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('url',headers=ploads)
 ```
 
 ```shell
@@ -56,13 +56,11 @@ You must replace <code>yourkey</code> with your personal API key.
 
 # Getting A Document
 
-## Get All Documents
 
 ```python
-import edgar
-
-api = edgar.authorize('yourkey')
-api.document.get()
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('url',headers=ploads)
 ```
 
 ```shell
@@ -73,25 +71,8 @@ curl --location --request GET "https://edgar.halider.io/filing/20191230/00011931
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+Placeholder
 ```
-
-This endpoint retrieves all documents.
 
 ### HTTP Request
 
@@ -109,35 +90,6 @@ a | true | Something
 Remember — a happy document is an authenticated document!
 </aside>
 
-## Get a Specific Document
-
-```python
-import edgar
-
-api = edgar.authorize('yourkey')
-api.documents.get(2)
-```
-
-```shell
-curl "http://example.com/api/edgar/2"
-  -H "Authorization: yourkey"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific document.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 
 ### HTTP Request
 
@@ -153,59 +105,122 @@ Document Type| The classification of the document.
 
 # ABS
 
-## Start
+### Start
 
 ```shell
 curl --location --request GET "https://edgar.halider.io/abs" --header "yourkey"
 ```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/abs',headers=ploads)
+```
+
 > This returns a list of options 
 
 >{"types":[null,"autoLoan","cmbs","autoLease"]}
 
-## Options
+## Options in ABS
+
+### CMBS
 
 ```shell
 curl --location --request GET "https:edgar.halider.io/abs/cmbs" --header "yourkey"
 ```
-> This returns the document with all of the CMBS on it.
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/abs/cmbs',headers=ploads)
+```
+
+This returns the document with all of the CMBS on it.
 
 >{"deals":[{"id":"1","cik":1710798,"assetType":"cmbs","names":["Wells Fargo Commercial Mortgage Trust 2017-C39"]},>>>>>{"id":"2","cik":1716602,"assetType":"cmbs","names":["CSAIL 2017-CX9 Commercial Mortgage Trust"]},{"id":"4","cik":1773339,"assetType":"cmbs","names":>["Morgan Stanley Capital I Trust 2019-H6"]},{"id":"14","cik":1547361,"assetType":"cmbs","names":["Morgan Stanley Capital I Inc."]},
 
 >etc.
 
-## Delete a Specific Document.
+### CMBS Options
 
-```python
-import kittn
+<aside class="notice">
+Every Parameter has a Placement number, this is where it is placed in the URL after CMBS. You can only use them in ascending order.
+</aside>
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
+
+Parameter | Description and Placement
+--------- | -----------
+DEAL | Either the ID, CIK, or Name of a specific deal, 1.
+FILE |  A specific File within the deal, 2.
+FileType | 3.
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
+curl --location --request GET "https:edgar.halider.io/abs/cmbs/DEAL" --header "yourkey"
 ```
 
-> The above command returns JSON structured like this:
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/abs/cmbs/DEAL',headers=ploads)
+```
+> A sample response.
+>{"deal":{"id":"1","cik":1710798,"assetType":"cmbs","names":["Wells Fargo Commercial Mortgage Trust 2017-C39"],"filings":{"id":"2110","date":"2019-07-31","type":"ABS-EE","extracted":true},{"id":"2224","date":"2019-03-28","type":"ABS-EE","extracted":true},{"id":"3489","date":"2019-04-30","type":"ABS-EE","extracted":true},
 
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
+>etc.
+
+```shell
+curl --location --request GET "https:edgar.halider.io/abs/cmbs/DEAL/FILE" --header "yourkey"
 ```
 
-This endpoint deletes a specific kitten.
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/abs/cmbs/DEAL/FILE',headers=ploads)
+```
+> A sample response.
+> Placeholder
 
-### HTTP Request
+# CMBS
 
-`DELETE http://example.com/kittens/<ID>`
+### Start
 
-### URL Parameters
+```shell
+curl --location --request GET "https:edgar.halider.io/cmbs" --header "yourkey"
+```
 
-Parameter | Description
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/cmbs',headers=ploads)
+```
+This returns all CMBS documents.
+
+>"deals":{"name":"BMARK 2018-B2"},{"name":"MSC 2018-H3"},{"name":"CD 2018-CD7"},{"name":"UBSCM 2017-C2"},{"name":"CSAIL 2018-CX12"},{"name":"GSMS 2018-GS10"},{"name":"MSBAM 2016-C32"},{"name":"JPMCC 2016-JP4"},{"name":"JPMDB 2017-C5"},{"name":"CSMC 2016-NXSR"},{"name":"GSMS 2017-GS7"},{"name":"CGCMT 2017-C4"},{"name":"BANK 2018-BNK15"},
+
+>etc.
+
+### Options
+
+Similar to the other CMBS above, there are several options within CMBS.
+
+Parameter | Description and Placement
 --------- | -----------
-ID | The ID of the kitten to delete
+DEALNAME | Name of a specific deal, 1.
+File |  2.
+FileType | 3.
+
+```shell
+curl --location --request GET "https:edgar.halider.io/cmbs/DEALNAME" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/cmbs/DEALNAME',headers=ploads)
+```
+>Example Response.
+ 
+>{"dealName":"BMARK 2018-B2","cik":1728339,"companyName":"BENCHMARK 2018-B2 Mortgage Trust","filing":"0001539497-18-000154","filenameFull":"edgar/data/1728339/0001539497-18-000154.txt","dateFiled":"2018-02-06",
+
+>etc.
 
