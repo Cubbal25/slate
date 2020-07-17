@@ -142,13 +142,14 @@ ploads = {'X-Api-Key':'yourkey'}
 r =requests.get('https://edgar.halider.io/abs/cmbs/DEAL',headers=ploads)
 ```
 > A sample response.
+
 ```JSON
 {
     "id": "2110",
     "date": "2019-07-31",
     "type": "ABS-EE",
     "extracted": true
-  }
+}
 ```
 
 >etc.
@@ -259,6 +260,7 @@ primaryServicerName | 86
 
 
 > A sample response.
+
 ```JSON
 {
       "assetTypeNumber": "Prospectus Loan ID",
@@ -348,7 +350,7 @@ primaryServicerName | 86
       "paidThroughDate": "03-06-2019",
       "servicingAdvanceMethodCode": 1,
       "primaryServicerName": "Wells Fargo Bank, NA"
-    },
+},
 ```
 
 
@@ -368,6 +370,7 @@ r =requests.get('https://edgar.halider.io/cmbs',headers=ploads)
 This returns all CMBS documents.
 
 >A sample response.
+
 ```JSON
 {
       "name": "BMARK 2018-B2"
