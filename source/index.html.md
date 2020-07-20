@@ -449,12 +449,13 @@ ploads = {'X-Api-Key':'yourkey'}
 r =requests.get('https://edgar.halider.io/filing/filingDate/filingNumber',headers=ploads)
 ```
 >example response
+
 ```JSON
 {
   "filingDate": "20200630",
   "filingNumber": "0001539497-20-000910",
   "filingFile": "0001539497-20-000910.nc",
-  "documents": [
+  "documents": [ 
     {
       "documentType": "ABS-15G",
       "documentName": "n2235_x1-abs15g.htm",
@@ -477,7 +478,6 @@ r =requests.get('https://edgar.halider.io/filing/filingDate/filingNumber',header
     }
   ]
 }
-
 ```
 
 Unlike ABS and CMBS, Filing starts and requires two parameters to use it. It also has a third parameter that can be used optionally.
