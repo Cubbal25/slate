@@ -369,6 +369,14 @@ r =requests.get('https://edgar.halider.io/cmbs',headers=ploads)
 ```
 This returns all CMBS documents.
 
+JSON Attributes:
+
+Attributes | Description
+--------- | -----------
+deals | 1.
+name |  2.
+
+
 >A sample response.
 
 ```JSON
@@ -382,20 +390,34 @@ This returns all CMBS documents.
 
 Similar to the other CMBS above, there are several options within CMBS.
 
-Parameter | Description and Placement
+Parameters | Description and Placement
 --------- | -----------
-DEALNAME | Name of a specific deal, 1.
-File |  2.
-FileType | 3.
+dealName | Name of a specific deal, 1.
+file |  2.
+fileType | 3.
+
+JSON Attributes:
+
+Attributes | Description
+--------- | -----------
+dealname | 1.
+cik |  2.
+companyName | 3.
+filing | 4.
+filenameFull | 5.
+dateFiled | 6.
+dateFiledString | 7.
+createdAt | 8.
+createdBy | 9.
 
 ```shell
-curl --location --request GET "https:edgar.halider.io/cmbs/DEALNAME" --header "yourkey"
+curl --location --request GET "https:edgar.halider.io/cmbs/dealName" --header "yourkey"
 ```
 
 ```python
 import requests
 ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/cmbs/DEALNAME',headers=ploads)
+r =requests.get('https://edgar.halider.io/cmbs/dealName',headers=ploads)
 ```
 >Example Response.
  
@@ -412,4 +434,68 @@ r =requests.get('https://edgar.halider.io/cmbs/DEALNAME',headers=ploads)
   "createdBy": "edgarmaster"
 }
 ```
+
+# Filing
+
+### Start
+
+```shell
+curl --location --request GET "https:edgar.halider.io/filing/filingDate/filingNumber" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/filing/filingDate/filingNumber',headers=ploads)
+```
+>example response
+```JSON
+{
+  "filingDate": "20200630",
+  "filingNumber": "0001539497-20-000910",
+  "filingFile": "0001539497-20-000910.nc",
+  "documents": [
+    {
+      "documentType": "ABS-15G",
+      "documentName": "n2235_x1-abs15g.htm",
+      "documentDescription": "FROM ABS-15G"
+    },
+    {
+      "documentType": "EX-99.1",
+      "documentName": "exh99-1.htm",
+      "documentDescription": "REPORT OF INDEPENDENT ACCOUNTANTS ON APPLYING AGREED-UPON PROCEDURES, DATED JUNE 30, 2020"
+    },
+    {
+      "documentType": "GRAPHIC",
+      "documentName": "image_001.jpg",
+      "documentDescription": "GRAPHIC"
+    },
+    {
+      "documentType": "GRAPHIC",
+      "documentName": "image_002.jpg",
+      "documentDescription": "GRAPHIC"
+    }
+  ]
+}
+```
+
+Unlike ABS and CMBS, Filing starts and requires two parameters to use it. It also has a third parameter that can be used optionally.
+
+Parameter | Description and Placement
+--------- | -----------
+filingDate | 1.
+filingNumber |  2.
+documentType | 3.
+
+JSON Attributes: 
+
+Attributes | Description
+--------- | -----------
+filingDate | 1.
+filingNumber |  2.
+filingFile | 3.
+documents | 4.
+documentName | 5.
+documentDescription | 6.
+
 
