@@ -82,7 +82,7 @@ html, body {
     position: relative;
 
     input {
-      background: $nav-bg;
+      background: #d5e4e6;
       border-width: 0 0 1px 0;
       border-color: $search-box-border-color;
       padding: 6px 0 6px 20px;
@@ -90,7 +90,7 @@ html, body {
       margin: $nav-v-padding $nav-padding;
       width: $nav-width - ($nav-padding*2);
       outline: none;
-      color: $nav-text;
+      color: #8b29c4;
       border-radius: 0; /* ios has a default border radius */
     }
 
@@ -153,14 +153,14 @@ html, body {
 
   // This is the currently selected ToC entry
   .toc-link.active {
-    background-color: $nav-active-bg;
-    color: $nav-active-text;
+    background-color: #8dc7c6;
+    color: #000000;
   }
 
   // this is parent links of the currently selected ToC entry
   .toc-link.active-parent {
-    background-color: $nav-active-parent-bg;
-    color: $nav-active-parent-text;
+    background-color: #8dc7c6;
+    color: #000000;
   }
 
   .toc-list-h2 {
