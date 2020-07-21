@@ -42,7 +42,7 @@ html, body {
 
 #toc > ul > li > a > span {
   float: right;
-  background-color: #c91010;
+  background-color: #2484FF;
   border-radius: 40px;
   width: 20px;
 }
@@ -58,7 +58,7 @@ html, body {
   left: 0;
   bottom: 0;
   width: $nav-width;
-  background-color: #7099db;
+  background-color: $nav-bg;
   font-size: 13px;
   font-weight: bold;
 
@@ -82,7 +82,7 @@ html, body {
     position: relative;
 
     input {
-      background: #d5e4e6;
+      background: #fff;
       border-width: 0 0 1px 0;
       border-color: $search-box-border-color;
       padding: 6px 0 6px 20px;
@@ -90,7 +90,7 @@ html, body {
       margin: $nav-v-padding $nav-padding;
       width: $nav-width - ($nav-padding*2);
       outline: none;
-      color: #8b29c4;
+      color: $nav-text;
       border-radius: 0; /* ios has a default border radius */
     }
 
@@ -124,7 +124,7 @@ html, body {
     }
 
     a {
-      color: #8b29c4;
+      color: $nav-text;
       text-decoration: none;
 
       &:hover {
@@ -153,14 +153,14 @@ html, body {
 
   // This is the currently selected ToC entry
   .toc-link.active {
-    background-color: #8dc7c6;
-    color: #000000;
+    background-color: $nav-active-bg;
+    color: $nav-active-text;
   }
 
   // this is parent links of the currently selected ToC entry
   .toc-link.active-parent {
-    background-color: #8dc7c6;
-    color: #000000;
+    background-color: $nav-active-parent-bg;
+    color: $nav-active-parent-text;
   }
 
   .toc-list-h2 {
@@ -215,7 +215,7 @@ html, body {
     display: block;
     $side-pad: $main-padding / 2 - 8px;
     padding: $side-pad $side-pad $side-pad;
-    background-color: rgba($main-bg, 0.7);
+    background-color: $custom-bg;
     transform-origin: 0 0;
     transform: rotate(-90deg) translate(-100%, 0);
     border-radius: 0 0 0 5px;
@@ -226,7 +226,7 @@ html, body {
   top: 0;
   left: 0;
   z-index: 100;
-  color: #000;
+  color: $custom-bg;
   text-decoration: none;
   font-weight: bold;
   opacity: 0.7;
@@ -273,6 +273,7 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
+    background: $custom-light-bg;
     border-bottom: 5px solid $lang-select-active-bg;
   }
 }
@@ -292,15 +293,15 @@ html, body {
     outline: 0;
 
     &:active, &:focus {
-      background-color: #17dbe6;
+      background-color: $custom-pink;
       color: #ffffff;
-      border-radius: 5px;  
+      border-radius: 3px;  
     }
 
     &.active {
-      background-color: #17dbe6;
+      background-color: $custom-pink;
       color: #ffffff;
-      border-radius: 5px;
+      border-radius: 3px;
     }
   }
 
@@ -452,7 +453,7 @@ html, body {
   }
 
   code {
-    background-color: #ffffff;
+    background-color: $custom-white;
     padding: 3px;
     border-radius: 3px;
     @extend %break-words;
@@ -460,10 +461,10 @@ html, body {
   }
     
     p code {
-        background-color: #ffffff;
+        background-color: $custom-white;
         padding: 3px 5px;
         border-radius: 3px;
-        color: #17dbe6; 
+        color: $custom-red; 
     }
 
   pre>code {
@@ -511,7 +512,7 @@ html, body {
     margin: -3px;
     border-radius: 4px;
     border: 1px solid #F7E633;
-    background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
+    background: $custom-cyan;
   }
 }
 
@@ -566,6 +567,11 @@ html, body {
       background-color: $code-annotation-bg;
       padding: $code-annotation-padding 2em;
       color: #eee;
+        
+        code {
+            text-transform: none;
+            color: $custom-pink;
+      }
     }
   }
 }
