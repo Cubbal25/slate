@@ -294,13 +294,13 @@ html, body {
     &:active, &:focus {
       background-color: #17dbe6;
       color: #ffffff;
-      border-radius: 3px;  
+      border-radius: 2px;  
     }
 
     &.active {
       background-color: #17dbe6;
       color: #ffffff;
-      border-radius: 3px;
+      border-radius: 2px;
     }
   }
 
@@ -452,7 +452,7 @@ html, body {
   }
 
   code {
-    background-color: rgba(0,0,0,0.05);
+    background-color: rgba(255,255,255,0.6);
     padding: 3px;
     border-radius: 3px;
     @extend %break-words;
