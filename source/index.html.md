@@ -84,6 +84,14 @@ This returns a list of options, choose one and put it into the URL to proceed.
 
 ## Options in ABS
 
+assetType lets you select either CMBS, autoLoan, or autoLease, and the Id's let you specify within those catagories.
+
+Parameter | Description and Placement
+--------- | -----------
+assetType | Either the cmbs, autoLoan, or autoLease sections of abs, 1.
+dealId | Either the ID, CIK, or Name of a specific deal, 2.
+assetId |  A specific File within the deal, 3.
+
 ### CMBS
 
 ```shell
@@ -112,16 +120,8 @@ This returns the document with all of the CMBS on it.
 
 ### CMBS Options
 
-<aside class="notice">
-Every Parameter has a Placement number, this is where it is placed in the URL after CMBS. You can only use them in ascending order.
-</aside>
 
-
-Parameter | Description and Placement
---------- | -----------
-DEAL | Either the ID, CIK, or Name of a specific deal, 1.
-FILE |  A specific File within the deal, 2.
-FileType | 3.
+Options availible while under abs/cmbs
 
 JSON Attributes:
 
@@ -133,13 +133,13 @@ Type | 3.
 Extracted | 4.
 
 ```shell
-curl --location --request GET "https:edgar.halider.io/abs/cmbs/DEAL" --header "yourkey"
+curl --location --request GET "https:edgar.halider.io/abs/cmbs/dealId" --header "yourkey"
 ```
 
 ```python
 import requests
 ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/abs/cmbs/DEAL',headers=ploads)
+r =requests.get('https://edgar.halider.io/abs/cmbs/dealId',headers=ploads)
 ```
 > A sample response.
 
@@ -167,6 +167,8 @@ import requests
 ploads = {'X-Api-Key':'yourkey'}
 r =requests.get('https://edgar.halider.io/abs/cmbs/DEAL/FILE',headers=ploads)
 ```
+
+JSON Attributes:
 
 Attribute | Description 
 --------- | -----------
@@ -352,7 +354,79 @@ primaryServicerName | 86
       "primaryServicerName": "Wells Fargo Bank, NA"
 },
 ```
+### autoLoan
 
+This shows all autoLoan documents.
+
+JSON Attributes:
+
+Attribute | Description 
+--------- | -----------
+deals | 1.
+id | 2.
+cik |  3.
+assetType | 4.
+names | 5.
+
+```shell
+curl --location --request GET "https:edgar.halider.io/autoLoan" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/autoLoan',headers=ploads)
+```
+
+> A sample response.
+
+```JSON
+{
+      "id": "291",
+      "cik": 1131131,
+      "assetType": "autoLoan",
+      "names": [
+        "TOYOTA AUTO FINANCE RECEIVABLES LLC"
+      ]
+}
+```
+
+### autoLease
+
+This shows all autoLease documents, very similar to autoLoan.
+
+JSON attributes:
+
+Attribute | Description 
+--------- | -----------
+deals | 1.
+id | 2.
+cik |  3.
+assetType | 4.
+names | 5.
+
+```shell
+curl --location --request GET "https:edgar.halider.io/autoLease" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/autoLease',headers=ploads)
+```
+
+> A sample response.
+
+```JSON
+{
+      "id": "17",
+      "cik": 1771786,
+      "assetType": "autoLease",
+      "names": [
+        "GM Financial Automobile Leasing Trust 2019-2"
+      ]
+}
+```
 
 # CMBS
 
@@ -448,7 +522,7 @@ import requests
 ploads = {'X-Api-Key':'yourkey'}
 r =requests.get('https://edgar.halider.io/filing/filingDate/filingNumber',headers=ploads)
 ```
->example response
+> Example response.
 
 ```JSON
 {
@@ -499,4 +573,38 @@ documents | 4.
 documentName | 5.
 documentDescription | 6.
 
+### documentType
 
+<aside class="warning">
+The results from documentType are not compatible with JSON.
+</aside>
+
+```shell
+curl --location --request GET "https:edgar.halider.io/filing/filingDate/filingNumber/documentType" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/filing/filingDate/filingNumber/documentType',headers=ploads)
+```
+
+> Start of an HTML Example.
+
+```HTML
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+</HEAD>
+<BODY>
+
+
+<P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0"><B>&nbsp;</B></P>
+
+<P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"><B>UNITED STATES</B></P>
+
+<P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"><B>SECURITIES AND EXCHANGE COMMISSION</B></P>
+```
+>etc.
+
+Here is an example of the extra option for Filings.
