@@ -113,7 +113,7 @@ html, body {
     transition-property: height, margin;
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
-    background: $nav-subitem-bg;
+    background: $custom-white;
     &.visible {
       height: 30%;
       margin-bottom: 1em;
@@ -125,7 +125,7 @@ html, body {
     }
 
     a {
-      color: $nav-text;
+      color: $custom-bg;
       text-decoration: none;
 
       &:hover {
