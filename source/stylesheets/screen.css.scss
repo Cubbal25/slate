@@ -544,14 +544,14 @@ html, body {
     &>p { margin: 0; }
 
     a {
-      color: #fff;
+      color: $custom-light-bg;
       text-decoration: none;
       border-bottom: dashed 1px #ccc;
     }
   }
 
     p code {
-        background: $custom-light-bg;
+        background: $custom-dark-bg;
         padding: 2px 5px;
     }
         
