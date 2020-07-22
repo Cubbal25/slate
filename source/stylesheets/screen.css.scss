@@ -264,7 +264,7 @@ html, body {
   // half of the content always this background color.
   .dark-box {
     width: $examples-width;
-    background-color: $custom-dark-bg;
+    background-color: $custom-bg;
     position: absolute;
     right: 0;
     top: 0;
@@ -274,7 +274,7 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    background: $custom-dark-bg;
+    background: $custom-bg;
     border-bottom: 5px solid $lang-select-active-bg;
   }
 }
