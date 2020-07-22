@@ -454,7 +454,7 @@ html, body {
   }
 
   code {
-    background-color: $custom-dark-bg;
+    background-color: $custom-light-bg;
     padding: 3px;
     border-radius: 3px;
     @extend %break-words;
@@ -462,7 +462,7 @@ html, body {
   }
     
     p code {
-        background-color: $custom-white;
+        background-color: $custom-light-bg;
         padding: 3px 5px;
         border-radius: 3px;
         color: $custom-red; 
