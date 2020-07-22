@@ -274,7 +274,7 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    background: $main-bg;
+    background: $code-bg;
     border-bottom: 5px solid $lang-select-active-bg;
   }
 }
