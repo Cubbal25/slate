@@ -274,14 +274,14 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    background: $custom-light-bg;
+    background: $custom-dark-bg;
     border-bottom: 5px solid $lang-select-active-bg;
   }
 }
 
 .lang-selector {
   display: flex;
-  background-color: $lang-select-bg;
+  background-color: $custom-bg;
   width: 100%;
   font-weight: bold;
   overflow-x: auto;
