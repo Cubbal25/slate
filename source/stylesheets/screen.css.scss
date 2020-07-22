@@ -91,7 +91,7 @@ html, body {
       margin: $nav-v-padding $nav-padding;
       width: $nav-width - ($nav-padding*2);
       outline: none;
-      color: $nav-text;
+      color: $custom-bg;
       border-radius: 0; /* ios has a default border radius */
     }
 
@@ -99,7 +99,7 @@ html, body {
       position: absolute;
       top: 17px;
       left: $nav-padding;
-      color: $nav-text;
+      color: $custom-bg;
       @extend %icon-search;
     }
   }
@@ -166,7 +166,7 @@ html, body {
 
   .toc-list-h2 {
     display: none;
-    background-color: $nav-subitem-bg;
+    background-color: $custom-white;
     font-weight: 500;
   }
 
@@ -204,7 +204,7 @@ html, body {
   white-space: nowrap;
   text-overflow: ellipsis;
   text-decoration: none;
-  color: $nav-text;
+  color: $custom-bg;
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
