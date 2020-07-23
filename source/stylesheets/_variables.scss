@@ -22,8 +22,8 @@ under the License.
 
 // CUSTOM THEME
 $custom-bg: #282a36;
-$custom-dark-bg: #191C2B;
-$custom-light-bg: #44475a;
+$custom-dark-bg: #44475a;
+$custom-light-bg: #e8edec;
 $custom-white: #FBFCFB;
 $custom-comment: #6272a4;
 $custom-cyan: #8be9fd;
@@ -48,9 +48,9 @@ $lang-select-bg: #1E2224 !default;
 $lang-select-active-bg: $examples-bg !default; // feel free to change this to blue or something
 $lang-select-pressed-bg: #111 !default; // color of language tab bg when mouse is pressed
 $main-bg: #F3F7F9 !default;
-$aside-notice-bg: #8fbcd4 !default;
-$aside-warning-bg: #c97a7e !default;
-$aside-success-bg: #6ac174 !default;
+$aside-notice-bg: rgba(11, 208, 243, 0.2) !default;
+$aside-warning-bg: rgba(248, 11, 15, 0.2) !default;
+$aside-success-bg: rgba(15, 248, 11, 0.2) !default;
 $search-notice-bg: #c97a7e !default;
 
 
