@@ -462,14 +462,14 @@ html, body {
   }
     
     p code {
-        background-color: $custom-light-bg;
+        background-color: $custom-orange;
         padding: 3px 5px;
         border-radius: 3px;
         color: $custom-red; 
     }
 
   pre>code {
-    background-color: $custom-light-bg;
+    background-color: transparent;
     padding: 0;
   }
 
