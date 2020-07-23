@@ -461,6 +461,12 @@ html, body {
     @extend %code-font;
   }
     
+    p code {
+        background-color: $custom-light-bg;
+        padding: 3px 5px;
+        border-radius: 3px;
+        color: $custom-red; 
+    }
 
   pre>code {
     background-color: transparent;
