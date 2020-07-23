@@ -479,14 +479,17 @@ html, body {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     background: $aside-notice-bg;
+    color: blue;
     line-height: 1.6;
 
     &.warning {
       background-color: $aside-warning-bg;
+      color: crimson;
     }
 
     &.success {
       background-color: $aside-success-bg;
+      color: chartreuse;
     }
   }
 
