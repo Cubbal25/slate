@@ -93,7 +93,7 @@ An example:
 
 
 
-## Query Parameters
+### Query Parameters
 
 For most REST <code>GET</code> calls, you can include one or more query parameters on the request URI to <b>filter, limit the size of, and sort the data</b> in an API response. For filter parameters, see the individual <code>GET</code> calls.
 
@@ -106,8 +106,11 @@ To limit, or <i>page</i>, and sort the data that is returned in some API respons
 Parameter | Type | Description
 --------- | -----|-------------
 <code>count</code> | Integer | The number of items to list in the response.
+
 <code>end_time</code> | Integer | The end date and time for the range to show in the response, in Internet date and time format. For example, <code>end_time=2016-03-06T11:00:00Z</code>.
+
 <code>page</code> | Integer | The page number indicating which set of items will be returned in the response. So, the combination of <code>page=1</code> and <code>page_size=20</code> returns the first 20 items. The combination of <code>page=2</code> and <code>page_size=20</code> returns items 21 through 40.
+
 
 # ABS
 
