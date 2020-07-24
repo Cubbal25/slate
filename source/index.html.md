@@ -11,7 +11,7 @@ toc_footers:
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - errors
+
 
 search: true
 
@@ -89,9 +89,11 @@ Optionally, you can include query parameters on <code>GET</code> calls to filter
 
 Most <code>GET</code>,<code>POST</code>, <code>PUT</code>, and <code>PATCH</code> calls require a JSON request body.
 
-An example:
+>A basic example in Shell:
 
-
+```shell
+curl --location --request GET "https://edgar.halider.io/abs" --header "yourkey"
+```
 
 ### Query Parameters
 
@@ -106,11 +108,99 @@ To limit, or <i>page</i>, and sort the data that is returned in some API respons
 Parameter | Type | Description
 --------- | -----|-------------
 <code>count</code> | Integer | The number of items to list in the response.
-
 <code>end_time</code> | Integer | The end date and time for the range to show in the response, in Internet date and time format. For example, <code>end_time=2016-03-06T11:00:00Z</code>.
-
 <code>page</code> | Integer | The page number indicating which set of items will be returned in the response. So, the combination of <code>page=1</code> and <code>page_size=20</code> returns the first 20 items. The combination of <code>page=2</code> and <code>page_size=20</code> returns items 21 through 40.
+<code>page_size</code> | Integer | The number of items to return in the response.
+<code>total_count_required</code> | Boolean | Indicates whether to show the total count in the response.
+<code>sort_by</code> | String | Sorts the documents in the response by a specified value, such as the create time or update time.
+<code>sort_order</code> | String | Sorts the items in the response in ascending or descending order.
+<code>start_id</code> | String | The ID of the starting resource in the response. When results are paged, you can use the <code>next_id</code> value as the <code>start_id</code> to continue with the next set of results.
+<code>start_index</code> | Integer | The start index of the documents to list. Typically, you use the <code>start_index</code> to jump to a specific position in the resource history based on its <b>PLACEHOLDER</b>. For example, to start at the second item in a list of results, specify <code>?start_index=2</code>.
+<code>start_time</code> | String | The start date and time for the range to show in the response, in Internet date and time format. For example, <code>start_time=2016-03-06T11:00:00Z</code>.
 
+> For example, this shell code calls for a subcatagory (CMBS) within a larger catagory (ABS) within the database.
+
+```shell
+curl --location --request GET "https:edgar.halider.io/abs/cmbs" --header "yourkey"
+```
+
+### HTTP Request Headers
+
+The commonly used headers are:
+
+<b> Accept </b> 
+
+The response format, which is required for operations with a response body. The syntax is:
+
+<code> Accept: application/<i>format</i> </code>
+    
+Where <code><i> format </i></code> is <code> JSON </code>.
+
+<b> Authorization </b>
+
+See the section of the same name above for information on Authorization and how to be authorized in Edgar API.
+
+<b> Content-Type </b>
+
+The request format, which is required for operations with a request body. The syntax is:
+
+<code> Content-Type: application/<i>format</i> </code>
+    
+Where <code><i>format</i></code> is <code> JSON </code>.
+
+
+## API Responses
+
+Edgar API calls return HTTP status codes. Some API calls also return JSON response bodies that include information about the resource including one or more contextual HATEOAS links. Use these links to request more information about and construct an API flow that is relative to a specific request. Each REST API request returns an HTTP status code.
+
+### HTTP status codes
+
+For successful requests, Edgar returns HTTP <code>2XX</code> status codes.
+
+For failed requests, Edgar returns HTTP <code>4XX</code> or <code>5XX</code> status codes.
+
+Edgar API returns these HTTP status codes:
+                
+Code | Meaning
+---------- | -------
+<code>200 OK</code> | The request suceeded.
+<code>201 Created</code> | A <code>POST</code> method successfully created a resource. If the resource was already created by a previous execution of the same method, for example, the server returns the HTTP <code>200 OK</code> status code.
+<code> 202 Accepted </code> | The server accepted the request and will execute it later.
+<code> 204 No Content </code> | The server successfully executed the method but returns no response body.
+<code>400 Bad Request</code> |<code>INVALID_REQUEST</code>. Request is not well-formed, syntactically incorrect, or violates schema.
+<code>401 Unauthorized</code> |<code>AUTHENTICATION_FAILURE</code>. Authentication failed due to invalid authentication credentials.
+<code>403 Forbidden</code> | <code>NOT_AUTHORIZED</code>. Authorization failed due to insufficient permissions.
+<code>404 Not Found</code> | <code>RESOURCE_NOT_FOUND</code>. The specified resource does not exist.
+<code>405 Method Not Allowed</code> | <code>METHOD_NOT_SUPPORTED</code>. The server does not implement the requested HTTP method.
+<code>406 Not Acceptable</code> | <code>MEDIA_TYPE_NOT_ACCEPTABLE</code>. The server does not implement the media type that would be acceptable to the client.
+<code>415 Unsupported Media</code> | <code>UNSUPPORTED_MEDIA_TYPE</code>. The server does not support the request payload’s media type. 
+<code>422 Unprocessable Entity</code> |<code>UNPROCESSABLE_ENTITY</code>. The API cannot complete the requested action, or the request action is semantically incorrect or fails business validation.
+<code>429 Unprocessable Entity</code> |<code>RATE_LIMIT_REACHED</code>. Too many requests. Blocked due to rate limiting.
+<code>500 Internal Server Error</code> |<code>INTERNAL_SERVER_ERROR</code>. An internal server error has occurred.
+<code>503 Service Unavailable</code> | <code>SERVICE_UNAVAILABLE</code>. Service Unavailable.
+
+For all errors except Identity errors, Edgar returns an error response body that includes additional error details in this format.
+
+### Validation Errors
+
+For validation errors, Edgar returns the HTTP <code>400 Bad Request</code> status code.
+
+To prevent validation errors, ensure that parameters are the right type and conform to constraints:
+
+Parameter | Description
+--------- | -----------
+Character | Names, addresses, and phone numbers have maximum character limits.
+Numeric | <b>PLACEHOLDER</b>
+Monetary | Use the right currency.
+Format | Properly format the JSON sent in the body of your request. For example, no trailing commas.
+
+### Authorization Errors
+
+For authorization errors, Edgar returns the HTTP <code>401 Unauthorized</code> status code. See <a href="https://developer.paypal.com/docs/api-basics/#oauth-20-authorization-protocol">OAuth 2.0 authorization protocol.</a>
+
+Access token-related issues often cause authorization errors.
+
+Ensure that the access token is valid and present and not expired.
 
 # ABS
 
