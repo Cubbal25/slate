@@ -196,7 +196,7 @@ Format | Properly format the JSON sent in the body of your request. For example,
 
 ### Authorization Errors
 
-For authorization errors, Edgar returns the HTTP <code>401 Unauthorized</code> status code. See <a href="https://developer.paypal.com/docs/api-basics/#oauth-20-authorization-protocol">OAuth 2.0 authorization protocol.</a>
+For authorization errors, Edgar returns the HTTP <code>401 Unauthorized</code> status code. See OAuth 2.0 authorization protocol.
 
 Access token-related issues often cause authorization errors.
 
