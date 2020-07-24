@@ -20,11 +20,24 @@ code_clipboard: true
 
 # Introduction
 
-Welcome to the Edgar API! You can use our API to access Edgar API endpoints, which can get information on various Edgar Files in our Database.
+The Halider Edgar API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
 
-We have language bindings in Shell and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+The Halider Edgar API is designed to provide read only access to all data within the SEC.gov Edgar system https://www.sec.gov/edgar/searchedgar/accessing-edgar-data.htm
 
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
+We have language bindings in Shell, Python and Javascript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+
+Subscribe to Halider Edgar API announce mailing list for updates.
+
+# What's a REST API, anyway?
+
+An API is an application programming interface - in short, it’s a set of rules that lets programs talk to each other, exposing data and functionality across the internet in a consistent format.
+
+REST stands for Representational State Transfer. This is an architectural pattern that describes how distributed systems can expose a consistent interface. When people use the term ‘REST API,’ they are generally referring to an API accessed via HTTP protocol at a predefined set of URLs.
+
+These URLs represent various resources - any information or content accessed at that location, which can be returned as JSON, HTML, audio files, or images. Often, resources have one or more methods that can be performed on them over HTTP, like GET, POST, PUT and DELETE.
+
+Twilio, for example, provides many separate REST APIs for sending text messages, making phone calls, looking up phone numbers, managing your accounts, and a whole lot more. In Twilio’s ecosystem, each product is its own API, but you will work with each of them in roughly the same way, whether over HTTP or using Twilio’s helper libraries for several different programming languages.
+
 
 # Authentication
 
@@ -44,9 +57,14 @@ curl "api_endpoint_here"
 
 > Make sure to replace `yourkey` with your API key.
 
-Edgar uses API keys to allow access to the API. You can register a new Edgar API key at our [developer portal](http://example.com/developers).
+The Halider Edgar API uses API keys to authenticate requests. Please reach out to zac@salt.io to request an API key.
 
-Edgar expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
+
+Authentication to the API is performed via an HTTP header called 'X-'. 
+
+All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.
+
 
 `Authorization: yourkey`
 
@@ -54,6 +72,42 @@ Edgar expects for the API key to be included in all API requests to the server i
 You must replace <code>yourkey</code> with your personal API key.
 </aside>
 
+# API Reference
+
+## API Requests
+
+To make a REST API request, you combine the HTTP <code>GET</code>,<code>POST</code>, <code>PUT</code>,<code>PATCH</code>, or <code>DELETE</code> method, the URL to the API service, the URI to a resource to query, submit data to, update, or delete, and one or more HTTP request headers.
+
+The URL to the API service is either:
+
+<ul>
+    <li>Sandbox. <code>https://api.sandbox.paypal.com</code></li>
+    <li>Live. <code>https://api.paypal.com</code></li>
+</ul>
+
+Optionally, you can include query parameters on <code>GET</code> calls to filter, limit the size of, and sort the data in the responses.
+
+Most <code>GET</code>,<code>POST</code>, <code>PUT</code>, and <code>PATCH</code> calls require a JSON request body.
+
+An example:
+
+
+
+## Query Parameters
+
+For most REST <code>GET</code> calls, you can include one or more query parameters on the request URI to <b>filter, limit the size of, and sort the data</b> in an API response. For filter parameters, see the individual <code>GET</code> calls.
+
+To limit, or <i>page</i>, and sort the data that is returned in some API responses, use these, or similar, query parameters:
+
+<aside class="notice">
+    Not all pagination parameters are available for all APIs.
+</aside>
+    
+Parameter | Type | Description
+--------- | -----|-------------
+<code>count</code> | Integer | The number of items to list in the response.
+<code>end_time</code> | Integer | The end date and time for the range to show in the response, in Internet date and time format. For example, <code>end_time=2016-03-06T11:00:00Z</code>.
+<code>page</code> | Integer | The page number indicating which set of items will be returned in the response. So, the combination of <code>page=1</code> and <code>page_size=20</code> returns the first 20 items. The combination of <code>page=2</code> and <code>page_size=20</code> returns items 21 through 40.
 
 # ABS
 
