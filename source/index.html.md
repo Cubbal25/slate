@@ -99,7 +99,7 @@ Optionally, you can include query parameters on <code>GET</code> calls to filter
 
 Most <code>GET</code>,<code>POST</code>, <code>PUT</code>, and <code>PATCH</code> calls require a JSON request body.
 
->A basic example in Shell:
+>A basic example in Shell (Make sure you are on the Shell tab to see it):
 
 ```shell
 curl --location --request GET "https://edgar.halider.io/abs" --header "yourkey"
@@ -237,6 +237,8 @@ fetch('https://edgar.halider.io/abs', {
 
 This returns a list of options, choose one and put it into the URL to proceed. 
 
+>The list of options, Null isn't a real option.
+
 ```JSON
 {
   "types": [
@@ -281,6 +283,8 @@ fetch('https://edgar.halider.io/abs/cmbs', {
 
 
 This returns the document with all of the CMBS on it.
+
+> An Example.
 
 ```JSON 
  {
