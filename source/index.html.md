@@ -4,6 +4,7 @@ title: Edgar API Reference
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - python
+  - javascript
   
 
 toc_footers:
@@ -53,6 +54,15 @@ r =requests.get('url',headers=ploads)
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here"
   -H "Authorization: yourkey"
+```
+
+```javascript
+fetch('url', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
 ```
 
 > Make sure to replace `yourkey` with your API key.
@@ -216,6 +226,15 @@ ploads = {'X-Api-Key':'yourkey'}
 r =requests.get('https://edgar.halider.io/abs',headers=ploads)
 ```
 
+```javascript
+fetch('https://edgar.halider.io/abs', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
 This returns a list of options, choose one and put it into the URL to proceed. 
 
 ```JSON
@@ -250,6 +269,16 @@ import requests
 ploads = {'X-Api-Key':'yourkey'}
 r =requests.get('https://edgar.halider.io/abs/cmbs',headers=ploads)
 ```
+
+```javascript
+fetch('https://edgar.halider.io/abs/cmbs', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
 
 This returns the document with all of the CMBS on it.
 
@@ -288,6 +317,17 @@ import requests
 ploads = {'X-Api-Key':'yourkey'}
 r =requests.get('https://edgar.halider.io/abs/cmbs/dealId',headers=ploads)
 ```
+
+```javascript
+fetch('https://edgar.halider.io/abs/cmbs/dealId', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+
 > A sample response.
 
 ```JSON
@@ -306,13 +346,22 @@ To find the "FILE" you must scroll down and find the "assetIds" and then insert 
 </aside>
 
 ```shell
-curl --location --request GET "https:edgar.halider.io/abs/cmbs/DEAL/FILE" --header "yourkey"
+curl --location --request GET "https:edgar.halider.io/abs/cmbs/dealId/file" --header "yourkey"
 ```
 
 ```python
 import requests
 ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/abs/cmbs/DEAL/FILE',headers=ploads)
+r =requests.get('https://edgar.halider.io/abs/cmbs/dealId/file',headers=ploads)
+```
+
+```javascript
+fetch('https://edgar.halider.io/abs/cmbs/dealId/file', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
 ```
 
 JSON Attributes:
@@ -516,13 +565,22 @@ assetType | 4.
 names | 5.
 
 ```shell
-curl --location --request GET "https:edgar.halider.io/autoLoan" --header "yourkey"
+curl --location --request GET "https:edgar.halider.io/abs/autoLoan" --header "yourkey"
 ```
 
 ```python
 import requests
 ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/autoLoan',headers=ploads)
+r =requests.get('https://edgar.halider.io/abs/autoLoan',headers=ploads)
+```
+
+```javascript
+fetch('https://edgar.halider.io/abs/autoLoan', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
 ```
 
 > A sample response.
@@ -553,13 +611,22 @@ assetType | 4.
 names | 5.
 
 ```shell
-curl --location --request GET "https:edgar.halider.io/autoLease" --header "yourkey"
+curl --location --request GET "https:edgar.halider.io/abs/autoLease" --header "yourkey"
 ```
 
 ```python
 import requests
 ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/autoLease',headers=ploads)
+r =requests.get('https://edgar.halider.io/abs/autoLease',headers=ploads)
+```
+
+```javascript
+fetch('https://edgar.halider.io/abs/autoLease', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
 ```
 
 > A sample response.
@@ -588,6 +655,16 @@ import requests
 ploads = {'X-Api-Key':'yourkey'}
 r =requests.get('https://edgar.halider.io/cmbs',headers=ploads)
 ```
+
+```javascript
+fetch('https://edgar.halider.io/cmbs', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
 This returns all CMBS documents.
 
 JSON Attributes:
@@ -640,6 +717,17 @@ import requests
 ploads = {'X-Api-Key':'yourkey'}
 r =requests.get('https://edgar.halider.io/cmbs/dealName',headers=ploads)
 ```
+
+```javascript
+fetch('https://edgar.halider.io/cmbs/dealName', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+
 >Example Response.
  
 ```JSON
@@ -669,6 +757,16 @@ import requests
 ploads = {'X-Api-Key':'yourkey'}
 r =requests.get('https://edgar.halider.io/filing/filingDate/filingNumber',headers=ploads)
 ```
+
+```javascript
+fetch('https://edgar.halider.io/filing/filingDate/filingNumber', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
 > Example response.
 
 ```JSON
@@ -701,9 +799,9 @@ r =requests.get('https://edgar.halider.io/filing/filingDate/filingNumber',header
 }
 ```
 
-Unlike ABS and CMBS, Filing starts and requires two parameters to use it. It also has a third parameter that can be used optionally.
+Unlike ABS and CMBS, Filing starts and <b>requires two parameters</b> to use it. It also has a third parameter that can be used optionally.
 
-Parameter | Description and Placement
+Parameter | Description 
 --------- | -----------
 filingDate | 1.
 filingNumber |  2.
@@ -734,6 +832,16 @@ curl --location --request GET "https:edgar.halider.io/filing/filingDate/filingNu
 import requests
 ploads = {'X-Api-Key':'yourkey'}
 r =requests.get('https://edgar.halider.io/filing/filingDate/filingNumber/documentType',headers=ploads)
+print(r.text)
+```
+
+```javascript
+fetch('https://edgar.halider.io/filing/filingDate/filingNumber/documentType', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
 ```
 
 > Start of an HTML Example.
