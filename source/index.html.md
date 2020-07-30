@@ -216,6 +216,12 @@ Ensure that the access token is valid and present and not expired.
 
 ### Start
 
+An asset-backed security (ABS) is a security whose income payments and hence value are derived from and collateralized (or "backed") by a specified pool of underlying assets.
+
+The pool of assets is typically a group of small and illiquid assets which are unable to be sold individually. Pooling the assets into financial instruments allows them to be sold to general investors, a process called securitization, and allows the risk of investing in the underlying assets to be diversified because each security will represent a fraction of the total value of the diverse pool of underlying assets. The pools of underlying assets can include common payments from credit cards, auto loans, and mortgage loans, to esoteric cash flows from aircraft leases, royalty payments, or movie revenues.
+
+This endpoint returns the asset classes available from data filed in Edgar SEC.gov as part of the Reg AB Schedule AL asset-level disclosures. More information here: https://www.sec.gov/oit/announcement/regabii-asset-level-requirements-compliance.html
+
 ```shell
 curl --location --request GET "https://edgar.halider.io/abs" --header "yourkey"
 ```
@@ -307,10 +313,10 @@ JSON Attributes:
 
 Attribute | Description 
 --------- | -----------
-Id | 1.
-Date |  2.
-Type | 3.
-Extracted | 4.
+Id | Edgar form submission identifier.
+Date | Edgar CIK code. The Central Index Key (CIK) is used on the SEC's computer systems to identify corporations and individual people who have filed disclosure with the SEC.
+assetType | CMBS.
+Extracted | One or more names for the CMBS deal.
 
 ```shell
 curl --location --request GET "https:edgar.halider.io/abs/cmbs/dealId" --header "yourkey"
@@ -372,22 +378,28 @@ JSON Attributes:
 
 Attribute | Description 
 --------- | -----------
-assetTypeNumber | 1
-assetNumber | 2
-reportingPeriodBeginningDate | 3
-reportingPeriodEndDate | 4
-originatorName | 5
-originationDate | 6
-originalLoanAmount | 7
-originalTermLoanNumber | 8
-maturityDate | 9
-originalInterestRatePercentage | 10
-interestRateSecuritizationPercentage | 11
-interestAccrualMethodCode | 12
-originalInterestRateTypeCode | 13
-originalInterestOnlyTermNumber | 14
-firstLoanPaymentDueDate | 15
-underwritingIndicator | 16 
+assetId | A
+dealId | Y 
+dealCik | L
+dealNames | M
+assetType | A
+data | O
+assetTypeNumber | Used to Indentify the source of the Asset number.  For all securitizations this should be "Prospectus Loan ID"
+assetNumber | The identification number(s) assigned to each asset in the annex of the prospectus supplement.  For a partial defeasance where the loan is bifurcated, the Prospectus Loan ID for the original/non-defeased loan is appended with an "A", and the new/defeased loan is appended with a "B".  If there is no Prospectus Loan ID assigned, for example in a single asset deal, the default should be 1. In Schedule AL, this field is named Asset Number.
+reportingPeriodBeginningDate | Reporting period begin date for the first reporting cycle is equal to Closing Date, otherwise it should be populated as the prior month Determination Date plus 1 day.  SS reporting period should follow same as MS.
+reportingPeriodEndDate | Reporting period end date should be the determination date.  SS reporting period should follow same as MS.
+originatorName | Name of entity ultimately responsible for the representations and warranties of the loan contributed. For Schedule AL reporting, this entity shall be the originator.
+originationDate | Date the loan was originated as presented in the Annex.
+originalLoanAmount | The amount of the loan at origination.  For split loans/notes, this amount is the Original Note Amount for the split loan/note piece.
+originalTermLoanNumber | The number of months from the loan origination date until the Maturity Date of the loan.
+maturityDate | Date final scheduled payment is due per the loan documents. Not the same as anticipated repayment date related to hyper-amortization loans.  If the loan has been defeased and the loan agreement provided for, or the servicer has consented to, prepayment prior to maturity in connection with a defeasance, this represents the date the Trust can expect full repayment.  The borrower may have the right to pre-pay the defeased loan prior to the final scheduled payment date in accordance with the loan documents.
+originalInterestRatePercentage | The rate at which the note earned interest, as of the origination date.
+interestRateSecuritizationPercentage | The annual gross rate used to calculate interest for the loan at the closing date of the transaction.
+interestAccrualMethodCode | Code indicating the 'number of days' convention used to calculate interest. See Interest Accrual Method Legend.
+originalInterestRateTypeCode | Code indicating the type of interest payable by a borrower on the securitized portion of a loan.  See Interest Rate Type Legend.
+originalInterestOnlyTermNumber | Number of months the loan is interest only, calculated from the origination date to the end of the IO term.
+firstLoanPaymentDueDate | Date on which the borrower must pay the first full interest and/or principal payment due on the mortgage in accordance with the loan documents.
+underwritingIndicator |  Y or N field, to be provided by issuer, defined as whether the loan or asset met the criteria for the first level of solicitation, credit-granting, or underwriting criteria used to originate the pool asset.
 lienPositionSecuritizationCode | 17
 loanStructureCode | 18
 paymentTypeCode | 19
