@@ -400,76 +400,76 @@ originalInterestRateTypeCode | Code indicating the type of interest payable by a
 originalInterestOnlyTermNumber | Number of months the loan is interest only, calculated from the origination date to the end of the IO term.
 firstLoanPaymentDueDate | Date on which the borrower must pay the first full interest and/or principal payment due on the mortgage in accordance with the loan documents.
 underwritingIndicator |  Y or N field, to be provided by issuer, defined as whether the loan or asset met the criteria for the first level of solicitation, credit-granting, or underwriting criteria used to originate the pool asset.
-lienPositionSecuritizationCode | 17
-loanStructureCode | 18
-paymentTypeCode | 19
-periodicPrincipalAndInterestPaymentSecuritizationAmount | 20
-scheduledPrincipalBalanceSecuritizationAmount | 21
-paymentFrequencyCode | 22
-NumberPropertiesSecuritization | 23
-NumberProperties | 24
-interestOnlyIndicator | 25
-balloonIndicator | 26
-prepaymentLockOutEndDate | 27
-property | 28
-propertyName | 29
-propertyAddress | 30
-propertyCity | 31
-propertyState | 32
-propertyZip | 33
-propertyCounty | 34
-propertyTypeCode | 35
-netRentableSquareFeetNumber | 36
-netRentableSquareFeetSecuritizationNumber | 37
-yearBuiltNumber | 38
-yearLastRenovated | 39
-valuationSecuritizationAmount | 40
-valuationSourceSecuritizationCode | 41
-valuationSecuritizationDate | 42
-physicalOccupancySecuritizationPercentage | 43
-mostRecentPhysicalOccupancyPercentage | 44
-propertyStatusCode | 45
-defeasanceOptionStartDate | 46
-DefeasedStatusCode | 47
-largestTenant | 48
-squareFeetLargestTenantNumber | 49
-leaseExpirationLargestTenantDate | 50
-secondLargestTenant | 51
-squareFeetSecondLargestTenantNumber | 52
-leaseExpirationSecondLargestTenantDate | 53
-thirdLargestTenant | 54
-squareFeetThirdLargestTenantNumber | 55
-leaseExpirationThirdLargestTenantDate | 56
-financialsSecuritizationDate | 57
-mostRecentFinancialsStartDate | 58
-mostRecentFinancialsEndDate | 59
-revenueSecuritizationAmount | 60
-mostRecentRevenueAmount | 61
-operatingExpensesSecuritizationAmount | 62
-operatingExpensesAmount | 63
-netOperatingIncomeSecuritizationAmount | 64
-mostRecentNetOperatingIncomeAmount | 65
-netCashFlowFlowSecuritizationAmount | 66
-mostRecentNetCashFlowAmount | 67
-netOperatingIncomeNetCashFlowSecuritizationCode | 68
-netOperatingIncomeNetCashFlowCode | 69
-mostRecentDebtServiceAmount | 70
-debtServiceCoverageNetOperatingIncomeSecuritizationPercentage | 71
-mostRecentDebtServiceCoverageNetOperatingIncomePercentage | 72
-debtServiceCoverageNetCashFlowSecuritizationPercentage | 73
-mostRecentDebtServiceCoverageNetCashFlowpercentage | 74
-debtServiceCoverageSecuritizationCode | 75
-mostRecentDebtServiceCoverageCode | 76
-reportPeriodBeginningScheduleLoanBalanceAmount | 77
-totalScheduledPrincipalInterestDueAmount | 78
-reportPeriodInterestRatePercentage | 79
-servicerTrusteeFeeRatePercentage | 80
-scheduledInterestAmount | 81
-reportPeriodEndActualBalanceAmount | 82
-reportPeriodEndScheduledLoanBalanceAmount | 83
-paidThroughDate | 84
-servicingAdvanceMethodCode | 85
-primaryServicerName | 86
+lienPositionSecuritizationCode | A lien is a claim placed on property to make sure debt is repaid.  Lien Position at Contribution is the position as of the closing date of the transaction.  The lien position determines the repayment of debt upon asset resolution.  First lien paid first, second lien paid second, etc.  See Lien Position at Contribution Legend.
+loanStructureCode | Code indicating type of loan structure including the seniority of participated mortgage loan components. Code relates to loan within the securitization.   See Loan Structure Legend.
+paymentTypeCode | Code indicating the type or method of payment for a loan.  See Payment Type Legend.
+periodicPrincipalAndInterestPaymentSecuritizationAmount | The total amount of principal and interest due on the loan in effect as of the closing date of the transaction.  Amount should equal the sum of the Scheduled Principal Amount (L24) and Scheduled Interest Amount (L23) as of the initial determination date.
+scheduledPrincipalBalanceSecuritizationAmount | The scheduled principal balance of the mortgage loan at the closing date for the transaction, as disclosed in the final prospectus.  For split loans/notes, this amount is the scheduled beginning balance for the split loan/note piece at the closing date for the transaction.
+paymentFrequencyCode | Code representing the frequency mortgage loan payments are required to be made. See Payment Frequency Legend.
+NumberPropertiesSecuritization | The number of  properties which serve as mortgage collateral as of the closing date of the transaction.
+NumberProperties | The current number of properties which serve as mortgage collateral for the loan.  This number should not include defeasance collateral, therefore if a loan is fully defeased, field should be populated with zero.
+interestOnlyIndicator | Flag indicating if, at contribution, this is a loan for which scheduled interest only is payable, whether for a temporary basis or until the full loan balance is due.  For field A28, populate True of False.
+balloonIndicator | Indicator = Y if the loan documents require a lump-sum payment of principal at maturity.  If not required = N.  If data not yet available = empty.  Field A29 should populate either True or False.
+prepaymentLockOutEndDate | The effective date after which the lender allows prepayment of a loan.
+property | 
+propertyName | The name of the property which serves as mortgage collateral.  If the property has been defeased, populate with "Defeased".  For loan level reporting, if multiple properties, print "Various".  For substituted properties, populate with the new property name.
+propertyAddress | The address of the property which serves as mortgage collateral.  If the property has been defeased, then leave field empty.  For loan level reporting, if multiple properties, then print "Various". For substituted properties, populate with the new property information.
+propertyCity | The city name where the property or properties which serve as mortgage collateral are located.  If the property has been defeased, then leave field empty.  For loan level reporting, if multiple properties have the same city then print the city, otherwise print "Various".  If missing information, print "Incomplete". For substituted properties, populate with the new property information.
+propertyState | The 2 character abbreviated code representing the state in which the property or properties which serve as mortgage collateral are located.  If the property has been defeased, then leave field empty.  For loan level reporting, if multiple properties have the same state then print the state's 2 character abbreviated code, otherwise print "XX" for various.  If missing information, print "ZZ".   For substituted properties, populate with the new property state code.
+propertyZip | The zip (or postal) code for the property or properties which serve as mortgage collateral.  If the property has been defeased, then leave field empty.  For loan level reporting, if multiple properties have the same zip code then print the zip code, otherwise print "Various". If missing information, print "Incomplete".  For substituted properties, populate with the new property zip code.
+propertyCounty | The county in which the property or properties which serve as mortgage collateral are located.  If the property has been defeased, then leave field empty.  For loan level reporting, if multiple properties have the same county then print the county, otherwise print "Various".  If missing information, print "Incomplete".  For substituted properties, populate with the new property information.
+propertyTypeCode | Code assigned to a property from the Property Type Legend based on how the property is used.  If the property has been defeased, populated with "SE".  For loan level reporting, if multiple property types, print "XX".  If missing information, print "ZZ".  For Schedule AL purposes code "SF" should be reported as "MF".  For substituted properties, populate with the new property type.
+netRentableSquareFeetNumber | The current net rentable square feet area of a property as of the determination date.  This field should be utilized for Office, Retail, Industrial, Warehouse, and Mixed Use properties.  If there are multiple properties, and all the same Property Type, sum the values.  If not all the same Property Type or if any are missing, then leave field empty.
+netRentableSquareFeetSecuritizationNumber | The net rentable square feet area of a property as determined at the time the property is contributed to the mortgage pool as collateral.  This field should be utilized for Office, Retail, Industrial, Warehouse, and Mixed Use properties. For multiple properties, if all the same Property Type, sum the values. If missing any, leave empty.
+yearBuiltNumber | The year the property was built.  For multiple properties, if all the same print the year, else leave empty.
+yearLastRenovated | Year that last major renovation/new construction was completed on the property.
+valuationSecuritizationAmount | The valuation amount of the property as of the Valuation Date at Contribution.  For the Loan Setup File, if multiple properties, sum the values.  If missing any, leave empty.
+valuationSourceSecuritizationCode | Code used to identify the source of property valuation at securitization (as reported in Value Amount at Contribution S67, P49).  See Most Recent Valuation Source Legend.  If multiple properties and all the same then print the type.  If missing any, then leave empty. 
+valuationSecuritizationDate | The date the Valuation Amount at Contribution was determined.  For the Loan Setup File, if multiple properties and missing any or not the same date, leave empty.
+physicalOccupancySecuritizationPercentage | The percentage of rentable space occupied by tenants as of the closing date of the transaction. Should be derived from a rent roll or other document indicating occupancy. If multiple properties, populate with the weighted average based on square feet or units.  If missing any, leave empty at the loan level.
+mostRecentPhysicalOccupancyPercentage | The most recent available percentage of rentable space occupied. Should be derived from a rent roll or other document indicating occupancy consistent with most recent documentation. If property is vacant, input zero. If multiple properties, populate with the weighted average based on square feet or units.  If missing any, leave empty at the loan level.
+propertyStatusCode | Code showing status of property.  See Property Status Legend.
+defeasanceOptionStartDate | Date when defeasance option becomes available.  If mortgagor opts to repay principal amount, mortgagee may elect to have mortgagor replace loan cash flow by purchasing securities which are equivalent to the scheduled cash flow of the loan.  This serves as a disincentive to early prepayment of the loan by the mortgagor.  Defeasance is allowed only if in accordance with the loan documents.
+DefeasedStatusCode | A code indicating if a loan has or is able to be defeased.  See Defeasance Status Legend.  When a loan becomes “Full Defeasance”, at a minimum populate Property Status (P18) with 3, populate Property Type (P13) with SE, populate Property Name with "Defeased", and preceding year, second preceding year and most recent operating performance related data fields, lease and tenant related data fields and property condition related data fields should be left empty.  For Schedule AL map code P to code IP.
+largestTenant | At a property level the name of the tenant that leases the largest square feet of the property based on the most recent annual lease rollover review.  If tenant is not occupying the space but is still paying rent, the servicer may print "Dark" after tenant name.  If tenant has sub-leased space, may print "Sub-leased/name" after tenant name.  For Office, Retail, Industrial, Other or Mixed Use property types as applicable.
+squareFeetLargestTenantNumber | Total square feet leased by the largest tenant in field P37.  Based on the most recent annual lease roll over review.
+leaseExpirationLargestTenantDate | Lease term expiration.  Companion field for P37 & P38.
+secondLargestTenant | At a property level the name of the tenant that leases the second largest square feet of the property based on the most recent annual lease rollover review.  If tenant is not occupying the space but is still paying rent, the servicer may print "Dark" after tenant name.  If tenant has sub-leased space, may print "Sub-leased/name" after tenant name.  For Office, Retail, Industrial, Other or Mixed Use property types as applicable.
+squareFeetSecondLargestTenantNumber | Total square feet leased by the 2nd largest tenant in P39.  Based on the most recent annual lease roll over review.
+leaseExpirationSecondLargestTenantDate | Lease term expiration.  Companion field for P39 & P40.
+thirdLargestTenant | At a property level the name of the tenant that leases the third largest square feet of the property based on the most recent annual lease rollover review.  If tenant is not occupying the space but is still paying rent, the servicer may print "Dark" after tenant name.  If tenant has sub-leased space, may print "Sub-leased/name" after tenant name.  For Office, Retail, Industrial, Other or Mixed Use property types as applicable.
+squareFeetThirdLargestTenantNumber | Total square feet leased by the 3rd largest tenant in P41.  Based on the most recent annual lease roll over review.
+leaseExpirationThirdLargestTenantDate | Lease term expiration.  Companion field for P41 & P42.
+financialsSecuritizationDate | The date of the underwritten operating statements for the property. If available, use most recent ending financial date provided, else should equal transaction closing date. If multiple properties and all the same, print the date.  If missing any, leave empty.
+mostRecentFinancialsStartDate | The first day of the period for the most recent, hard copy operating statement (e.g. year to date or trailing 12 months) after the preceding fiscal year end statement.  (Note - the beginning and end date of the operating statement from the borrower used to annualize should be reported.)  If multiple properties and all  the same start and end date, print start date.  If missing any, leave empty.
+mostRecentFinancialsEndDate | The last day of the period for the most recent, hard copy operating statement (e.g. year to date or trailing 12 months) after the preceding fiscal year end statement. (Note - the beginning and end date of the operating statement from the borrower used to annualize should be reported.) If multiple properties and all the same start and end date, print the end date.  If missing any, leave empty.
+revenueSecuritizationAmount | The sum of all income produced by the property or properties securing a loan, based on the final prospectus or as provided by depositor at closing of transaction.  It is often derived by calculating the maximum rental income achievable at market rates, net of adjustments that reflects vacancies, credit loss and other such deductions. The Effective Gross income also includes other income, such as parking and laundry fee, typically calculated based on historical collection adjusted to reflect actual occupancy or use.  If missing data or if all received/consolidated, use the DSCR Indicator Legend rule.
+mostRecentRevenueAmount | Total revenues for the most recent operating statement reported by the servicer (e.g. year to date, year to date annualized, or trailing 12 months, but all normalized) after the preceding fiscal year end statement.   If multiple properties exist and the related data is comparable (same financial indicators and same financial start and end dates), total the revenue of the underlying properties.  If multiple properties exist and comparable data is not available for all properties or if received/consolidated, populate using the DSCR Indicator Legend rule.
+operatingExpensesSecuritizationAmount | The sum of all expenses incurred in performing normal business operation for the property or properties securing a loan, based on the final prospectus or as provided by the issuer or depositor at closing date of the transaction. Such expenses typically include employee salaries, utilities, maintenance and repairs, marketing, insurance and real estate taxes, but exclude capital expenditures, tenant improvements, and leasing commissions. It may also include expenses for the previous 12 months as well as adjustments to reflect inflation, occupancy changes or other major changes. If missing date or if all received/consolidated, use DSCR Indicator Legend Rule.
+operatingExpensesAmount | Total operating expenses for the most recent operating statement reported by the servicer (e.g. year to date, year to date annualized, or trailing 12 months, but all normalized) after the preceding fiscal year end statement. Included are real estate taxes, insurance, management fees, utilities and repairs and maintenance. Excluded are capital expenditures, tenant improvements, and leasing commissions.  If multiple properties exist and the related data is comparable (same financial indicators and same financial start and end dates), total the operating expenses of the underlying properties.  If multiple properties exist and comparable data is not available for all properties or if received/consolidated, populate using the DSCR Indicator Legend rule.
+netOperatingIncomeSecuritizationAmount | Net Operating Income (NOI) is the total underwritten revenues less total underwritten operating expenses prior to application of mortgage payments and capital items for all properties per the final prospectus or as provided by the issuer or depositor at the closing date of the transaction.  If multiple properties, sum the values.  If missing data or if all received/consolidated, use the DSCR Indicator Legend rule.
+mostRecentNetOperatingIncomeAmount | Total revenues less total operating expenses before capital items and debt service per the most recent operating statement reported by the servicer (e.g. year to date, year to date annualized, or trailing 12 months, but all normalized) after the preceding fiscal year end  statement.  If multiple properties exist and the related data is comparable (same financial indicators and same financial start and end dates), total the NOI of the underlying properties.  If multiple properties exist and comparable data is not available for all properties or if received/consolidated, populate using the DSCR Indicator Legend rule.
+netCashFlowFlowSecuritizationAmount | Net Cash Flow (NCF) is Effective Gross Income (EGI) less Total Operating Expenses (TOE) and Capital Expenditures, and prior to the application of Debt Service payments, per the final prospectus or as provided by the issuer or depositor as of the closing date of the transaction.   If missing data or if all received/consolidated, populate using DSCR Indicator Legend.
+mostRecentNetCashFlowAmount | Total revenues less total operating expenses and capital items but before debt service per the most recent operating statement reported by the servicer (e.g. year to date, year to date annualized, or trailing 12 months, but all normalized) after the preceding fiscal year end  statement.  If multiple properties exist and the related data is comparable (same financial indicators and same financial start and end dates), total the NCF of the underlying properties.  If multiple properties exist and comparable data is not available for all properties or if received/consolidated, populate using the DSCR Indicator Legend rule.
+netOperatingIncomeNetCashFlowSecuritizationCode | <b>Guess</b> Code indicating the method used to calculate net operating income or net cash flow at contribution.  See NOI/NCF Indicator Legend rule.  If multiple properties are all the same, print the value. If missing any or the values are not the same, leave empty.
+netOperatingIncomeNetCashFlowCode | Code indicating the method used to calculate net operating income or net cash flow.  See NOI/NCF Indicator Legend rule.  If multiple properties and all the same, print the value. If missing any or the values are not the same, leave empty.
+mostRecentDebtServiceAmount | Total scheduled or actual payments that cover the same number of months as the most recent financial operating statement reported by the servicer (e.g. year to date, year to date annualized, or trailing 12 months, but all normalized) after the preceding fiscal year end statement.  Payments include scheduled or actual principal and or interest as required by the loan documents. Calculate using the current allocated percentage (P20) to get the allocated amount for each property.  If multiple properties covering the same period (same financial statement as of start and end dates), sum the value.  If missing any or all received/consolidated then populate using the DSCR Indicator Legend rule.
+debtServiceCoverageNetOperatingIncomeSecuritizationPercentage | A ratio of underwritten net operating income (NOI) to debt service as shown in the final prospectus or as provided by the issuer or depositor at the closing date of the transaction.  If multiple properties, populate using the DSCR Indicator Legend rule.
+mostRecentDebtServiceCoverageNetOperatingIncomePercentage | A ratio of net operating income (NOI) to debt service for the most recent operating statement reported by the servicer (e.g. year to date, year to date annualized, or trailing 12 months, but all normalized) after the preceding fiscal year end statement. If multiple properties exist and the related data is comparable (same financial indicators and same financial start and end dates), calculate the DSCR of the underlying properties.  If multiple properties exist and comparable data is not available for all properties or if received/consolidated, populate using the DSCR Indicator Legend rule.
+debtServiceCoverageNetCashFlowSecuritizationPercentage | The Debt Service Coverage Ratio (DSCR) is calculated by dividing the Net Cash Flow (NCF) by the required Debt Service payments.  A DSCR of 1.0x implies that the property generates just enough cash flow to service the debt.  A higher DSCR means the property is generating more cash than needed to cover the debt service payments and therefore represents less risk of payment default.  The higher the DSCR, the more Term Risk is mitigated.  If multiple properties, populate using DSCR Indicator Legend.
+mostRecentDebtServiceCoverageNetCashFlowpercentage | A ratio of net cash flow (NCF) to debt service for the most recent financial operating statement reported by the servicer (e.g. year to date, year to date annualized, or trailing 12 months, but all normalized) after the preceding fiscal year end statement.  If multiple properties exist and the related data is comparable (same financial indicators and same financial start and end dates), calculate the DSCR of the underlying properties.  If multiple properties exist and comparable data is not available for all properties or if received/consolidated, populate using the DSCR Indicator Legend rule.
+debtServiceCoverageSecuritizationCode | Code used to explain how DSCR was calculated when there are multiple properties.  Specific codes apply.  See DSCR Indicator Legend.
+mostRecentDebtServiceCoverageCode | Code describing how DSCR is calculated for the most recent financial operating statement, as reported by the servicer, after the preceding fiscal year end statement.  See DSCR Indicator Legend.
+reportPeriodBeginningScheduleLoanBalanceAmount | The scheduled or stated principal balance for a loan (defined in the servicing agreement) as of the beginning of the reporting period, which is usually the preceding determination date. This balance should be equal to the Current Ending Scheduled Balance in the previous reporting period.  For full and partial defeasances, the balance should reflect the appropriate allocation of the balance of the non-defeased and defeased loans based on the provisions of the loan documents.
+totalScheduledPrincipalInterestDueAmount | The total amount of principal and interest due on the loan in the month corresponding to the current distribution date and should equal the sum of fields L23 and L24.
+reportPeriodInterestRatePercentage | Annualized gross rate used to calculate the current period Scheduled Interest Amount. For split loans/notes, this is the gross rate used to calculate the Scheduled Interest Amount for the split loan/note included in the related trust.
+servicerTrusteeFeeRatePercentage | Sum of annual fee rates payable to the servicer(s)) and trustee (should not include any fees represented in fields L13 through L17 of the Loan Periodic Update File or fields S47 through S51 of the Loan Setup File in order to avoid double counting). 
+scheduledInterestAmount | The amount of gross interest scheduled to be paid to the trust for the current distribution period based on the trust's beginning scheduled principal balance and a full month's interest accrual amount.  This amount may not be the same as the amount of gross interest scheduled to be paid by the borrower for the related payment date.  If loan has been deemed non-recoverable, then populate with zero.
+reportPeriodEndActualBalanceAmount | Outstanding actual balance of the loan as of the determination date. This figure represents the legal remaining outstanding principal balance related to the borrower’s mortgage note.  For partial defeasances, the balance should reflect the appropriate allocation of the balance prior to the defeasance between the non-defeased and defeased  loans based on the provisions of the loan documents.
+reportPeriodEndScheduledLoanBalanceAmount | The scheduled or stated principal balance for a loan (defined in the servicing agreement) as of the end of the reporting period, which is usually the current determination date.  This balance is usually determined by considering scheduled and unscheduled principal payments received during the collection period relating to the Distribution Date. A realized loss will also have an impact on this balance during the period it is reported.  For split note/loans, this should include the balance in the related trust.  For full and partial defeasances, the balance should reflect the appropriate allocation of the balance prior to the defeasance between the non-defeased and defeased loans based on the provisions of the loan documents.
+paidThroughDate | Date the loan's scheduled principal and interest is paid through as of the determination date. One frequency less than the due date for the loan's next scheduled payment.  For split loans/notes, this is the date the scheduled principal and interest for the split loan/note piece has been paid through.
+servicingAdvanceMethodCode | Indicate the code that describes the manner in which principal and/or interest are advanced by the servicer.  See Servicer Advance Methodology Legend.  Amounts are assumed Net, otherwise use 99.
+primaryServicerName | The entity responsible for collection of the mortgage payments and accounting for the securitization as well as for remitting all collections and reporting all data to the Trustee/Certificate Administrator so that it can be forwarded to the certificateholders.  This entity also protects the interests of CMBS certificateholders by actively administering the mortgage loans and collateral that are the security for the bondholders’ investment. See Master Servicer Legend. For Schedule AL, the master servicer is used to populate the Primary Servicer field.
 
 
 
