@@ -856,7 +856,7 @@ fetch('https://edgar.halider.io/filing/filingDate/filingNumber/documentType', {
     headers: { 
       'X-Api-Key':'yourkey'}
 })
-  .then(response => response.json())
+  .then(response => response.txt())
   .then(data => console.log(data));
 ```
 
