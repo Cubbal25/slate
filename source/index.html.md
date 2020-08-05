@@ -5,6 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - python
   - javascript
+  - r
   
 
 toc_footers:
@@ -25,7 +26,7 @@ The Halider Edgar API is organized around REST. Our API has predictable resource
 
 The Halider Edgar API is designed to provide read only access to all data within the SEC.gov Edgar system https://www.sec.gov/edgar/searchedgar/accessing-edgar-data.htm
 
-We have language bindings in Shell, Python and Javascript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We have language bindings in Shell, Python, R, and Javascript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
 Subscribe to Halider Edgar API announce mailing list for updates.
 
@@ -65,7 +66,18 @@ fetch('url', {
   .then(data => console.log(data));
 ```
 
+```r
+> library(httr)
+> library(jsonlite)
+> res = GET("url", add_headers('x-api-key':'yourkey'))
+> rawToChar(res$content)
+```
+
 > Make sure to replace `yourkey` with your API key.
+
+<aside class = "warning">
+The R examples use simple raw JSON as output, so they will not look the same as the other examples. R is also not able to use certain calls that are not JSON compatible.
+</aside>        
 
 The Halider Edgar API uses API keys to authenticate requests. Please reach out to zac@salt.io to request an API key.
 
@@ -241,6 +253,13 @@ fetch('https://edgar.halider.io/abs', {
   .then(data => console.log(data));
 ```
 
+```r
+> library(httr)
+> library(jsonlite)
+> res = GET("https://edgar.halider.io/abs", add_headers('x-api-key':'yourkey'))
+> rawToChar(res$content)
+```
+
 This returns a list of options, choose one and put it into the URL to proceed. 
 
 >The list of options, Null isn't a real option.
@@ -285,6 +304,13 @@ fetch('https://edgar.halider.io/abs/cmbs', {
 })
   .then(response => response.json())
   .then(data => console.log(data));
+```
+
+```r
+> library(httr)
+> library(jsonlite)
+> res = GET("https://edgar.halider.io/abs/cmbs", add_headers('x-api-key':'yourkey'))
+> rawToChar(res$content)
 ```
 
 
@@ -337,6 +363,13 @@ fetch('https://edgar.halider.io/abs/cmbs/dealId', {
   .then(data => console.log(data));
 ```
 
+```r
+> library(httr)
+> library(jsonlite)
+> res = GET("https://edgar.halider.io/abs/cmbs/dealId", add_headers('x-api-key':'yourkey'))
+> rawToChar(res$content)
+```
+
 
 > A sample response.
 
@@ -372,6 +405,13 @@ fetch('https://edgar.halider.io/abs/cmbs/dealId/file', {
 })
   .then(response => response.json())
   .then(data => console.log(data));
+```
+
+```r
+> library(httr)
+> library(jsonlite)
+> res = GET("https://edgar.halider.io/abs/cmbs/dealId/file", add_headers('x-api-key':'yourkey'))
+> rawToChar(res$content)
 ```
 
 JSON Attributes:
@@ -599,6 +639,13 @@ fetch('https://edgar.halider.io/abs/autoLoan', {
   .then(data => console.log(data));
 ```
 
+```r
+> library(httr)
+> library(jsonlite)
+> res = GET("https://edgar.halider.io/abs/autoLoan", add_headers('x-api-key':'yourkey'))
+> rawToChar(res$content)
+```
+
 > A sample response.
 
 ```JSON
@@ -645,6 +692,13 @@ fetch('https://edgar.halider.io/abs/autoLease', {
   .then(data => console.log(data));
 ```
 
+```r
+> library(httr)
+> library(jsonlite)
+> res = GET("https://edgar.halider.io/abs/autoLease", add_headers('x-api-key':'yourkey'))
+> rawToChar(res$content)
+```
+
 > A sample response.
 
 ```JSON
@@ -679,6 +733,13 @@ fetch('https://edgar.halider.io/cmbs', {
 })
   .then(response => response.json())
   .then(data => console.log(data));
+```
+
+```r
+> library(httr)
+> library(jsonlite)
+> res = GET("https://edgar.halider.io/cmbs", add_headers('x-api-key':'yourkey'))
+> rawToChar(res$content)
 ```
 
 This returns all CMBS documents.
@@ -743,6 +804,13 @@ fetch('https://edgar.halider.io/cmbs/dealName', {
   .then(data => console.log(data));
 ```
 
+```r
+> library(httr)
+> library(jsonlite)
+> res = GET("https://edgar.halider.io/cmbs/dealName", add_headers('x-api-key':'yourkey'))
+> rawToChar(res$content)
+```
+
 
 >Example Response.
  
@@ -781,6 +849,13 @@ fetch('https://edgar.halider.io/filing/filingDate/filingNumber', {
 })
   .then(response => response.json())
   .then(data => console.log(data));
+```
+
+```r
+> library(httr)
+> library(jsonlite)
+> res = GET("https://edgar.halider.io/filing/filingDate/filingNumber", add_headers('x-api-key':'yourkey'))
+> rawToChar(res$content)
 ```
 
 > Example response.
@@ -859,6 +934,7 @@ fetch('https://edgar.halider.io/filing/filingDate/filingNumber/documentType', {
   .then(response => response.txt())
   .then(data => console.log(data));
 ```
+
 
 > Start of an HTML Example.
 
