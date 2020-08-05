@@ -67,10 +67,10 @@ fetch('url', {
 ```
 
 ```r
-> library(httr)
-> library(jsonlite)
-> res = GET("url", add_headers('x-api-key':'yourkey'))
-> rawToChar(res$content)
+>library(httr)
+>library(jsonlite)
+>res=GET("url", add_headers('x-api-key':'yourkey'))
+>rawToChar(res$content)
 ```
 
 > Make sure to replace `yourkey` with your API key.
@@ -254,10 +254,10 @@ fetch('https://edgar.halider.io/abs', {
 ```
 
 ```r
-> library(httr)
-> library(jsonlite)
-> res = GET("https://edgar.halider.io/abs", add_headers('x-api-key':'yourkey'))
-> rawToChar(res$content)
+>library(httr)
+>library(jsonlite)
+>res=GET("https://edgar.halider.io/abs",add_headers('x-api-key':'yourkey'))
+>rawToChar(res$content)
 ```
 
 This returns a list of options, choose one and put it into the URL to proceed. 
@@ -307,10 +307,10 @@ fetch('https://edgar.halider.io/abs/cmbs', {
 ```
 
 ```r
-> library(httr)
-> library(jsonlite)
-> res = GET("https://edgar.halider.io/abs/cmbs", add_headers('x-api-key':'yourkey'))
-> rawToChar(res$content)
+>library(httr)
+>library(jsonlite)
+>res=GET("https://edgar.halider.io/abs/cmbs",add_headers('x-api-key':'yourkey'))
+>rawToChar(res$content)
 ```
 
 
@@ -364,10 +364,10 @@ fetch('https://edgar.halider.io/abs/cmbs/dealId', {
 ```
 
 ```r
-> library(httr)
-> library(jsonlite)
-> res = GET("https://edgar.halider.io/abs/cmbs/dealId", add_headers('x-api-key':'yourkey'))
-> rawToChar(res$content)
+>library(httr)
+>library(jsonlite)
+>res=GET("https://edgar.halider.io/abs/cmbs/dealId",add_headers('x-api-key':'yourkey'))
+>rawToChar(res$content)
 ```
 
 
@@ -408,10 +408,10 @@ fetch('https://edgar.halider.io/abs/cmbs/dealId/file', {
 ```
 
 ```r
-> library(httr)
-> library(jsonlite)
-> res = GET("https://edgar.halider.io/abs/cmbs/dealId/file", add_headers('x-api-key':'yourkey'))
-> rawToChar(res$content)
+>library(httr)
+>library(jsonlite)
+>res=GET("https://edgar.halider.io/abs/cmbs/dealId/file",add_headers('x-api-key':'yourkey'))
+>rawToChar(res$content)
 ```
 
 JSON Attributes:
@@ -640,10 +640,10 @@ fetch('https://edgar.halider.io/abs/autoLoan', {
 ```
 
 ```r
-> library(httr)
-> library(jsonlite)
-> res = GET("https://edgar.halider.io/abs/autoLoan", add_headers('x-api-key':'yourkey'))
-> rawToChar(res$content)
+>library(httr)
+>library(jsonlite)
+>res=GET("https://edgar.halider.io/abs/autoLoan",add_headers('x-api-key':'yourkey'))
+>rawToChar(res$content)
 ```
 
 > A sample response.
@@ -693,10 +693,10 @@ fetch('https://edgar.halider.io/abs/autoLease', {
 ```
 
 ```r
-> library(httr)
-> library(jsonlite)
-> res = GET("https://edgar.halider.io/abs/autoLease", add_headers('x-api-key':'yourkey'))
-> rawToChar(res$content)
+>library(httr)
+>library(jsonlite)
+>res=GET("https://edgar.halider.io/abs/autoLease",add_headers('x-api-key':'yourkey'))
+>rawToChar(res$content)
 ```
 
 > A sample response.
@@ -736,10 +736,10 @@ fetch('https://edgar.halider.io/cmbs', {
 ```
 
 ```r
-> library(httr)
-> library(jsonlite)
-> res = GET("https://edgar.halider.io/cmbs", add_headers('x-api-key':'yourkey'))
-> rawToChar(res$content)
+>library(httr)
+>library(jsonlite)
+>res=GET("https://edgar.halider.io/cmbs",add_headers('x-api-key':'yourkey'))
+>rawToChar(res$content)
 ```
 
 This returns all CMBS documents.
@@ -805,10 +805,10 @@ fetch('https://edgar.halider.io/cmbs/dealName', {
 ```
 
 ```r
-> library(httr)
-> library(jsonlite)
-> res = GET("https://edgar.halider.io/cmbs/dealName", add_headers('x-api-key':'yourkey'))
-> rawToChar(res$content)
+>library(httr)
+>library(jsonlite)
+>res=GET("https://edgar.halider.io/cmbs/dealName",add_headers('x-api-key':'yourkey'))
+>rawToChar(res$content)
 ```
 
 
@@ -852,10 +852,10 @@ fetch('https://edgar.halider.io/filing/filingDate/filingNumber', {
 ```
 
 ```r
-> library(httr)
-> library(jsonlite)
-> res = GET("https://edgar.halider.io/filing/filingDate/filingNumber", add_headers('x-api-key':'yourkey'))
-> rawToChar(res$content)
+>library(httr)
+>library(jsonlite)
+>res=GET("https://edgar.halider.io/filing/filingDate/filingNumber",add_headers('x-api-key':'yourkey'))
+>rawToChar(res$content)
 ```
 
 > Example response.
