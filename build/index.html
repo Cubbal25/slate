@@ -1,0 +1,1737 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Edgar API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-383a0ce4.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-e9bde216.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;javascript&quot;,&quot;r&quot;,&quot;jl&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-1e815a84.png" class="logo" alt="" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="r">r</a>
+              <a href="#" data-language-name="jl">jl</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#what-39-s-a-rest-api-anyway" class="toc-h1 toc-link" data-title="What's a REST API, anyway?">What's a REST API, anyway?</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#api-reference" class="toc-h1 toc-link" data-title="API Reference">API Reference</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#api-requests" class="toc-h2 toc-link" data-title="API Requests">API Requests</a>
+                  </li>
+                  <li>
+                    <a href="#api-responses" class="toc-h2 toc-link" data-title="API Responses">API Responses</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#abs" class="toc-h1 toc-link" data-title="ABS">ABS</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#start" class="toc-h2 toc-link" data-title="Start">Start</a>
+                  </li>
+                  <li>
+                    <a href="#options-in-abs" class="toc-h2 toc-link" data-title="Options in ABS">Options in ABS</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#cmbs-2" class="toc-h1 toc-link" data-title="CMBS">CMBS</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#start-2" class="toc-h2 toc-link" data-title="Start">Start</a>
+                  </li>
+                  <li>
+                    <a href="#options" class="toc-h2 toc-link" data-title="Options">Options</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#filing" class="toc-h1 toc-link" data-title="Filing">Filing</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#start-3" class="toc-h2 toc-link" data-title="Start">Start</a>
+                  </li>
+                  <li>
+                    <a href="#documenttype" class="toc-h2 toc-link" data-title="documentType">documentType</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>The Halider Edgar API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.</p>
+
+<p>The Halider Edgar API is designed to provide read only access to all data within the SEC.gov Edgar system https://www.sec.gov/edgar/searchedgar/accessing-edgar-data.htm</p>
+
+<p>We have language bindings in Shell, Python, R, Julia, and Javascript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+
+<p>Subscribe to Halider Edgar API announce mailing list for updates.</p>
+<h1 id='what-39-s-a-rest-api-anyway'>What&#39;s a REST API, anyway?</h1>
+<p>An API is an application programming interface - in short, it’s a set of rules that lets programs talk to each other, exposing data and functionality across the internet in a consistent format.</p>
+
+<p>REST stands for Representational State Transfer. This is an architectural pattern that describes how distributed systems can expose a consistent interface. When people use the term ‘REST API,’ they are generally referring to an API accessed via HTTP protocol at a predefined set of URLs.</p>
+
+<p>These URLs represent various resources - any information or content accessed at that location, which can be returned as JSON, HTML, audio files, or images. Often, resources have one or more methods that can be performed on them over HTTP, like GET, POST, PUT and DELETE.</p>
+
+<p>Twilio, for example, provides many separate REST APIs for sending text messages, making phone calls, looking up phone numbers, managing your accounts, and a whole lot more. In Twilio’s ecosystem, each product is its own API, but you will work with each of them in roughly the same way, whether over HTTP or using Twilio’s helper libraries for several different programming languages.</p>
+<h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>To authorize, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">ploads</span> <span class="o">=</span> <span class="p">{</span><span class="s">'X-Api-Key'</span><span class="p">:</span><span class="s">'yourkey'</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span><span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'url'</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">ploads</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"api_endpoint_here"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: yourkey"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">url</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+      <span class="dl">'</span><span class="s1">X-Api-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">yourkey</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre class="highlight r tab-r"><code><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">httr</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">res</span><span class="o">=</span><span class="n">GET</span><span class="p">(</span><span class="s2">"url"</span><span class="p">,</span><span class="w"> </span><span class="n">add_headers</span><span class="p">(</span><span class="s1">'x-api-key'</span><span class="o">:</span><span class="s1">'yourkey'</span><span class="p">))</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">rawToChar</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">content</span><span class="p">)</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight julia tab-julia"><code><span class="n">pkg</span> <span class="n">add</span> <span class="n">JSON</span>
+<span class="n">pkg</span> <span class="n">add</span> <span class="n">HTTP</span>
+<span class="k">using</span> <span class="n">JSON</span><span class="x">,</span> <span class="n">HTTP</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">HTTP</span><span class="o">.</span><span class="n">request</span><span class="x">(</span><span class="s">"GET"</span><span class="x">,</span> <span class="s">"url"</span><span class="x">,</span> <span class="x">[</span><span class="s">"x-api-key"</span> <span class="o">=&gt;</span> <span class="s">"yourkey"</span><span class="x">])</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure to replace <code>yourkey</code> with your API key.</p>
+</blockquote>
+
+<aside class = "warning">
+The R examples use simple raw JSON as output, so they will not look the same as the other examples. R is also not able to use certain calls that are not JSON compatible.
+    
+The Julia examples actually output a bunch of server status information, then the response in text. Fully compatible, but will look very different. <code> pkg </code> is also a mode that is activated with "]" for installing packages, rather then typing it in.
+</aside>        
+
+<p>The Halider Edgar API uses API keys to authenticate requests. Please reach out to zac@salt.io to request an API key.</p>
+
+<p>Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.</p>
+
+<p>Authentication to the API is performed via an HTTP header called &#39;X-&#39;. </p>
+
+<p>All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.</p>
+
+<p><code>Authorization: yourkey</code></p>
+
+<aside class="notice">
+You must replace <code>yourkey</code> with your personal API key.
+</aside>
+<h1 id='api-reference'>API Reference</h1><h2 id='api-requests'>API Requests</h2>
+<p>To make a REST API request, you combine the HTTP <code>GET</code>,<code>POST</code>, <code>PUT</code>,<code>PATCH</code>, or <code>DELETE</code> method, the URL to the API service, the URI to a resource to query, submit data to, update, or delete, and one or more HTTP request headers.</p>
+
+<p>The URL to the API service is either:</p>
+
+<ul>
+    <li>Sandbox. <code>https://api.sandbox.paypal.com</code></li>
+    <li>Live. <code>https://api.paypal.com</code></li>
+</ul>
+
+<p>Optionally, you can include query parameters on <code>GET</code> calls to filter, limit the size of, and sort the data in the responses.</p>
+
+<p>Most <code>GET</code>,<code>POST</code>, <code>PUT</code>, and <code>PATCH</code> calls require a JSON request body.</p>
+
+<blockquote>
+<p>A basic example in Shell (Make sure you are on the Shell tab to see it):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"https://edgar.halider.io/abs"</span> <span class="nt">--header</span> <span class="s2">"yourkey"</span>
+</code></pre></div><h3 id='query-parameters'>Query Parameters</h3>
+<p>For most REST <code>GET</code> calls, you can include one or more query parameters on the request URI to <b>filter, limit the size of, and sort the data</b> in an API response. For filter parameters, see the individual <code>GET</code> calls.</p>
+
+<p>To limit, or <i>page</i>, and sort the data that is returned in some API responses, use these, or similar, query parameters:</p>
+
+<aside class="notice">
+    Not all pagination parameters are available for all APIs.
+</aside>
+    
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>count</code></td>
+<td>Integer</td>
+<td>The number of items to list in the response.</td>
+</tr>
+<tr>
+<td><code>end_time</code></td>
+<td>Integer</td>
+<td>The end date and time for the range to show in the response, in Internet date and time format. For example, <code>end_time=2016-03-06T11:00:00Z</code>.</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>Integer</td>
+<td>The page number indicating which set of items will be returned in the response. So, the combination of <code>page=1</code> and <code>page_size=20</code> returns the first 20 items. The combination of <code>page=2</code> and <code>page_size=20</code> returns items 21 through 40.</td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td>Integer</td>
+<td>The number of items to return in the response.</td>
+</tr>
+<tr>
+<td><code>total_count_required</code></td>
+<td>Boolean</td>
+<td>Indicates whether to show the total count in the response.</td>
+</tr>
+<tr>
+<td><code>sort_by</code></td>
+<td>String</td>
+<td>Sorts the documents in the response by a specified value, such as the create time or update time.</td>
+</tr>
+<tr>
+<td><code>sort_order</code></td>
+<td>String</td>
+<td>Sorts the items in the response in ascending or descending order.</td>
+</tr>
+<tr>
+<td><code>start_id</code></td>
+<td>String</td>
+<td>The ID of the starting resource in the response. When results are paged, you can use the <code>next_id</code> value as the <code>start_id</code> to continue with the next set of results.</td>
+</tr>
+<tr>
+<td><code>start_index</code></td>
+<td>Integer</td>
+<td>The start index of the documents to list. Typically, you use the <code>start_index</code> to jump to a specific position in the resource history based on its <b>PLACEHOLDER</b>. For example, to start at the second item in a list of results, specify <code>?start_index=2</code>.</td>
+</tr>
+<tr>
+<td><code>start_time</code></td>
+<td>String</td>
+<td>The start date and time for the range to show in the response, in Internet date and time format. For example, <code>start_time=2016-03-06T11:00:00Z</code>.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>For example, this shell code calls for a subcatagory (CMBS) within a larger catagory (ABS) within the database.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"https:edgar.halider.io/abs/cmbs"</span> <span class="nt">--header</span> <span class="s2">"yourkey"</span>
+</code></pre></div><h3 id='http-request-headers'>HTTP Request Headers</h3>
+<p>The commonly used headers are:</p>
+
+<p><b> Accept </b> </p>
+
+<p>The response format, which is required for operations with a response body. The syntax is:</p>
+
+<p><code> Accept: application/<i>format</i> </code></p>
+
+<p>Where <code><i> format </i></code> is <code> JSON </code>.</p>
+
+<p><b> Authorization </b></p>
+
+<p>See the section of the same name above for information on Authorization and how to be authorized in Edgar API.</p>
+
+<p><b> Content-Type </b></p>
+
+<p>The request format, which is required for operations with a request body. The syntax is:</p>
+
+<p><code> Content-Type: application/<i>format</i> </code></p>
+
+<p>Where <code><i>format</i></code> is <code> JSON </code>.</p>
+<h2 id='api-responses'>API Responses</h2>
+<p>Edgar API calls return HTTP status codes. Some API calls also return JSON response bodies that include information about the resource including one or more contextual HATEOAS links. Use these links to request more information about and construct an API flow that is relative to a specific request. Each REST API request returns an HTTP status code.</p>
+<h3 id='http-status-codes'>HTTP status codes</h3>
+<p>For successful requests, Edgar returns HTTP <code>2XX</code> status codes.</p>
+
+<p>For failed requests, Edgar returns HTTP <code>4XX</code> or <code>5XX</code> status codes.</p>
+
+<p>Edgar API returns these HTTP status codes:</p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200 OK</code></td>
+<td>The request suceeded.</td>
+</tr>
+<tr>
+<td><code>201 Created</code></td>
+<td>A <code>POST</code> method successfully created a resource. If the resource was already created by a previous execution of the same method, for example, the server returns the HTTP <code>200 OK</code> status code.</td>
+</tr>
+<tr>
+<td><code> 202 Accepted </code></td>
+<td>The server accepted the request and will execute it later.</td>
+</tr>
+<tr>
+<td><code> 204 No Content </code></td>
+<td>The server successfully executed the method but returns no response body.</td>
+</tr>
+<tr>
+<td><code>400 Bad Request</code></td>
+<td><code>INVALID_REQUEST</code>. Request is not well-formed, syntactically incorrect, or violates schema.</td>
+</tr>
+<tr>
+<td><code>401 Unauthorized</code></td>
+<td><code>AUTHENTICATION_FAILURE</code>. Authentication failed due to invalid authentication credentials.</td>
+</tr>
+<tr>
+<td><code>403 Forbidden</code></td>
+<td><code>NOT_AUTHORIZED</code>. Authorization failed due to insufficient permissions.</td>
+</tr>
+<tr>
+<td><code>404 Not Found</code></td>
+<td><code>RESOURCE_NOT_FOUND</code>. The specified resource does not exist.</td>
+</tr>
+<tr>
+<td><code>405 Method Not Allowed</code></td>
+<td><code>METHOD_NOT_SUPPORTED</code>. The server does not implement the requested HTTP method.</td>
+</tr>
+<tr>
+<td><code>406 Not Acceptable</code></td>
+<td><code>MEDIA_TYPE_NOT_ACCEPTABLE</code>. The server does not implement the media type that would be acceptable to the client.</td>
+</tr>
+<tr>
+<td><code>415 Unsupported Media</code></td>
+<td><code>UNSUPPORTED_MEDIA_TYPE</code>. The server does not support the request payload’s media type.</td>
+</tr>
+<tr>
+<td><code>422 Unprocessable Entity</code></td>
+<td><code>UNPROCESSABLE_ENTITY</code>. The API cannot complete the requested action, or the request action is semantically incorrect or fails business validation.</td>
+</tr>
+<tr>
+<td><code>429 Unprocessable Entity</code></td>
+<td><code>RATE_LIMIT_REACHED</code>. Too many requests. Blocked due to rate limiting.</td>
+</tr>
+<tr>
+<td><code>500 Internal Server Error</code></td>
+<td><code>INTERNAL_SERVER_ERROR</code>. An internal server error has occurred.</td>
+</tr>
+<tr>
+<td><code>503 Service Unavailable</code></td>
+<td><code>SERVICE_UNAVAILABLE</code>. Service Unavailable.</td>
+</tr>
+</tbody></table>
+
+<p>For all errors except Identity errors, Edgar returns an error response body that includes additional error details in this format.</p>
+<h3 id='validation-errors'>Validation Errors</h3>
+<p>For validation errors, Edgar returns the HTTP <code>400 Bad Request</code> status code.</p>
+
+<p>To prevent validation errors, ensure that parameters are the right type and conform to constraints:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Character</td>
+<td>Names, addresses, and phone numbers have maximum character limits.</td>
+</tr>
+<tr>
+<td>Numeric</td>
+<td><b>PLACEHOLDER</b></td>
+</tr>
+<tr>
+<td>Monetary</td>
+<td>Use the right currency.</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>Properly format the JSON sent in the body of your request. For example, no trailing commas.</td>
+</tr>
+</tbody></table>
+<h3 id='authorization-errors'>Authorization Errors</h3>
+<p>For authorization errors, Edgar returns the HTTP <code>401 Unauthorized</code> status code. See OAuth 2.0 authorization protocol.</p>
+
+<p>Access token-related issues often cause authorization errors.</p>
+
+<p>Ensure that the access token is valid and present and not expired.</p>
+<h1 id='abs'>ABS</h1><h3 id='start'>Start</h3>
+<p>An asset-backed security (ABS) is a security whose income payments and hence value are derived from and collateralized (or &quot;backed&quot;) by a specified pool of underlying assets.</p>
+
+<p>The pool of assets is typically a group of small and illiquid assets which are unable to be sold individually. Pooling the assets into financial instruments allows them to be sold to general investors, a process called securitization, and allows the risk of investing in the underlying assets to be diversified because each security will represent a fraction of the total value of the diverse pool of underlying assets. The pools of underlying assets can include common payments from credit cards, auto loans, and mortgage loans, to esoteric cash flows from aircraft leases, royalty payments, or movie revenues.</p>
+
+<p>This endpoint returns the asset classes available from data filed in Edgar SEC.gov as part of the Reg AB Schedule AL asset-level disclosures. More information here: https://www.sec.gov/oit/announcement/regabii-asset-level-requirements-compliance.html</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"https://edgar.halider.io/abs"</span> <span class="nt">--header</span> <span class="s2">"yourkey"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">ploads</span> <span class="o">=</span> <span class="p">{</span><span class="s">'X-Api-Key'</span><span class="p">:</span><span class="s">'yourkey'</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span><span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://edgar.halider.io/abs'</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">ploads</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://edgar.halider.io/abs</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+      <span class="dl">'</span><span class="s1">X-Api-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">yourkey</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre class="highlight r tab-r"><code><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">httr</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">res</span><span class="o">=</span><span class="n">GET</span><span class="p">(</span><span class="s2">"https://edgar.halider.io/abs"</span><span class="p">,</span><span class="n">add_headers</span><span class="p">(</span><span class="s1">'x-api-key'</span><span class="o">:</span><span class="s1">'yourkey'</span><span class="p">))</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">rawToChar</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">content</span><span class="p">)</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight julia tab-julia"><code><span class="n">pkg</span> <span class="n">add</span> <span class="n">JSON</span>
+<span class="n">pkg</span> <span class="n">add</span> <span class="n">HTTP</span>
+<span class="k">using</span> <span class="n">JSON</span><span class="x">,</span> <span class="n">HTTP</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">HTTP</span><span class="o">.</span><span class="n">request</span><span class="x">(</span><span class="s">"GET"</span><span class="x">,</span> <span class="s">"https://edgar.halider.io/abs"</span><span class="x">,</span> <span class="x">[</span><span class="s">"x-api-key"</span> <span class="o">=&gt;</span> <span class="s">"yourkey"</span><span class="x">])</span>
+</code></pre></div>
+<p>This returns a list of options, choose one and put it into the URL to proceed. </p>
+
+<blockquote>
+<p>The list of options, Null isn&#39;t a real option.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+  "types": [
+    null,
+    "autoLoan",
+    "cmbs",
+    "autoLease"
+  ]
+}
+</code></pre></div><h2 id='options-in-abs'>Options in ABS</h2>
+<p>assetType lets you select either CMBS, autoLoan, or autoLease, and the Id&#39;s let you specify within those catagories.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description and Placement</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>assetType</td>
+<td>Either the cmbs, autoLoan, or autoLease sections of abs, 1.</td>
+</tr>
+<tr>
+<td>dealId</td>
+<td>Either the ID, CIK, or Name of a specific deal, 2.</td>
+</tr>
+<tr>
+<td>assetId</td>
+<td>A specific File within the deal, 3.</td>
+</tr>
+</tbody></table>
+<h3 id='cmbs'>CMBS</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"https:edgar.halider.io/abs/cmbs"</span> <span class="nt">--header</span> <span class="s2">"yourkey"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">ploads</span> <span class="o">=</span> <span class="p">{</span><span class="s">'X-Api-Key'</span><span class="p">:</span><span class="s">'yourkey'</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span><span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://edgar.halider.io/abs/cmbs'</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">ploads</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://edgar.halider.io/abs/cmbs</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+      <span class="dl">'</span><span class="s1">X-Api-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">yourkey</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre class="highlight r tab-r"><code><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">httr</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">res</span><span class="o">=</span><span class="n">GET</span><span class="p">(</span><span class="s2">"https://edgar.halider.io/abs/cmbs"</span><span class="p">,</span><span class="n">add_headers</span><span class="p">(</span><span class="s1">'x-api-key'</span><span class="o">:</span><span class="s1">'yourkey'</span><span class="p">))</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">rawToChar</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">content</span><span class="p">)</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight julia tab-julia"><code><span class="n">pkg</span> <span class="n">add</span> <span class="n">JSON</span>
+<span class="n">pkg</span> <span class="n">add</span> <span class="n">HTTP</span>
+<span class="k">using</span> <span class="n">JSON</span><span class="x">,</span> <span class="n">HTTP</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">HTTP</span><span class="o">.</span><span class="n">request</span><span class="x">(</span><span class="s">"GET"</span><span class="x">,</span> <span class="s">"https://edgar.halider.io/abs/cmbs"</span><span class="x">,</span> <span class="x">[</span><span class="s">"x-api-key"</span> <span class="o">=&gt;</span> <span class="s">"yourkey"</span><span class="x">])</span>
+</code></pre></div>
+<p>This returns the document with all of the CMBS on it.</p>
+
+<blockquote>
+<p>An Example.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code> {
+      "id": "1",
+      "cik": 1710798,
+      "assetType": "cmbs",
+      "names": [
+        "Wells Fargo Commercial Mortgage Trust 2017-C39"
+      ]
+ }
+</code></pre></div><h3 id='cmbs-options'>CMBS Options</h3>
+<p>Options availible while under abs/cmbs</p>
+
+<p>JSON Attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Id</td>
+<td>Edgar form submission identifier.</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>Edgar CIK code. The Central Index Key (CIK) is used on the SEC&#39;s computer systems to identify corporations and individual people who have filed disclosure with the SEC.</td>
+</tr>
+<tr>
+<td>assetType</td>
+<td>CMBS.</td>
+</tr>
+<tr>
+<td>Extracted</td>
+<td>One or more names for the CMBS deal.</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"https:edgar.halider.io/abs/cmbs/dealId"</span> <span class="nt">--header</span> <span class="s2">"yourkey"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">ploads</span> <span class="o">=</span> <span class="p">{</span><span class="s">'X-Api-Key'</span><span class="p">:</span><span class="s">'yourkey'</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span><span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://edgar.halider.io/abs/cmbs/dealId'</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">ploads</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://edgar.halider.io/abs/cmbs/dealId</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+      <span class="dl">'</span><span class="s1">X-Api-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">yourkey</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre class="highlight r tab-r"><code><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">httr</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">res</span><span class="o">=</span><span class="n">GET</span><span class="p">(</span><span class="s2">"https://edgar.halider.io/abs/cmbs/dealId"</span><span class="p">,</span><span class="n">add_headers</span><span class="p">(</span><span class="s1">'x-api-key'</span><span class="o">:</span><span class="s1">'yourkey'</span><span class="p">))</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">rawToChar</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">content</span><span class="p">)</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight julia tab-julia"><code><span class="n">pkg</span> <span class="n">add</span> <span class="n">JSON</span>
+<span class="n">pkg</span> <span class="n">add</span> <span class="n">HTTP</span>
+<span class="k">using</span> <span class="n">JSON</span><span class="x">,</span> <span class="n">HTTP</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">HTTP</span><span class="o">.</span><span class="n">request</span><span class="x">(</span><span class="s">"GET"</span><span class="x">,</span> <span class="s">"https://edgar.halider.io/abs/cmbs/dealId"</span><span class="x">,</span> <span class="x">[</span><span class="s">"x-api-key"</span> <span class="o">=&gt;</span> <span class="s">"yourkey"</span><span class="x">])</span>
+</code></pre></div>
+<blockquote>
+<p>A sample response.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "id": "2110",
+    "date": "2019-07-31",
+    "type": "ABS-EE",
+    "extracted": true
+}
+</code></pre></div>
+<blockquote>
+<p>etc.</p>
+</blockquote>
+
+<aside class="notice">
+To find the "FILE" you must scroll down and find the "assetIds" and then insert the numeric Id that corresponds to what you are looking for.
+</aside>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"https:edgar.halider.io/abs/cmbs/dealId/file"</span> <span class="nt">--header</span> <span class="s2">"yourkey"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">ploads</span> <span class="o">=</span> <span class="p">{</span><span class="s">'X-Api-Key'</span><span class="p">:</span><span class="s">'yourkey'</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span><span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://edgar.halider.io/abs/cmbs/dealId/file'</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">ploads</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://edgar.halider.io/abs/cmbs/dealId/file</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+      <span class="dl">'</span><span class="s1">X-Api-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">yourkey</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre class="highlight r tab-r"><code><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">httr</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">res</span><span class="o">=</span><span class="n">GET</span><span class="p">(</span><span class="s2">"https://edgar.halider.io/abs/cmbs/dealId/file"</span><span class="p">,</span><span class="n">add_headers</span><span class="p">(</span><span class="s1">'x-api-key'</span><span class="o">:</span><span class="s1">'yourkey'</span><span class="p">))</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">rawToChar</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">content</span><span class="p">)</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight julia tab-julia"><code><span class="n">pkg</span> <span class="n">add</span> <span class="n">JSON</span>
+<span class="n">pkg</span> <span class="n">add</span> <span class="n">HTTP</span>
+<span class="k">using</span> <span class="n">JSON</span><span class="x">,</span> <span class="n">HTTP</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">HTTP</span><span class="o">.</span><span class="n">request</span><span class="x">(</span><span class="s">"GET"</span><span class="x">,</span> <span class="s">"https://edgar.halider.io/abs/cmbs/dealId/file"</span><span class="x">,</span> <span class="x">[</span><span class="s">"x-api-key"</span> <span class="o">=&gt;</span> <span class="s">"yourkey"</span><span class="x">])</span>
+</code></pre></div>
+<p>JSON Attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>assetId</td>
+<td>A</td>
+</tr>
+<tr>
+<td>dealId</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>dealCik</td>
+<td>L</td>
+</tr>
+<tr>
+<td>dealNames</td>
+<td>M</td>
+</tr>
+<tr>
+<td>assetType</td>
+<td>A</td>
+</tr>
+<tr>
+<td>data</td>
+<td>O</td>
+</tr>
+<tr>
+<td>assetTypeNumber</td>
+<td>Used to Indentify the source of the Asset number.  For all securitizations this should be &quot;Prospectus Loan ID&quot;</td>
+</tr>
+<tr>
+<td>assetNumber</td>
+<td>The identification number(s) assigned to each asset in the annex of the prospectus supplement.  For a partial defeasance where the loan is bifurcated, the Prospectus Loan ID for the original/non-defeased loan is appended with an &quot;A&quot;, and the new/defeased loan is appended with a &quot;B&quot;.  If there is no Prospectus Loan ID assigned, for example in a single asset deal, the default should be 1. In Schedule AL, this field is named Asset Number.</td>
+</tr>
+<tr>
+<td>reportingPeriodBeginningDate</td>
+<td>Reporting period begin date for the first reporting cycle is equal to Closing Date, otherwise it should be populated as the prior month Determination Date plus 1 day.  SS reporting period should follow same as MS.</td>
+</tr>
+<tr>
+<td>reportingPeriodEndDate</td>
+<td>Reporting period end date should be the determination date.  SS reporting period should follow same as MS.</td>
+</tr>
+<tr>
+<td>originatorName</td>
+<td>Name of entity ultimately responsible for the representations and warranties of the loan contributed. For Schedule AL reporting, this entity shall be the originator.</td>
+</tr>
+<tr>
+<td>originationDate</td>
+<td>Date the loan was originated as presented in the Annex.</td>
+</tr>
+<tr>
+<td>originalLoanAmount</td>
+<td>The amount of the loan at origination.  For split loans/notes, this amount is the Original Note Amount for the split loan/note piece.</td>
+</tr>
+<tr>
+<td>originalTermLoanNumber</td>
+<td>The number of months from the loan origination date until the Maturity Date of the loan.</td>
+</tr>
+<tr>
+<td>maturityDate</td>
+<td>Date final scheduled payment is due per the loan documents. Not the same as anticipated repayment date related to hyper-amortization loans.  If the loan has been defeased and the loan agreement provided for, or the servicer has consented to, prepayment prior to maturity in connection with a defeasance, this represents the date the Trust can expect full repayment.  The borrower may have the right to pre-pay the defeased loan prior to the final scheduled payment date in accordance with the loan documents.</td>
+</tr>
+<tr>
+<td>originalInterestRatePercentage</td>
+<td>The rate at which the note earned interest, as of the origination date.</td>
+</tr>
+<tr>
+<td>interestRateSecuritizationPercentage</td>
+<td>The annual gross rate used to calculate interest for the loan at the closing date of the transaction.</td>
+</tr>
+<tr>
+<td>interestAccrualMethodCode</td>
+<td>Code indicating the &#39;number of days&#39; convention used to calculate interest. See Interest Accrual Method Legend.</td>
+</tr>
+<tr>
+<td>originalInterestRateTypeCode</td>
+<td>Code indicating the type of interest payable by a borrower on the securitized portion of a loan.  See Interest Rate Type Legend.</td>
+</tr>
+<tr>
+<td>originalInterestOnlyTermNumber</td>
+<td>Number of months the loan is interest only, calculated from the origination date to the end of the IO term.</td>
+</tr>
+<tr>
+<td>firstLoanPaymentDueDate</td>
+<td>Date on which the borrower must pay the first full interest and/or principal payment due on the mortgage in accordance with the loan documents.</td>
+</tr>
+<tr>
+<td>underwritingIndicator</td>
+<td>Y or N field, to be provided by issuer, defined as whether the loan or asset met the criteria for the first level of solicitation, credit-granting, or underwriting criteria used to originate the pool asset.</td>
+</tr>
+<tr>
+<td>lienPositionSecuritizationCode</td>
+<td>A lien is a claim placed on property to make sure debt is repaid.  Lien Position at Contribution is the position as of the closing date of the transaction.  The lien position determines the repayment of debt upon asset resolution.  First lien paid first, second lien paid second, etc.  See Lien Position at Contribution Legend.</td>
+</tr>
+<tr>
+<td>loanStructureCode</td>
+<td>Code indicating type of loan structure including the seniority of participated mortgage loan components. Code relates to loan within the securitization.   See Loan Structure Legend.</td>
+</tr>
+<tr>
+<td>paymentTypeCode</td>
+<td>Code indicating the type or method of payment for a loan.  See Payment Type Legend.</td>
+</tr>
+<tr>
+<td>periodicPrincipalAndInterestPaymentSecuritizationAmount</td>
+<td>The total amount of principal and interest due on the loan in effect as of the closing date of the transaction.  Amount should equal the sum of the Scheduled Principal Amount (L24) and Scheduled Interest Amount (L23) as of the initial determination date.</td>
+</tr>
+<tr>
+<td>scheduledPrincipalBalanceSecuritizationAmount</td>
+<td>The scheduled principal balance of the mortgage loan at the closing date for the transaction, as disclosed in the final prospectus.  For split loans/notes, this amount is the scheduled beginning balance for the split loan/note piece at the closing date for the transaction.</td>
+</tr>
+<tr>
+<td>paymentFrequencyCode</td>
+<td>Code representing the frequency mortgage loan payments are required to be made. See Payment Frequency Legend.</td>
+</tr>
+<tr>
+<td>NumberPropertiesSecuritization</td>
+<td>The number of  properties which serve as mortgage collateral as of the closing date of the transaction.</td>
+</tr>
+<tr>
+<td>NumberProperties</td>
+<td>The current number of properties which serve as mortgage collateral for the loan.  This number should not include defeasance collateral, therefore if a loan is fully defeased, field should be populated with zero.</td>
+</tr>
+<tr>
+<td>interestOnlyIndicator</td>
+<td>Flag indicating if, at contribution, this is a loan for which scheduled interest only is payable, whether for a temporary basis or until the full loan balance is due.  For field A28, populate True of False.</td>
+</tr>
+<tr>
+<td>balloonIndicator</td>
+<td>Indicator = Y if the loan documents require a lump-sum payment of principal at maturity.  If not required = N.  If data not yet available = empty.  Field A29 should populate either True or False.</td>
+</tr>
+<tr>
+<td>prepaymentLockOutEndDate</td>
+<td>The effective date after which the lender allows prepayment of a loan.</td>
+</tr>
+<tr>
+<td>property</td>
+<td></td>
+</tr>
+<tr>
+<td>propertyName</td>
+<td>The name of the property which serves as mortgage collateral.  If the property has been defeased, populate with &quot;Defeased&quot;.  For loan level reporting, if multiple properties, print &quot;Various&quot;.  For substituted properties, populate with the new property name.</td>
+</tr>
+<tr>
+<td>propertyAddress</td>
+<td>The address of the property which serves as mortgage collateral.  If the property has been defeased, then leave field empty.  For loan level reporting, if multiple properties, then print &quot;Various&quot;. For substituted properties, populate with the new property information.</td>
+</tr>
+<tr>
+<td>propertyCity</td>
+<td>The city name where the property or properties which serve as mortgage collateral are located.  If the property has been defeased, then leave field empty.  For loan level reporting, if multiple properties have the same city then print the city, otherwise print &quot;Various&quot;.  If missing information, print &quot;Incomplete&quot;. For substituted properties, populate with the new property information.</td>
+</tr>
+<tr>
+<td>propertyState</td>
+<td>The 2 character abbreviated code representing the state in which the property or properties which serve as mortgage collateral are located.  If the property has been defeased, then leave field empty.  For loan level reporting, if multiple properties have the same state then print the state&#39;s 2 character abbreviated code, otherwise print &quot;XX&quot; for various.  If missing information, print &quot;ZZ&quot;.   For substituted properties, populate with the new property state code.</td>
+</tr>
+<tr>
+<td>propertyZip</td>
+<td>The zip (or postal) code for the property or properties which serve as mortgage collateral.  If the property has been defeased, then leave field empty.  For loan level reporting, if multiple properties have the same zip code then print the zip code, otherwise print &quot;Various&quot;. If missing information, print &quot;Incomplete&quot;.  For substituted properties, populate with the new property zip code.</td>
+</tr>
+<tr>
+<td>propertyCounty</td>
+<td>The county in which the property or properties which serve as mortgage collateral are located.  If the property has been defeased, then leave field empty.  For loan level reporting, if multiple properties have the same county then print the county, otherwise print &quot;Various&quot;.  If missing information, print &quot;Incomplete&quot;.  For substituted properties, populate with the new property information.</td>
+</tr>
+<tr>
+<td>propertyTypeCode</td>
+<td>Code assigned to a property from the Property Type Legend based on how the property is used.  If the property has been defeased, populated with &quot;SE&quot;.  For loan level reporting, if multiple property types, print &quot;XX&quot;.  If missing information, print &quot;ZZ&quot;.  For Schedule AL purposes code &quot;SF&quot; should be reported as &quot;MF&quot;.  For substituted properties, populate with the new property type.</td>
+</tr>
+<tr>
+<td>netRentableSquareFeetNumber</td>
+<td>The current net rentable square feet area of a property as of the determination date.  This field should be utilized for Office, Retail, Industrial, Warehouse, and Mixed Use properties.  If there are multiple properties, and all the same Property Type, sum the values.  If not all the same Property Type or if any are missing, then leave field empty.</td>
+</tr>
+<tr>
+<td>netRentableSquareFeetSecuritizationNumber</td>
+<td>The net rentable square feet area of a property as determined at the time the property is contributed to the mortgage pool as collateral.  This field should be utilized for Office, Retail, Industrial, Warehouse, and Mixed Use properties. For multiple properties, if all the same Property Type, sum the values. If missing any, leave empty.</td>
+</tr>
+<tr>
+<td>yearBuiltNumber</td>
+<td>The year the property was built.  For multiple properties, if all the same print the year, else leave empty.</td>
+</tr>
+<tr>
+<td>yearLastRenovated</td>
+<td>Year that last major renovation/new construction was completed on the property.</td>
+</tr>
+<tr>
+<td>valuationSecuritizationAmount</td>
+<td>The valuation amount of the property as of the Valuation Date at Contribution.  For the Loan Setup File, if multiple properties, sum the values.  If missing any, leave empty.</td>
+</tr>
+<tr>
+<td>valuationSourceSecuritizationCode</td>
+<td>Code used to identify the source of property valuation at securitization (as reported in Value Amount at Contribution S67, P49).  See Most Recent Valuation Source Legend.  If multiple properties and all the same then print the type.  If missing any, then leave empty.</td>
+</tr>
+<tr>
+<td>valuationSecuritizationDate</td>
+<td>The date the Valuation Amount at Contribution was determined.  For the Loan Setup File, if multiple properties and missing any or not the same date, leave empty.</td>
+</tr>
+<tr>
+<td>physicalOccupancySecuritizationPercentage</td>
+<td>The percentage of rentable space occupied by tenants as of the closing date of the transaction. Should be derived from a rent roll or other document indicating occupancy. If multiple properties, populate with the weighted average based on square feet or units.  If missing any, leave empty at the loan level.</td>
+</tr>
+<tr>
+<td>mostRecentPhysicalOccupancyPercentage</td>
+<td>The most recent available percentage of rentable space occupied. Should be derived from a rent roll or other document indicating occupancy consistent with most recent documentation. If property is vacant, input zero. If multiple properties, populate with the weighted average based on square feet or units.  If missing any, leave empty at the loan level.</td>
+</tr>
+<tr>
+<td>propertyStatusCode</td>
+<td>Code showing status of property.  See Property Status Legend.</td>
+</tr>
+<tr>
+<td>defeasanceOptionStartDate</td>
+<td>Date when defeasance option becomes available.  If mortgagor opts to repay principal amount, mortgagee may elect to have mortgagor replace loan cash flow by purchasing securities which are equivalent to the scheduled cash flow of the loan.  This serves as a disincentive to early prepayment of the loan by the mortgagor.  Defeasance is allowed only if in accordance with the loan documents.</td>
+</tr>
+<tr>
+<td>DefeasedStatusCode</td>
+<td>A code indicating if a loan has or is able to be defeased.  See Defeasance Status Legend.  When a loan becomes “Full Defeasance”, at a minimum populate Property Status (P18) with 3, populate Property Type (P13) with SE, populate Property Name with &quot;Defeased&quot;, and preceding year, second preceding year and most recent operating performance related data fields, lease and tenant related data fields and property condition related data fields should be left empty.  For Schedule AL map code P to code IP.</td>
+</tr>
+<tr>
+<td>largestTenant</td>
+<td>At a property level the name of the tenant that leases the largest square feet of the property based on the most recent annual lease rollover review.  If tenant is not occupying the space but is still paying rent, the servicer may print &quot;Dark&quot; after tenant name.  If tenant has sub-leased space, may print &quot;Sub-leased/name&quot; after tenant name.  For Office, Retail, Industrial, Other or Mixed Use property types as applicable.</td>
+</tr>
+<tr>
+<td>squareFeetLargestTenantNumber</td>
+<td>Total square feet leased by the largest tenant in field P37.  Based on the most recent annual lease roll over review.</td>
+</tr>
+<tr>
+<td>leaseExpirationLargestTenantDate</td>
+<td>Lease term expiration.  Companion field for P37 &amp; P38.</td>
+</tr>
+<tr>
+<td>secondLargestTenant</td>
+<td>At a property level the name of the tenant that leases the second largest square feet of the property based on the most recent annual lease rollover review.  If tenant is not occupying the space but is still paying rent, the servicer may print &quot;Dark&quot; after tenant name.  If tenant has sub-leased space, may print &quot;Sub-leased/name&quot; after tenant name.  For Office, Retail, Industrial, Other or Mixed Use property types as applicable.</td>
+</tr>
+<tr>
+<td>squareFeetSecondLargestTenantNumber</td>
+<td>Total square feet leased by the 2nd largest tenant in P39.  Based on the most recent annual lease roll over review.</td>
+</tr>
+<tr>
+<td>leaseExpirationSecondLargestTenantDate</td>
+<td>Lease term expiration.  Companion field for P39 &amp; P40.</td>
+</tr>
+<tr>
+<td>thirdLargestTenant</td>
+<td>At a property level the name of the tenant that leases the third largest square feet of the property based on the most recent annual lease rollover review.  If tenant is not occupying the space but is still paying rent, the servicer may print &quot;Dark&quot; after tenant name.  If tenant has sub-leased space, may print &quot;Sub-leased/name&quot; after tenant name.  For Office, Retail, Industrial, Other or Mixed Use property types as applicable.</td>
+</tr>
+<tr>
+<td>squareFeetThirdLargestTenantNumber</td>
+<td>Total square feet leased by the 3rd largest tenant in P41.  Based on the most recent annual lease roll over review.</td>
+</tr>
+<tr>
+<td>leaseExpirationThirdLargestTenantDate</td>
+<td>Lease term expiration.  Companion field for P41 &amp; P42.</td>
+</tr>
+<tr>
+<td>financialsSecuritizationDate</td>
+<td>The date of the underwritten operating statements for the property. If available, use most recent ending financial date provided, else should equal transaction closing date. If multiple properties and all the same, print the date.  If missing any, leave empty.</td>
+</tr>
+<tr>
+<td>mostRecentFinancialsStartDate</td>
+<td>The first day of the period for the most recent, hard copy operating statement (e.g. year to date or trailing 12 months) after the preceding fiscal year end statement.  (Note - the beginning and end date of the operating statement from the borrower used to annualize should be reported.)  If multiple properties and all  the same start and end date, print start date.  If missing any, leave empty.</td>
+</tr>
+<tr>
+<td>mostRecentFinancialsEndDate</td>
+<td>The last day of the period for the most recent, hard copy operating statement (e.g. year to date or trailing 12 months) after the preceding fiscal year end statement. (Note - the beginning and end date of the operating statement from the borrower used to annualize should be reported.) If multiple properties and all the same start and end date, print the end date.  If missing any, leave empty.</td>
+</tr>
+<tr>
+<td>revenueSecuritizationAmount</td>
+<td>The sum of all income produced by the property or properties securing a loan, based on the final prospectus or as provided by depositor at closing of transaction.  It is often derived by calculating the maximum rental income achievable at market rates, net of adjustments that reflects vacancies, credit loss and other such deductions. The Effective Gross income also includes other income, such as parking and laundry fee, typically calculated based on historical collection adjusted to reflect actual occupancy or use.  If missing data or if all received/consolidated, use the DSCR Indicator Legend rule.</td>
+</tr>
+<tr>
+<td>mostRecentRevenueAmount</td>
+<td>Total revenues for the most recent operating statement reported by the servicer (e.g. year to date, year to date annualized, or trailing 12 months, but all normalized) after the preceding fiscal year end statement.   If multiple properties exist and the related data is comparable (same financial indicators and same financial start and end dates), total the revenue of the underlying properties.  If multiple properties exist and comparable data is not available for all properties or if received/consolidated, populate using the DSCR Indicator Legend rule.</td>
+</tr>
+<tr>
+<td>operatingExpensesSecuritizationAmount</td>
+<td>The sum of all expenses incurred in performing normal business operation for the property or properties securing a loan, based on the final prospectus or as provided by the issuer or depositor at closing date of the transaction. Such expenses typically include employee salaries, utilities, maintenance and repairs, marketing, insurance and real estate taxes, but exclude capital expenditures, tenant improvements, and leasing commissions. It may also include expenses for the previous 12 months as well as adjustments to reflect inflation, occupancy changes or other major changes. If missing date or if all received/consolidated, use DSCR Indicator Legend Rule.</td>
+</tr>
+<tr>
+<td>operatingExpensesAmount</td>
+<td>Total operating expenses for the most recent operating statement reported by the servicer (e.g. year to date, year to date annualized, or trailing 12 months, but all normalized) after the preceding fiscal year end statement. Included are real estate taxes, insurance, management fees, utilities and repairs and maintenance. Excluded are capital expenditures, tenant improvements, and leasing commissions.  If multiple properties exist and the related data is comparable (same financial indicators and same financial start and end dates), total the operating expenses of the underlying properties.  If multiple properties exist and comparable data is not available for all properties or if received/consolidated, populate using the DSCR Indicator Legend rule.</td>
+</tr>
+<tr>
+<td>netOperatingIncomeSecuritizationAmount</td>
+<td>Net Operating Income (NOI) is the total underwritten revenues less total underwritten operating expenses prior to application of mortgage payments and capital items for all properties per the final prospectus or as provided by the issuer or depositor at the closing date of the transaction.  If multiple properties, sum the values.  If missing data or if all received/consolidated, use the DSCR Indicator Legend rule.</td>
+</tr>
+<tr>
+<td>mostRecentNetOperatingIncomeAmount</td>
+<td>Total revenues less total operating expenses before capital items and debt service per the most recent operating statement reported by the servicer (e.g. year to date, year to date annualized, or trailing 12 months, but all normalized) after the preceding fiscal year end  statement.  If multiple properties exist and the related data is comparable (same financial indicators and same financial start and end dates), total the NOI of the underlying properties.  If multiple properties exist and comparable data is not available for all properties or if received/consolidated, populate using the DSCR Indicator Legend rule.</td>
+</tr>
+<tr>
+<td>netCashFlowFlowSecuritizationAmount</td>
+<td>Net Cash Flow (NCF) is Effective Gross Income (EGI) less Total Operating Expenses (TOE) and Capital Expenditures, and prior to the application of Debt Service payments, per the final prospectus or as provided by the issuer or depositor as of the closing date of the transaction.   If missing data or if all received/consolidated, populate using DSCR Indicator Legend.</td>
+</tr>
+<tr>
+<td>mostRecentNetCashFlowAmount</td>
+<td>Total revenues less total operating expenses and capital items but before debt service per the most recent operating statement reported by the servicer (e.g. year to date, year to date annualized, or trailing 12 months, but all normalized) after the preceding fiscal year end  statement.  If multiple properties exist and the related data is comparable (same financial indicators and same financial start and end dates), total the NCF of the underlying properties.  If multiple properties exist and comparable data is not available for all properties or if received/consolidated, populate using the DSCR Indicator Legend rule.</td>
+</tr>
+<tr>
+<td>netOperatingIncomeNetCashFlowSecuritizationCode</td>
+<td><b>Guess</b> Code indicating the method used to calculate net operating income or net cash flow at contribution.  See NOI/NCF Indicator Legend rule.  If multiple properties are all the same, print the value. If missing any or the values are not the same, leave empty.</td>
+</tr>
+<tr>
+<td>netOperatingIncomeNetCashFlowCode</td>
+<td>Code indicating the method used to calculate net operating income or net cash flow.  See NOI/NCF Indicator Legend rule.  If multiple properties and all the same, print the value. If missing any or the values are not the same, leave empty.</td>
+</tr>
+<tr>
+<td>mostRecentDebtServiceAmount</td>
+<td>Total scheduled or actual payments that cover the same number of months as the most recent financial operating statement reported by the servicer (e.g. year to date, year to date annualized, or trailing 12 months, but all normalized) after the preceding fiscal year end statement.  Payments include scheduled or actual principal and or interest as required by the loan documents. Calculate using the current allocated percentage (P20) to get the allocated amount for each property.  If multiple properties covering the same period (same financial statement as of start and end dates), sum the value.  If missing any or all received/consolidated then populate using the DSCR Indicator Legend rule.</td>
+</tr>
+<tr>
+<td>debtServiceCoverageNetOperatingIncomeSecuritizationPercentage</td>
+<td>A ratio of underwritten net operating income (NOI) to debt service as shown in the final prospectus or as provided by the issuer or depositor at the closing date of the transaction.  If multiple properties, populate using the DSCR Indicator Legend rule.</td>
+</tr>
+<tr>
+<td>mostRecentDebtServiceCoverageNetOperatingIncomePercentage</td>
+<td>A ratio of net operating income (NOI) to debt service for the most recent operating statement reported by the servicer (e.g. year to date, year to date annualized, or trailing 12 months, but all normalized) after the preceding fiscal year end statement. If multiple properties exist and the related data is comparable (same financial indicators and same financial start and end dates), calculate the DSCR of the underlying properties.  If multiple properties exist and comparable data is not available for all properties or if received/consolidated, populate using the DSCR Indicator Legend rule.</td>
+</tr>
+<tr>
+<td>debtServiceCoverageNetCashFlowSecuritizationPercentage</td>
+<td>The Debt Service Coverage Ratio (DSCR) is calculated by dividing the Net Cash Flow (NCF) by the required Debt Service payments.  A DSCR of 1.0x implies that the property generates just enough cash flow to service the debt.  A higher DSCR means the property is generating more cash than needed to cover the debt service payments and therefore represents less risk of payment default.  The higher the DSCR, the more Term Risk is mitigated.  If multiple properties, populate using DSCR Indicator Legend.</td>
+</tr>
+<tr>
+<td>mostRecentDebtServiceCoverageNetCashFlowpercentage</td>
+<td>A ratio of net cash flow (NCF) to debt service for the most recent financial operating statement reported by the servicer (e.g. year to date, year to date annualized, or trailing 12 months, but all normalized) after the preceding fiscal year end statement.  If multiple properties exist and the related data is comparable (same financial indicators and same financial start and end dates), calculate the DSCR of the underlying properties.  If multiple properties exist and comparable data is not available for all properties or if received/consolidated, populate using the DSCR Indicator Legend rule.</td>
+</tr>
+<tr>
+<td>debtServiceCoverageSecuritizationCode</td>
+<td>Code used to explain how DSCR was calculated when there are multiple properties.  Specific codes apply.  See DSCR Indicator Legend.</td>
+</tr>
+<tr>
+<td>mostRecentDebtServiceCoverageCode</td>
+<td>Code describing how DSCR is calculated for the most recent financial operating statement, as reported by the servicer, after the preceding fiscal year end statement.  See DSCR Indicator Legend.</td>
+</tr>
+<tr>
+<td>reportPeriodBeginningScheduleLoanBalanceAmount</td>
+<td>The scheduled or stated principal balance for a loan (defined in the servicing agreement) as of the beginning of the reporting period, which is usually the preceding determination date. This balance should be equal to the Current Ending Scheduled Balance in the previous reporting period.  For full and partial defeasances, the balance should reflect the appropriate allocation of the balance of the non-defeased and defeased loans based on the provisions of the loan documents.</td>
+</tr>
+<tr>
+<td>totalScheduledPrincipalInterestDueAmount</td>
+<td>The total amount of principal and interest due on the loan in the month corresponding to the current distribution date and should equal the sum of fields L23 and L24.</td>
+</tr>
+<tr>
+<td>reportPeriodInterestRatePercentage</td>
+<td>Annualized gross rate used to calculate the current period Scheduled Interest Amount. For split loans/notes, this is the gross rate used to calculate the Scheduled Interest Amount for the split loan/note included in the related trust.</td>
+</tr>
+<tr>
+<td>servicerTrusteeFeeRatePercentage</td>
+<td>Sum of annual fee rates payable to the servicer(s)) and trustee (should not include any fees represented in fields L13 through L17 of the Loan Periodic Update File or fields S47 through S51 of the Loan Setup File in order to avoid double counting).</td>
+</tr>
+<tr>
+<td>scheduledInterestAmount</td>
+<td>The amount of gross interest scheduled to be paid to the trust for the current distribution period based on the trust&#39;s beginning scheduled principal balance and a full month&#39;s interest accrual amount.  This amount may not be the same as the amount of gross interest scheduled to be paid by the borrower for the related payment date.  If loan has been deemed non-recoverable, then populate with zero.</td>
+</tr>
+<tr>
+<td>reportPeriodEndActualBalanceAmount</td>
+<td>Outstanding actual balance of the loan as of the determination date. This figure represents the legal remaining outstanding principal balance related to the borrower’s mortgage note.  For partial defeasances, the balance should reflect the appropriate allocation of the balance prior to the defeasance between the non-defeased and defeased  loans based on the provisions of the loan documents.</td>
+</tr>
+<tr>
+<td>reportPeriodEndScheduledLoanBalanceAmount</td>
+<td>The scheduled or stated principal balance for a loan (defined in the servicing agreement) as of the end of the reporting period, which is usually the current determination date.  This balance is usually determined by considering scheduled and unscheduled principal payments received during the collection period relating to the Distribution Date. A realized loss will also have an impact on this balance during the period it is reported.  For split note/loans, this should include the balance in the related trust.  For full and partial defeasances, the balance should reflect the appropriate allocation of the balance prior to the defeasance between the non-defeased and defeased loans based on the provisions of the loan documents.</td>
+</tr>
+<tr>
+<td>paidThroughDate</td>
+<td>Date the loan&#39;s scheduled principal and interest is paid through as of the determination date. One frequency less than the due date for the loan&#39;s next scheduled payment.  For split loans/notes, this is the date the scheduled principal and interest for the split loan/note piece has been paid through.</td>
+</tr>
+<tr>
+<td>servicingAdvanceMethodCode</td>
+<td>Indicate the code that describes the manner in which principal and/or interest are advanced by the servicer.  See Servicer Advance Methodology Legend.  Amounts are assumed Net, otherwise use 99.</td>
+</tr>
+<tr>
+<td>primaryServicerName</td>
+<td>The entity responsible for collection of the mortgage payments and accounting for the securitization as well as for remitting all collections and reporting all data to the Trustee/Certificate Administrator so that it can be forwarded to the certificateholders.  This entity also protects the interests of CMBS certificateholders by actively administering the mortgage loans and collateral that are the security for the bondholders’ investment. See Master Servicer Legend. For Schedule AL, the master servicer is used to populate the Primary Servicer field.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>A sample response.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+      "assetTypeNumber": "Prospectus Loan ID",
+      "assetNumber": 1,
+      "reportingPeriodBeginningDate": "02-12-2019",
+      "reportingPeriodEndDate": "03-11-2019",
+      "originatorName": "Barclays Bank PLC",
+      "originationDate": "05-31-2017",
+      "originalLoanAmount": 70000000,
+      "originalTermLoanNumber": 120,
+      "maturityDate": "06-06-2027",
+      "originalInterestRatePercentage": 0.036514,
+      "interestRateSecuritizationPercentage": 0.036514,
+      "interestAccrualMethodCode": 3,
+      "originalInterestRateTypeCode": 1,
+      "originalInterestOnlyTermNumber": 120,
+      "firstLoanPaymentDueDate": "07-06-2017",
+      "underwritingIndicator": true,
+      "lienPositionSecuritizationCode": 1,
+      "loanStructureCode": "PP",
+      "paymentTypeCode": 3,
+      "periodicPrincipalAndInterestPaymentSecuritizationAmount": 220098.28,
+      "scheduledPrincipalBalanceSecuritizationAmount": 70000000,
+      "paymentFrequencyCode": 1,
+      "NumberPropertiesSecuritization": 1,
+      "NumberProperties": 1,
+      "interestOnlyIndicator": true,
+      "balloonIndicator": true,
+      "prepaymentLockOutEndDate": "02-05-2027",
+      "property": {
+        "propertyName": "225 &amp; 233 PARK AVENUE SOUTH",
+        "propertyAddress": "225 &amp; 233 PARK AVENUE SOUTH",
+        "propertyCity": "New York",
+        "propertyState": "NY",
+        "propertyZip": 10003,
+        "propertyCounty": "New York",
+        "propertyTypeCode": "OF",
+        "netRentableSquareFeetNumber": 675756,
+        "netRentableSquareFeetSecuritizationNumber": 675756,
+        "yearBuiltNumber": 1909,
+        "yearLastRenovated": 2017,
+        "valuationSecuritizationAmount": 750000000,
+        "valuationSourceSecuritizationCode": "MAI",
+        "valuationSecuritizationDate": "04-01-2017",
+        "physicalOccupancySecuritizationPercentage": 0.98,
+        "mostRecentPhysicalOccupancyPercentage": 0.98,
+        "propertyStatusCode": 6,
+        "defeasanceOptionStartDate": "09-06-2019",
+        "DefeasedStatusCode": "N",
+        "largestTenant": "Facebook",
+        "squareFeetLargestTenantNumber": 266460,
+        "leaseExpirationLargestTenantDate": "10-31-2027",
+        "secondLargestTenant": "BuzzFeed  Inc.",
+        "squareFeetSecondLargestTenantNumber": 194123,
+        "leaseExpirationSecondLargestTenantDate": "05-31-2026",
+        "thirdLargestTenant": "STV Incorportated",
+        "squareFeetThirdLargestTenantNumber": 133200,
+        "leaseExpirationThirdLargestTenantDate": "05-31-2024",
+        "financialsSecuritizationDate": "03-31-2017",
+        "mostRecentFinancialsStartDate": "01-01-2018",
+        "mostRecentFinancialsEndDate": "09-30-2018",
+        "revenueSecuritizationAmount": 48106941.84,
+        "mostRecentRevenueAmount": 30296697,
+        "operatingExpensesSecuritizationAmount": 18601103.14,
+        "operatingExpensesAmount": 16697070,
+        "netOperatingIncomeSecuritizationAmount": 29505838.7,
+        "mostRecentNetOperatingIncomeAmount": 13599627,
+        "netCashFlowFlowSecuritizationAmount": 28439582.54,
+        "mostRecentNetCashFlowAmount": 12799935,
+        "netOperatingIncomeNetCashFlowSecuritizationCode": "UW",
+        "netOperatingIncomeNetCashFlowCode": "CREFC",
+        "mostRecentDebtServiceAmount": 6530934,
+        "debtServiceCoverageNetOperatingIncomeSecuritizationPercentage": 3.39,
+        "mostRecentDebtServiceCoverageNetOperatingIncomePercentage": 2.0823,
+        "debtServiceCoverageNetCashFlowSecuritizationPercentage": 3.27,
+        "mostRecentDebtServiceCoverageNetCashFlowpercentage": 1.9598,
+        "debtServiceCoverageSecuritizationCode": "C",
+        "mostRecentDebtServiceCoverageCode": "F"
+      },
+      "reportPeriodBeginningScheduleLoanBalanceAmount": 70000000,
+      "totalScheduledPrincipalInterestDueAmount": 198798.44,
+      "reportPeriodInterestRatePercentage": 0.036514,
+      "servicerTrusteeFeeRatePercentage": 0.0001285,
+      "scheduledInterestAmount": 198798.44,
+      "reportPeriodEndActualBalanceAmount": 70000000,
+      "reportPeriodEndScheduledLoanBalanceAmount": 70000000,
+      "paidThroughDate": "03-06-2019",
+      "servicingAdvanceMethodCode": 1,
+      "primaryServicerName": "Wells Fargo Bank, NA"
+},
+</code></pre></div><h3 id='autoloan'>autoLoan</h3>
+<p>This shows all autoLoan documents.</p>
+
+<p>JSON Attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deals</td>
+<td>1.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>2.</td>
+</tr>
+<tr>
+<td>cik</td>
+<td>3.</td>
+</tr>
+<tr>
+<td>assetType</td>
+<td>4.</td>
+</tr>
+<tr>
+<td>names</td>
+<td>5.</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"https:edgar.halider.io/abs/autoLoan"</span> <span class="nt">--header</span> <span class="s2">"yourkey"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">ploads</span> <span class="o">=</span> <span class="p">{</span><span class="s">'X-Api-Key'</span><span class="p">:</span><span class="s">'yourkey'</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span><span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://edgar.halider.io/abs/autoLoan'</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">ploads</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://edgar.halider.io/abs/autoLoan</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+      <span class="dl">'</span><span class="s1">X-Api-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">yourkey</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre class="highlight r tab-r"><code><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">httr</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">res</span><span class="o">=</span><span class="n">GET</span><span class="p">(</span><span class="s2">"https://edgar.halider.io/abs/autoLoan"</span><span class="p">,</span><span class="n">add_headers</span><span class="p">(</span><span class="s1">'x-api-key'</span><span class="o">:</span><span class="s1">'yourkey'</span><span class="p">))</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">rawToChar</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">content</span><span class="p">)</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight julia tab-julia"><code><span class="n">pkg</span> <span class="n">add</span> <span class="n">JSON</span>
+<span class="n">pkg</span> <span class="n">add</span> <span class="n">HTTP</span>
+<span class="k">using</span> <span class="n">JSON</span><span class="x">,</span> <span class="n">HTTP</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">HTTP</span><span class="o">.</span><span class="n">request</span><span class="x">(</span><span class="s">"GET"</span><span class="x">,</span> <span class="s">"https://edgar.halider.io/abs/autoLoan"</span><span class="x">,</span> <span class="x">[</span><span class="s">"x-api-key"</span> <span class="o">=&gt;</span> <span class="s">"yourkey"</span><span class="x">])</span>
+</code></pre></div>
+<blockquote>
+<p>A sample response.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+      "id": "291",
+      "cik": 1131131,
+      "assetType": "autoLoan",
+      "names": [
+        "TOYOTA AUTO FINANCE RECEIVABLES LLC"
+      ]
+}
+</code></pre></div><h3 id='autolease'>autoLease</h3>
+<p>This shows all autoLease documents, very similar to autoLoan.</p>
+
+<p>JSON attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deals</td>
+<td>1.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>2.</td>
+</tr>
+<tr>
+<td>cik</td>
+<td>3.</td>
+</tr>
+<tr>
+<td>assetType</td>
+<td>4.</td>
+</tr>
+<tr>
+<td>names</td>
+<td>5.</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"https:edgar.halider.io/abs/autoLease"</span> <span class="nt">--header</span> <span class="s2">"yourkey"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">ploads</span> <span class="o">=</span> <span class="p">{</span><span class="s">'X-Api-Key'</span><span class="p">:</span><span class="s">'yourkey'</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span><span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://edgar.halider.io/abs/autoLease'</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">ploads</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://edgar.halider.io/abs/autoLease</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+      <span class="dl">'</span><span class="s1">X-Api-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">yourkey</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre class="highlight r tab-r"><code><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">httr</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">res</span><span class="o">=</span><span class="n">GET</span><span class="p">(</span><span class="s2">"https://edgar.halider.io/abs/autoLease"</span><span class="p">,</span><span class="n">add_headers</span><span class="p">(</span><span class="s1">'x-api-key'</span><span class="o">:</span><span class="s1">'yourkey'</span><span class="p">))</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">rawToChar</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">content</span><span class="p">)</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight julia tab-julia"><code><span class="n">pkg</span> <span class="n">add</span> <span class="n">JSON</span>
+<span class="n">pkg</span> <span class="n">add</span> <span class="n">HTTP</span>
+<span class="k">using</span> <span class="n">JSON</span><span class="x">,</span> <span class="n">HTTP</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">HTTP</span><span class="o">.</span><span class="n">request</span><span class="x">(</span><span class="s">"GET"</span><span class="x">,</span> <span class="s">"https://edgar.halider.io/abs/autoLease"</span><span class="x">,</span> <span class="x">[</span><span class="s">"x-api-key"</span> <span class="o">=&gt;</span> <span class="s">"yourkey"</span><span class="x">])</span>
+</code></pre></div>
+<blockquote>
+<p>A sample response.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+      "id": "17",
+      "cik": 1771786,
+      "assetType": "autoLease",
+      "names": [
+        "GM Financial Automobile Leasing Trust 2019-2"
+      ]
+}
+</code></pre></div><h1 id='cmbs-2'>CMBS</h1><h3 id='start-2'>Start</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"https:edgar.halider.io/cmbs"</span> <span class="nt">--header</span> <span class="s2">"yourkey"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">ploads</span> <span class="o">=</span> <span class="p">{</span><span class="s">'X-Api-Key'</span><span class="p">:</span><span class="s">'yourkey'</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span><span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://edgar.halider.io/cmbs'</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">ploads</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://edgar.halider.io/cmbs</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+      <span class="dl">'</span><span class="s1">X-Api-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">yourkey</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre class="highlight r tab-r"><code><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">httr</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">res</span><span class="o">=</span><span class="n">GET</span><span class="p">(</span><span class="s2">"https://edgar.halider.io/cmbs"</span><span class="p">,</span><span class="n">add_headers</span><span class="p">(</span><span class="s1">'x-api-key'</span><span class="o">:</span><span class="s1">'yourkey'</span><span class="p">))</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">rawToChar</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">content</span><span class="p">)</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight julia tab-julia"><code><span class="n">pkg</span> <span class="n">add</span> <span class="n">JSON</span>
+<span class="n">pkg</span> <span class="n">add</span> <span class="n">HTTP</span>
+<span class="k">using</span> <span class="n">JSON</span><span class="x">,</span> <span class="n">HTTP</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">HTTP</span><span class="o">.</span><span class="n">request</span><span class="x">(</span><span class="s">"GET"</span><span class="x">,</span> <span class="s">"https://edgar.halider.io/cmbs"</span><span class="x">,</span> <span class="x">[</span><span class="s">"x-api-key"</span> <span class="o">=&gt;</span> <span class="s">"yourkey"</span><span class="x">])</span>
+</code></pre></div>
+<p>This returns all CMBS documents.</p>
+
+<p>JSON Attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deals</td>
+<td>1.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>2.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>A sample response.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+      "name": "BMARK 2018-B2"
+}
+</code></pre></div><h3 id='options'>Options</h3>
+<p>Similar to the other CMBS above, there are several options within CMBS.</p>
+
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Description and Placement</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dealName</td>
+<td>Name of a specific deal, 1.</td>
+</tr>
+<tr>
+<td>file</td>
+<td>2.</td>
+</tr>
+<tr>
+<td>fileType</td>
+<td>3.</td>
+</tr>
+</tbody></table>
+
+<p>JSON Attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dealname</td>
+<td>1.</td>
+</tr>
+<tr>
+<td>cik</td>
+<td>2.</td>
+</tr>
+<tr>
+<td>companyName</td>
+<td>3.</td>
+</tr>
+<tr>
+<td>filing</td>
+<td>4.</td>
+</tr>
+<tr>
+<td>filenameFull</td>
+<td>5.</td>
+</tr>
+<tr>
+<td>dateFiled</td>
+<td>6.</td>
+</tr>
+<tr>
+<td>dateFiledString</td>
+<td>7.</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>8.</td>
+</tr>
+<tr>
+<td>createdBy</td>
+<td>9.</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"https:edgar.halider.io/cmbs/dealName"</span> <span class="nt">--header</span> <span class="s2">"yourkey"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">ploads</span> <span class="o">=</span> <span class="p">{</span><span class="s">'X-Api-Key'</span><span class="p">:</span><span class="s">'yourkey'</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span><span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://edgar.halider.io/cmbs/dealName'</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">ploads</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://edgar.halider.io/cmbs/dealName</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+      <span class="dl">'</span><span class="s1">X-Api-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">yourkey</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre class="highlight r tab-r"><code><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">httr</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">res</span><span class="o">=</span><span class="n">GET</span><span class="p">(</span><span class="s2">"https://edgar.halider.io/cmbs/dealName"</span><span class="p">,</span><span class="n">add_headers</span><span class="p">(</span><span class="s1">'x-api-key'</span><span class="o">:</span><span class="s1">'yourkey'</span><span class="p">))</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">rawToChar</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">content</span><span class="p">)</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight julia tab-julia"><code><span class="n">pkg</span> <span class="n">add</span> <span class="n">JSON</span>
+<span class="n">pkg</span> <span class="n">add</span> <span class="n">HTTP</span>
+<span class="k">using</span> <span class="n">JSON</span><span class="x">,</span> <span class="n">HTTP</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">HTTP</span><span class="o">.</span><span class="n">request</span><span class="x">(</span><span class="s">"GET"</span><span class="x">,</span> <span class="s">"https://edgar.halider.io/cmbs/dealName"</span><span class="x">,</span> <span class="x">[</span><span class="s">"x-api-key"</span> <span class="o">=&gt;</span> <span class="s">"yourkey"</span><span class="x">])</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+  "dealName": "BMARK 2018-B2",
+  "cik": 1728339,
+  "companyName": "BENCHMARK 2018-B2 Mortgage Trust",
+  "filing": "0001539497-18-000154",
+  "filenameFull": "edgar/data/1728339/0001539497-18-000154.txt",
+  "dateFiled": "2018-02-06",
+  "dateFiledString": "20180206",
+  "createdAt": "2018-11-24T03:03:53.706Z",
+  "createdBy": "edgarmaster"
+}
+</code></pre></div><h1 id='filing'>Filing</h1><h3 id='start-3'>Start</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"https:edgar.halider.io/filing/filingDate/filingNumber"</span> <span class="nt">--header</span> <span class="s2">"yourkey"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">ploads</span> <span class="o">=</span> <span class="p">{</span><span class="s">'X-Api-Key'</span><span class="p">:</span><span class="s">'yourkey'</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span><span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://edgar.halider.io/filing/filingDate/filingNumber'</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">ploads</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://edgar.halider.io/filing/filingDate/filingNumber</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+      <span class="dl">'</span><span class="s1">X-Api-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">yourkey</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre class="highlight r tab-r"><code><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">httr</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">res</span><span class="o">=</span><span class="n">GET</span><span class="p">(</span><span class="s2">"https://edgar.halider.io/filing/filingDate/filingNumber"</span><span class="p">,</span><span class="n">add_headers</span><span class="p">(</span><span class="s1">'x-api-key'</span><span class="o">:</span><span class="s1">'yourkey'</span><span class="p">))</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">rawToChar</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">content</span><span class="p">)</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight julia tab-julia"><code><span class="n">pkg</span> <span class="n">add</span> <span class="n">JSON</span>
+<span class="n">pkg</span> <span class="n">add</span> <span class="n">HTTP</span>
+<span class="k">using</span> <span class="n">JSON</span><span class="x">,</span> <span class="n">HTTP</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">HTTP</span><span class="o">.</span><span class="n">request</span><span class="x">(</span><span class="s">"GET"</span><span class="x">,</span> <span class="s">"https://edgar.halider.io/filing/filingDate/filingNumber"</span><span class="x">,</span> <span class="x">[</span><span class="s">"x-api-key"</span> <span class="o">=&gt;</span> <span class="s">"yourkey"</span><span class="x">])</span>
+</code></pre></div>
+<blockquote>
+<p>Example response.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+  "filingDate": "20200630",
+  "filingNumber": "0001539497-20-000910",
+  "filingFile": "0001539497-20-000910.nc",
+  "documents": [ 
+    {
+      "documentType": "ABS-15G",
+      "documentName": "n2235_x1-abs15g.htm",
+      "documentDescription": "FROM ABS-15G"
+    },
+    {
+      "documentType": "EX-99.1",
+      "documentName": "exh99-1.htm",
+      "documentDescription": "REPORT OF INDEPENDENT ACCOUNTANTS ON APPLYING AGREED-UPON PROCEDURES, DATED JUNE 30, 2020"
+    },
+    {
+      "documentType": "GRAPHIC",
+      "documentName": "image_001.jpg",
+      "documentDescription": "GRAPHIC"
+    },
+    {
+      "documentType": "GRAPHIC",
+      "documentName": "image_002.jpg",
+      "documentDescription": "GRAPHIC"
+    }
+  ]
+}
+</code></pre></div>
+<p>Unlike ABS and CMBS, Filing starts and <b>requires two parameters</b> to use it. It also has a third parameter that can be used optionally.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filingDate</td>
+<td>1.</td>
+</tr>
+<tr>
+<td>filingNumber</td>
+<td>2.</td>
+</tr>
+<tr>
+<td>documentType</td>
+<td>3.</td>
+</tr>
+</tbody></table>
+
+<p>JSON Attributes: </p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filingDate</td>
+<td>1.</td>
+</tr>
+<tr>
+<td>filingNumber</td>
+<td>2.</td>
+</tr>
+<tr>
+<td>filingFile</td>
+<td>3.</td>
+</tr>
+<tr>
+<td>documents</td>
+<td>4.</td>
+</tr>
+<tr>
+<td>documentName</td>
+<td>5.</td>
+</tr>
+<tr>
+<td>documentDescription</td>
+<td>6.</td>
+</tr>
+</tbody></table>
+<h3 id='documenttype'>documentType</h3>
+<aside class="warning">
+The results from documentType are not compatible with JSON.
+</aside>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"https:edgar.halider.io/filing/filingDate/filingNumber/documentType"</span> <span class="nt">--header</span> <span class="s2">"yourkey"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">ploads</span> <span class="o">=</span> <span class="p">{</span><span class="s">'X-Api-Key'</span><span class="p">:</span><span class="s">'yourkey'</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span><span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://edgar.halider.io/filing/filingDate/filingNumber/documentType'</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">ploads</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://edgar.halider.io/filing/filingDate/filingNumber/documentType</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+      <span class="dl">'</span><span class="s1">X-Api-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">yourkey</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">txt</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre class="highlight julia tab-julia"><code><span class="n">pkg</span> <span class="n">add</span> <span class="n">JSON</span>
+<span class="n">pkg</span> <span class="n">add</span> <span class="n">HTTP</span>
+<span class="k">using</span> <span class="n">JSON</span><span class="x">,</span> <span class="n">HTTP</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">HTTP</span><span class="o">.</span><span class="n">request</span><span class="x">(</span><span class="s">"GET"</span><span class="x">,</span> <span class="s">"https://edgar.halider.io/filing/filingDate/filingNumber/documentType"</span><span class="x">,</span> <span class="x">[</span><span class="s">"x-api-key"</span> <span class="o">=&gt;</span> <span class="s">"yourkey"</span><span class="x">])</span>
+</code></pre></div>
+<blockquote>
+<p>Start of an HTML Example.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+
+&lt;P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0"&gt;&lt;B&gt;&amp;nbsp;&lt;/B&gt;&lt;/P&gt;
+
+&lt;P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"&gt;&lt;B&gt;UNITED STATES&lt;/B&gt;&lt;/P&gt;
+
+&lt;P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"&gt;&lt;B&gt;SECURITIES AND EXCHANGE COMMISSION&lt;/B&gt;&lt;/P&gt;
+</code></pre></div>
+<blockquote>
+<p>etc.</p>
+</blockquote>
+
+<p>Here is an example of the extra option for Filings.</p>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="r">r</a>
+                <a href="#" data-language-name="jl">jl</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
