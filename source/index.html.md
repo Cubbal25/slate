@@ -1188,4 +1188,59 @@ r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker", ["x-api-k
 ```
 
 
-a
+### File 
+
+Select a specific file from the previously specified company. 
+
+
+```shell
+curl --location --request GET "https:edgar.halider.io/ticker/stockTicker/filing" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/ticker/stockTicker/filing',headers=ploads)
+```
+
+```javascript
+fetch('https://edgar.halider.io/ticker/stockTicker/filing', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+```r
+>library(httr)
+>library(jsonlite)
+>res=GET("https://edgar.halider.io/ticker/stockTicker/filing",add_headers('x-api-key':'yourkey'))
+>rawToChar(res$content)
+```
+
+```julia
+pkg add JSON
+pkg add HTTP
+using JSON, HTTP
+r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker/filing", ["x-api-key" => "yourkey"])
+```
+
+>Example Response
+
+```JSON
+{
+  "filingDate": "20200805",
+  "filingNumber": "0001127602-20-022974",
+  "filingFile": "0001127602-20-022974.nc",
+  "documents": [
+    {
+      "documentType": "4",
+      "documentName": "form4.xml",
+      "documentDescription": "PRIMARY DOCUMENT",
+      "documentText": "\n<XML>\n<?xml version=\"1.0\"?>\n<ownershipDocument>\n\n    <schemaVersion>X0306</schemaVersion>\n\n    <documentType>4</documentType>\n\n    <periodOfReport>2020-08-03</periodOfReport>\n\n.......
+     etc.
+    }
+  ]
+}
+```
