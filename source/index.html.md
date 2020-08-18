@@ -1097,54 +1097,6 @@ Attributes | Description
 --------- | -----------
 ticker | 1.
 cik |  2.
-dateFiled | 3.
-type | 4.
-filing | 5.
-companyNames | 6.
-filingCounts | 7.
-3 | 8.
-4 | 9.
-5 | 10.
-FWP | 11.
-DEFA14A | 12.
-SC TO-I | 13.
-S-3ASR | 14.
-424B3 | 15.
-11-K | 16.
-CORRESP | 17.
-SC TO-I/A | 18.
-4/A | 19.
-POS AM | 20.
-8-K | 21.
-DFAN14A | 22.
-10-Q | 23.
-10-Q/A | 24.
-SC 13G/A | 25.
-DEFR14A | 26.
-8-K/A | 27.
-S-8 POS | 28.
-S-8 | 29.
-SD | 30.
-424B5 | 31.
-SC 13G | 32.
-ARS | 33.
-NO ACT | 34.
-3/A | 35.
-PRE 14A | 36.
-CT ORDER | 37.
-10-K | 38.
-DEF 14A | 39.
-SC TO-C | 40.
-SC 13D | 41.
-UPLOAD | 42.
-filingDate | 43.
-filingNumber | 44.
-filingFile | 45.
-documents | 46.
-documentType | 47.
-documentName | 48.
-documentDescription | 49.
-documentText | 50.
 
 
 ### Ticker 
@@ -1196,6 +1148,51 @@ r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker", ["x-api-k
 }
 ```
 
+
+JSON Attributes:
+
+Attributes | Description 
+--------- | -----------
+dateFiled | 3.
+type | 4.
+filing | 5.
+companyNames | 6.
+filingCounts | 7.
+3 | 8.
+4 | 9.
+5 | 10.
+FWP | 11.
+DEFA14A | 12.
+SC TO-I | 13.
+S-3ASR | 14.
+424B3 | 15.
+11-K | 16.
+CORRESP | 17.
+SC TO-I/A | 18.
+4/A | 19.
+POS AM | 20.
+8-K | 21.
+DFAN14A | 22.
+10-Q | 23.
+10-Q/A | 24.
+SC 13G/A | 25.
+DEFR14A | 26.
+8-K/A | 27.
+S-8 POS | 28.
+S-8 | 29.
+SD | 30.
+424B5 | 31.
+SC 13G | 32.
+ARS | 33.
+NO ACT | 34.
+3/A | 35.
+PRE 14A | 36.
+CT ORDER | 37.
+10-K | 38.
+DEF 14A | 39.
+SC TO-C | 40.
+SC 13D | 41.
+UPLOAD | 42.
 
 
 ### File 
@@ -1254,3 +1251,19 @@ r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker/filing", ["
   ]
 }
 ```
+
+
+JSON Attributes:
+
+Attributes | Description 
+--------- | -----------
+filingDate | 43.
+filingNumber | 44.
+filingFile | 45.
+documents | 46.
+documentType | 47.
+documentName | 48.
+documentDescription | 49.
+documentText | 50.
+
+
