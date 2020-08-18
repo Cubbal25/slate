@@ -1195,9 +1195,9 @@ SC 13D | 41.
 UPLOAD | 42.
 
 
-### File 
+### Filing  
 
-Select a specific file from the previously specified company. 
+Select a specific filing from the previously specified company. 
 
 
 ```shell
@@ -1266,4 +1266,59 @@ documentName | 48.
 documentDescription | 49.
 documentText | 50.
 
+
+### File  
+
+Select a specific file from the previously specified filing. 
+
+<aside class = warning>
+ This is another option that isn't compatible with JSON.
+</aside>
+
+```shell
+curl --location --request GET "https:edgar.halider.io/ticker/stockTicker/filing/file" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/ticker/stockTicker/filing/file',headers=ploads)
+```
+
+```javascript
+fetch('https://edgar.halider.io/ticker/stockTicker/filing/file', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+```julia
+pkg add JSON
+pkg add HTTP
+using JSON, HTTP
+r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker/filing/file", ["x-api-key" => "yourkey"])
+```
+
+>Example XML Response
+
+```XML
+<XML>
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2020-08-03</periodOfReport>
+
+    <issuer>
+        <issuerCik>0001090872</issuerCik>
+        <issuerName>AGILENT TECHNOLOGIES, INC.</issuerName>
+        <issuerTradingSymbol>A</issuerTradingSymbol>
+    </issuer>
+```
+> etc.
 
