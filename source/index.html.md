@@ -1187,6 +1187,7 @@ r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker", ["x-api-k
 
 > Example Response
 
+
 ```JSON
 {
       "dateFiled": "2020-08-05",
@@ -1194,6 +1195,7 @@ r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker", ["x-api-k
       "filing": "0001127602-20-022974"
 }
 ```
+
 
 
 ### File 
