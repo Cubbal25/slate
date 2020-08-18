@@ -1137,6 +1137,14 @@ DEF 14A | 39.
 SC TO-C | 40.
 SC 13D | 41.
 UPLOAD | 42.
+filingDate | 43.
+filingNumber | 44.
+filingFile | 45.
+documents | 46.
+documentType | 47.
+documentName | 48.
+documentDescription | 49.
+documentText | 50.
 
 
 ### Ticker 
