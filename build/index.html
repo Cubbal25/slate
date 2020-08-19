@@ -288,7 +288,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;javascript&quot;,&quot;r&quot;,&quot;jl&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;javascript&quot;,&quot;r&quot;,&quot;julia&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -302,7 +302,7 @@
               <a href="#" data-language-name="python">python</a>
               <a href="#" data-language-name="javascript">javascript</a>
               <a href="#" data-language-name="r">r</a>
-              <a href="#" data-language-name="jl">jl</a>
+              <a href="#" data-language-name="julia">julia</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -359,6 +359,23 @@
                   </li>
                   <li>
                     <a href="#documenttype" class="toc-h2 toc-link" data-title="documentType">documentType</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#corporate" class="toc-h1 toc-link" data-title="Corporate">Corporate</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#start-4" class="toc-h2 toc-link" data-title="Start">Start</a>
+                  </li>
+                  <li>
+                    <a href="#ticker" class="toc-h2 toc-link" data-title="Ticker">Ticker</a>
+                  </li>
+                  <li>
+                    <a href="#filing-2" class="toc-h2 toc-link" data-title="Filing">Filing</a>
+                  </li>
+                  <li>
+                    <a href="#file" class="toc-h2 toc-link" data-title="File">File</a>
                   </li>
               </ul>
           </li>
@@ -1721,6 +1738,391 @@ The results from documentType are not compatible with JSON.
 </blockquote>
 
 <p>Here is an example of the extra option for Filings.</p>
+<h1 id='corporate'>Corporate</h1><h3 id='start-4'>Start</h3>
+<p>The start of corporate is ticker, which gives a list of companies stock tickers and their ciks.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"https:edgar.halider.io/ticker"</span> <span class="nt">--header</span> <span class="s2">"yourkey"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">ploads</span> <span class="o">=</span> <span class="p">{</span><span class="s">'X-Api-Key'</span><span class="p">:</span><span class="s">'yourkey'</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span><span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://edgar.halider.io/ticker'</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">ploads</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://edgar.halider.io/ticker</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+      <span class="dl">'</span><span class="s1">X-Api-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">yourkey</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre class="highlight r tab-r"><code><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">httr</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">res</span><span class="o">=</span><span class="n">GET</span><span class="p">(</span><span class="s2">"https://edgar.halider.io/ticker"</span><span class="p">,</span><span class="n">add_headers</span><span class="p">(</span><span class="s1">'x-api-key'</span><span class="o">:</span><span class="s1">'yourkey'</span><span class="p">))</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">rawToChar</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">content</span><span class="p">)</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight julia tab-julia"><code><span class="n">pkg</span> <span class="n">add</span> <span class="n">JSON</span>
+<span class="n">pkg</span> <span class="n">add</span> <span class="n">HTTP</span>
+<span class="k">using</span> <span class="n">JSON</span><span class="x">,</span> <span class="n">HTTP</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">HTTP</span><span class="o">.</span><span class="n">request</span><span class="x">(</span><span class="s">"GET"</span><span class="x">,</span> <span class="s">"https://edgar.halider.io/ticker"</span><span class="x">,</span> <span class="x">[</span><span class="s">"x-api-key"</span> <span class="o">=&gt;</span> <span class="s">"yourkey"</span><span class="x">])</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>
+  {
+    "ticker": "a",
+    "cik": 1090872
+  }
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ticker</td>
+<td>1.</td>
+</tr>
+<tr>
+<td>filing</td>
+<td>2.</td>
+</tr>
+</tbody></table>
+
+<p>JSON Attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ticker</td>
+<td>1.</td>
+</tr>
+<tr>
+<td>cik</td>
+<td>2.</td>
+</tr>
+</tbody></table>
+<h3 id='ticker'>Ticker</h3>
+<p>Select a specific company by their stock ticker.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"https:edgar.halider.io/ticker/stockTicker"</span> <span class="nt">--header</span> <span class="s2">"yourkey"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">ploads</span> <span class="o">=</span> <span class="p">{</span><span class="s">'X-Api-Key'</span><span class="p">:</span><span class="s">'yourkey'</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span><span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://edgar.halider.io/ticker/stockTicker'</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">ploads</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://edgar.halider.io/ticker/stockTicker</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+      <span class="dl">'</span><span class="s1">X-Api-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">yourkey</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre class="highlight r tab-r"><code><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">httr</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">res</span><span class="o">=</span><span class="n">GET</span><span class="p">(</span><span class="s2">"https://edgar.halider.io/ticker/stockTicker"</span><span class="p">,</span><span class="n">add_headers</span><span class="p">(</span><span class="s1">'x-api-key'</span><span class="o">:</span><span class="s1">'yourkey'</span><span class="p">))</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">rawToChar</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">content</span><span class="p">)</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight julia tab-julia"><code><span class="n">pkg</span> <span class="n">add</span> <span class="n">JSON</span>
+<span class="n">pkg</span> <span class="n">add</span> <span class="n">HTTP</span>
+<span class="k">using</span> <span class="n">JSON</span><span class="x">,</span> <span class="n">HTTP</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">HTTP</span><span class="o">.</span><span class="n">request</span><span class="x">(</span><span class="s">"GET"</span><span class="x">,</span> <span class="s">"https://edgar.halider.io/ticker/stockTicker"</span><span class="x">,</span> <span class="x">[</span><span class="s">"x-api-key"</span> <span class="o">=&gt;</span> <span class="s">"yourkey"</span><span class="x">])</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+      "dateFiled": "2020-08-05",
+      "type": "4",
+      "filing": "0001127602-20-022974"
+}
+</code></pre></div>
+<p>JSON Attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dateFiled</td>
+<td>3.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>4.</td>
+</tr>
+<tr>
+<td>filing</td>
+<td>5.</td>
+</tr>
+<tr>
+<td>companyNames</td>
+<td>6.</td>
+</tr>
+<tr>
+<td>filingCounts</td>
+<td>7.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>8.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>9.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>10.</td>
+</tr>
+<tr>
+<td>FWP</td>
+<td>11.</td>
+</tr>
+<tr>
+<td>DEFA14A</td>
+<td>12.</td>
+</tr>
+<tr>
+<td>SC TO-I</td>
+<td>13.</td>
+</tr>
+<tr>
+<td>S-3ASR</td>
+<td>14.</td>
+</tr>
+<tr>
+<td>424B3</td>
+<td>15.</td>
+</tr>
+<tr>
+<td>11-K</td>
+<td>16.</td>
+</tr>
+<tr>
+<td>CORRESP</td>
+<td>17.</td>
+</tr>
+<tr>
+<td>SC TO-I/A</td>
+<td>18.</td>
+</tr>
+<tr>
+<td>4/A</td>
+<td>19.</td>
+</tr>
+<tr>
+<td>POS AM</td>
+<td>20.</td>
+</tr>
+<tr>
+<td>8-K</td>
+<td>21.</td>
+</tr>
+<tr>
+<td>DFAN14A</td>
+<td>22.</td>
+</tr>
+<tr>
+<td>10-Q</td>
+<td>23.</td>
+</tr>
+<tr>
+<td>10-Q/A</td>
+<td>24.</td>
+</tr>
+<tr>
+<td>SC 13G/A</td>
+<td>25.</td>
+</tr>
+<tr>
+<td>DEFR14A</td>
+<td>26.</td>
+</tr>
+<tr>
+<td>8-K/A</td>
+<td>27.</td>
+</tr>
+<tr>
+<td>S-8 POS</td>
+<td>28.</td>
+</tr>
+<tr>
+<td>S-8</td>
+<td>29.</td>
+</tr>
+<tr>
+<td>SD</td>
+<td>30.</td>
+</tr>
+<tr>
+<td>424B5</td>
+<td>31.</td>
+</tr>
+<tr>
+<td>SC 13G</td>
+<td>32.</td>
+</tr>
+<tr>
+<td>ARS</td>
+<td>33.</td>
+</tr>
+<tr>
+<td>NO ACT</td>
+<td>34.</td>
+</tr>
+<tr>
+<td>3/A</td>
+<td>35.</td>
+</tr>
+<tr>
+<td>PRE 14A</td>
+<td>36.</td>
+</tr>
+<tr>
+<td>CT ORDER</td>
+<td>37.</td>
+</tr>
+<tr>
+<td>10-K</td>
+<td>38.</td>
+</tr>
+<tr>
+<td>DEF 14A</td>
+<td>39.</td>
+</tr>
+<tr>
+<td>SC TO-C</td>
+<td>40.</td>
+</tr>
+<tr>
+<td>SC 13D</td>
+<td>41.</td>
+</tr>
+<tr>
+<td>UPLOAD</td>
+<td>42.</td>
+</tr>
+</tbody></table>
+<h3 id='filing-2'>Filing</h3>
+<p>Select a specific filing from the previously specified company. </p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"https:edgar.halider.io/ticker/stockTicker/filing"</span> <span class="nt">--header</span> <span class="s2">"yourkey"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">ploads</span> <span class="o">=</span> <span class="p">{</span><span class="s">'X-Api-Key'</span><span class="p">:</span><span class="s">'yourkey'</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span><span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://edgar.halider.io/ticker/stockTicker/filing'</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">ploads</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://edgar.halider.io/ticker/stockTicker/filing</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+      <span class="dl">'</span><span class="s1">X-Api-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">yourkey</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre class="highlight r tab-r"><code><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">httr</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">library</span><span class="p">(</span><span class="n">jsonlite</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">res</span><span class="o">=</span><span class="n">GET</span><span class="p">(</span><span class="s2">"https://edgar.halider.io/ticker/stockTicker/filing"</span><span class="p">,</span><span class="n">add_headers</span><span class="p">(</span><span class="s1">'x-api-key'</span><span class="o">:</span><span class="s1">'yourkey'</span><span class="p">))</span><span class="w">
+</span><span class="o">&gt;</span><span class="n">rawToChar</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">content</span><span class="p">)</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight julia tab-julia"><code><span class="n">pkg</span> <span class="n">add</span> <span class="n">JSON</span>
+<span class="n">pkg</span> <span class="n">add</span> <span class="n">HTTP</span>
+<span class="k">using</span> <span class="n">JSON</span><span class="x">,</span> <span class="n">HTTP</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">HTTP</span><span class="o">.</span><span class="n">request</span><span class="x">(</span><span class="s">"GET"</span><span class="x">,</span> <span class="s">"https://edgar.halider.io/ticker/stockTicker/filing"</span><span class="x">,</span> <span class="x">[</span><span class="s">"x-api-key"</span> <span class="o">=&gt;</span> <span class="s">"yourkey"</span><span class="x">])</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+  "filingDate": "20200805",
+  "filingNumber": "0001127602-20-022974",
+  "filingFile": "0001127602-20-022974.nc",
+  "documents": [
+    {
+      "documentType": "4",
+      "documentName": "form4.xml",
+      "documentDescription": "PRIMARY DOCUMENT",
+      "documentText": "\n&lt;XML&gt;\n&lt;?xml version=\"1.0\"?&gt;\n&lt;ownershipDocument&gt;\n\n    &lt;schemaVersion&gt;X0306&lt;/schemaVersion&gt;\n\n    &lt;documentType&gt;4&lt;/documentType&gt;\n\n    &lt;periodOfReport&gt;2020-08-03&lt;/periodOfReport&gt;\n\n.......
+     etc.
+    }
+  ]
+}
+</code></pre></div>
+<p>JSON Attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filingDate</td>
+<td>43.</td>
+</tr>
+<tr>
+<td>filingNumber</td>
+<td>44.</td>
+</tr>
+<tr>
+<td>filingFile</td>
+<td>45.</td>
+</tr>
+<tr>
+<td>documents</td>
+<td>46.</td>
+</tr>
+<tr>
+<td>documentType</td>
+<td>47.</td>
+</tr>
+<tr>
+<td>documentName</td>
+<td>48.</td>
+</tr>
+<tr>
+<td>documentDescription</td>
+<td>49.</td>
+</tr>
+<tr>
+<td>documentText</td>
+<td>50.</td>
+</tr>
+</tbody></table>
+<h3 id='file'>File</h3>
+<p>Select a specific file from the previously specified filing. </p>
+
+<aside class = warning>
+ This is another option that isn't compatible with JSON.
+</aside>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s2">"https:edgar.halider.io/ticker/stockTicker/filing/file"</span> <span class="nt">--header</span> <span class="s2">"yourkey"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">ploads</span> <span class="o">=</span> <span class="p">{</span><span class="s">'X-Api-Key'</span><span class="p">:</span><span class="s">'yourkey'</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span><span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://edgar.halider.io/ticker/stockTicker/filing/file'</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">ploads</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://edgar.halider.io/ticker/stockTicker/filing/file</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+      <span class="dl">'</span><span class="s1">X-Api-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">yourkey</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div><div class="highlight"><pre class="highlight julia tab-julia"><code><span class="n">pkg</span> <span class="n">add</span> <span class="n">JSON</span>
+<span class="n">pkg</span> <span class="n">add</span> <span class="n">HTTP</span>
+<span class="k">using</span> <span class="n">JSON</span><span class="x">,</span> <span class="n">HTTP</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">HTTP</span><span class="o">.</span><span class="n">request</span><span class="x">(</span><span class="s">"GET"</span><span class="x">,</span> <span class="s">"https://edgar.halider.io/ticker/stockTicker/filing/file"</span><span class="x">,</span> <span class="x">[</span><span class="s">"x-api-key"</span> <span class="o">=&gt;</span> <span class="s">"yourkey"</span><span class="x">])</span>
+</code></pre></div>
+<blockquote>
+<p>Example XML Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>&lt;XML&gt;
+&lt;?xml version="1.0"?&gt;
+&lt;ownershipDocument&gt;
+
+    &lt;schemaVersion&gt;X0306&lt;/schemaVersion&gt;
+
+    &lt;documentType&gt;4&lt;/documentType&gt;
+
+    &lt;periodOfReport&gt;2020-08-03&lt;/periodOfReport&gt;
+
+    &lt;issuer&gt;
+        &lt;issuerCik&gt;0001090872&lt;/issuerCik&gt;
+        &lt;issuerName&gt;AGILENT TECHNOLOGIES, INC.&lt;/issuerName&gt;
+        &lt;issuerTradingSymbol&gt;A&lt;/issuerTradingSymbol&gt;
+    &lt;/issuer&gt;
+</code></pre></div>
+<blockquote>
+<p>etc.</p>
+</blockquote>
 
       </div>
       <div class="dark-box">
@@ -1729,7 +2131,7 @@ The results from documentType are not compatible with JSON.
                 <a href="#" data-language-name="python">python</a>
                 <a href="#" data-language-name="javascript">javascript</a>
                 <a href="#" data-language-name="r">r</a>
-                <a href="#" data-language-name="jl">jl</a>
+                <a href="#" data-language-name="julia">julia</a>
           </div>
       </div>
     </div>
