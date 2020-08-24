@@ -1326,7 +1326,7 @@ r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker/filing/file
 
 This is an example of plugging in variables into the URL to get further into what you specifically want. It is in Python so you will have to switch to that tab to see it.
 
-```Python
+```python
 import json
 import requests
 
