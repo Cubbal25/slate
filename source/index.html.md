@@ -1335,7 +1335,7 @@ Tick = input("Ticker? ")
 
 Url = 'https://edgar.halider.io/ticker/' + (Tick)
 
-ploads = {'X-Api-Key':'wtSxYJuwWUaDg6PbBy8JB9GRENTDW5yi255SNfmw'}
+ploads = {'X-Api-Key':'yourkey'}
 r =requests.get(Url,headers=ploads)
 json_object = json.loads(r.text)
 print(json.dumps(json_object, indent=2))
@@ -1343,7 +1343,7 @@ print(json.dumps(json_object, indent=2))
 
 Url2 = 'https://edgar.halider.io/ticker/' + (Tick) + '/0001144370-03-000002/' + (Docs)
 
-ploads = {'X-Api-Key':'wtSxYJuwWUaDg6PbBy8JB9GRENTDW5yi255SNfmw'}
+ploads = {'X-Api-Key':'yourkey'}
 r =requests.get(Url2,headers=ploads)
 print(r.text)
 ```
