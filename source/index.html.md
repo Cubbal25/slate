@@ -1322,3 +1322,66 @@ r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker/filing/file
 ```
 > etc.
 
+# Sample Code
+
+This is an example of plugging in variables into the URL to get further into what you specifically want. It is in Python so you will have to switch to that tab to see it.
+
+```Python
+import json
+import requests
+
+Docs = input("Document Type? ")
+Tick = input("Ticker? ")
+
+Url = 'https://edgar.halider.io/ticker/' + (Tick)
+
+ploads = {'X-Api-Key':'wtSxYJuwWUaDg6PbBy8JB9GRENTDW5yi255SNfmw'}
+r =requests.get(Url,headers=ploads)
+json_object = json.loads(r.text)
+print(json.dumps(json_object, indent=2))
+
+
+Url2 = 'https://edgar.halider.io/ticker/' + (Tick) + '/0001144370-03-000002/' + (Docs)
+
+ploads = {'X-Api-Key':'wtSxYJuwWUaDg6PbBy8JB9GRENTDW5yi255SNfmw'}
+r =requests.get(Url2,headers=ploads)
+print(r.text)
+```
+
+
+> Which Outputs all of these:
+
+
+```JSON
+    {
+      "dateFiled": "2013-06-03",
+      "type": "S-8",
+      "filing": "0001090872-13-000014"
+    },
+``` 
+
+
+> And the beginning of an HTML document specificed by the second URL
+
+
+```HTML
+<HTML>
+<HEAD>
+<TITLE>
+</TITLE>
+</HEAD>
+<BODY>
+SEC Form 4
+<TABLE width=1272 border=1>
+<TR>
+<TD width=254 valign=top>
+    <div align=center><font size=4 face=Tahoma><b>FORM 4</b></font></div>
+    <br><div><font size=1 face=Tahoma><b>[ ] Check this box if no longer<br>subject to Section 16.  Form 4 or Form<br>5 obligations may continue.<br><i>See</i> Instruction 1(b).</b></font></div>
+<br><font size=1 face=Tahoma>(Print or Type Responses)</font>
+</TD>
+```
+
+
+> etc.
+
+
