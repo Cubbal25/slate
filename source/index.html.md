@@ -461,6 +461,8 @@ JSON Attributes:
 Attribute | Description 
 --------- | -----------
 assetId | A
+
+---------| -----------
 dealId | Y 
 dealCik | L
 dealNames | M
