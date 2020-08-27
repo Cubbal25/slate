@@ -185,6 +185,8 @@ Where <code><i>format</i></code> is <code> JSON </code>.
 
 Edgar API calls return HTTP status codes. Some API calls also return JSON response bodies that include information about the resource including one or more contextual HATEOAS links. Use these links to request more information about and construct an API flow that is relative to a specific request. Each REST API request returns an HTTP status code.
 
+<aside class=notice> HATEOAS stands for "Hypermedia as the Engine of Application Stat" and is basically what makes REST apps different from other networking apps, the app servers can provide information dynamically through hypermedia. Hypermedia includes things like audio, video, plaintext, and graphics.
+
 ### HTTP status codes
 
 For successful requests, Edgar returns HTTP <code>2XX</code> status codes.
