@@ -462,6 +462,7 @@ Attribute | Description
 --------- | -----------
 assetId | A
 
+A        | B
 ---------| -----------
 dealId | Y 
 dealCik | L
