@@ -237,6 +237,411 @@ Access token-related issues often cause authorization errors.
 
 Ensure that the access token is valid and present and not expired.
 
+# Filing
+
+## Ticker Start
+
+One of the filing starts is ticker, which gives a list of companies stock tickers and their ciks.
+
+```shell
+curl --location --request GET "https:edgar.halider.io/ticker" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/ticker',headers=ploads)
+```
+
+```javascript
+fetch('https://edgar.halider.io/ticker', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+```r
+>library(httr)
+>library(jsonlite)
+>res=GET("https://edgar.halider.io/ticker",add_headers('x-api-key':'yourkey'))
+>rawToChar(res$content)
+```
+
+```julia
+pkg add JSON
+pkg add HTTP
+using JSON, HTTP
+r = HTTP.request("GET", "https://edgar.halider.io/ticker", ["x-api-key" => "yourkey"])
+```
+
+>Example Response.
+
+```JSON
+
+  {
+    "ticker": "a",
+    "cik": 1090872
+  }
+```
+
+Parameter | Description 
+--------- | -----------
+ticker | 1.
+filing |  2.
+
+JSON Attributes:
+
+Attributes | Description 
+--------- | -----------
+ticker | 1.
+cik |  2.
+
+
+### Ticker 
+
+Select a specific company by their stock ticker.
+
+
+```shell
+curl --location --request GET "https:edgar.halider.io/ticker/stockTicker" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/ticker/stockTicker',headers=ploads)
+```
+
+```javascript
+fetch('https://edgar.halider.io/ticker/stockTicker', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+```r
+>library(httr)
+>library(jsonlite)
+>res=GET("https://edgar.halider.io/ticker/stockTicker",add_headers('x-api-key':'yourkey'))
+>rawToChar(res$content)
+```
+
+```julia
+pkg add JSON
+pkg add HTTP
+using JSON, HTTP
+r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker", ["x-api-key" => "yourkey"])
+```
+
+> Example Response
+
+
+```JSON
+{
+      "dateFiled": "2020-08-05",
+      "type": "4",
+      "filing": "0001127602-20-022974"
+}
+```
+
+
+JSON Attributes:
+
+Attributes | Description 
+--------- | -----------
+dateFiled | 3.
+type | 4.
+filing | 5.
+companyNames | 6.
+filingCounts | 7.
+
+
+
+Supported Document Types |
+-------------- |
+10-K |
+8-K |
+10-D |
+ABS-EE |
+ABS-15G |
+
+See <a href= "https://www.sec.gov/forms"> here </a> the complete list.
+
+### Filing  
+
+Select a specific filing from the previously specified company. 
+
+
+```shell
+curl --location --request GET "https:edgar.halider.io/ticker/stockTicker/filing" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/ticker/stockTicker/filing',headers=ploads)
+```
+
+```javascript
+fetch('https://edgar.halider.io/ticker/stockTicker/filing', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+```r
+>library(httr)
+>library(jsonlite)
+>res=GET("https://edgar.halider.io/ticker/stockTicker/filing",add_headers('x-api-key':'yourkey'))
+>rawToChar(res$content)
+```
+
+```julia
+pkg add JSON
+pkg add HTTP
+using JSON, HTTP
+r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker/filing", ["x-api-key" => "yourkey"])
+```
+
+>Example Response
+
+```JSON
+{
+  "filingDate": "20200805",
+  "filingNumber": "0001127602-20-022974",
+  "filingFile": "0001127602-20-022974.nc",
+  "documents": [
+    {
+      "documentType": "4",
+      "documentName": "form4.xml",
+      "documentDescription": "PRIMARY DOCUMENT",
+      "documentText": "\n<XML>\n<?xml version=\"1.0\"?>\n<ownershipDocument>\n\n    <schemaVersion>X0306</schemaVersion>\n\n    <documentType>4</documentType>\n\n    <periodOfReport>2020-08-03</periodOfReport>\n\n.......
+     etc.
+    }
+  ]
+}
+```
+
+
+JSON Attributes:
+
+Attributes | Description 
+--------- | -----------
+filingDate | 43.
+filingNumber | 44.
+filingFile | 45.
+documents | 46.
+documentType | 47.
+documentName | 48.
+documentDescription | 49.
+documentText | 50.
+
+
+### File  
+
+Select a specific file from the previously specified filing. 
+
+<aside class = warning>
+ This is another option that isn't compatible with JSON.
+</aside>
+
+```shell
+curl --location --request GET "https:edgar.halider.io/ticker/stockTicker/filing/file" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/ticker/stockTicker/filing/file',headers=ploads)
+```
+
+```javascript
+fetch('https://edgar.halider.io/ticker/stockTicker/filing/file', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+```julia
+pkg add JSON
+pkg add HTTP
+using JSON, HTTP
+r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker/filing/file", ["x-api-key" => "yourkey"])
+```
+
+>Example XML Response
+
+```XML
+<XML>
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2020-08-03</periodOfReport>
+
+    <issuer>
+        <issuerCik>0001090872</issuerCik>
+        <issuerName>AGILENT TECHNOLOGIES, INC.</issuerName>
+        <issuerTradingSymbol>A</issuerTradingSymbol>
+    </issuer>
+```
+> etc.
+
+
+
+## Regular Start
+
+The main path for filing.
+
+```shell
+curl --location --request GET "https:edgar.halider.io/filing/filingDate/filingNumber" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/filing/filingDate/filingNumber',headers=ploads)
+```
+
+```javascript
+fetch('https://edgar.halider.io/filing/filingDate/filingNumber', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+```r
+>library(httr)
+>library(jsonlite)
+>res=GET("https://edgar.halider.io/filing/filingDate/filingNumber",add_headers('x-api-key':'yourkey'))
+>rawToChar(res$content)
+```
+
+```julia
+pkg add JSON
+pkg add HTTP
+using JSON, HTTP
+r = HTTP.request("GET", "https://edgar.halider.io/filing/filingDate/filingNumber", ["x-api-key" => "yourkey"])
+```
+
+> Example response.
+
+```JSON
+{
+  "filingDate": "20200630",
+  "filingNumber": "0001539497-20-000910",
+  "filingFile": "0001539497-20-000910.nc",
+  "documents": [ 
+    {
+      "documentType": "ABS-15G",
+      "documentName": "n2235_x1-abs15g.htm",
+      "documentDescription": "FROM ABS-15G"
+    },
+    {
+      "documentType": "EX-99.1",
+      "documentName": "exh99-1.htm",
+      "documentDescription": "REPORT OF INDEPENDENT ACCOUNTANTS ON APPLYING AGREED-UPON PROCEDURES, DATED JUNE 30, 2020"
+    },
+    {
+      "documentType": "GRAPHIC",
+      "documentName": "image_001.jpg",
+      "documentDescription": "GRAPHIC"
+    },
+    {
+      "documentType": "GRAPHIC",
+      "documentName": "image_002.jpg",
+      "documentDescription": "GRAPHIC"
+    }
+  ]
+}
+```
+
+Unlike ABS and CMBS, Filing starts and <b>requires two parameters</b> to use it. It also has a third parameter that can be used optionally.
+
+Parameter | Description 
+--------- | -----------
+filingDate | 1.
+filingNumber |  2.
+documentType | 3.
+
+JSON Attributes: 
+
+Attributes | Description
+--------- | -----------
+filingDate | 1.
+filingNumber |  2.
+filingFile | 3.
+documents | 4.
+documentName | 5.
+documentDescription | 6.
+
+### documentType
+
+<aside class="warning">
+The results from documentType are not compatible with JSON.
+</aside>
+
+```shell
+curl --location --request GET "https:edgar.halider.io/filing/filingDate/filingNumber/documentType" --header "yourkey"
+```
+
+```python
+import requests
+ploads = {'X-Api-Key':'yourkey'}
+r =requests.get('https://edgar.halider.io/filing/filingDate/filingNumber/documentType',headers=ploads)
+print(r.text)
+```
+
+```javascript
+fetch('https://edgar.halider.io/filing/filingDate/filingNumber/documentType', {
+    headers: { 
+      'X-Api-Key':'yourkey'}
+})
+  .then(response => response.txt())
+  .then(data => console.log(data));
+```
+
+```julia
+pkg add JSON
+pkg add HTTP
+using JSON, HTTP
+r = HTTP.request("GET", "https://edgar.halider.io/filing/filingDate/filingNumber/documentType", ["x-api-key" => "yourkey"])
+```
+
+> Start of an HTML Example.
+
+```HTML
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+</HEAD>
+<BODY>
+
+
+<P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0"><B>&nbsp;</B></P>
+
+<P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"><B>UNITED STATES</B></P>
+
+<P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"><B>SECURITIES AND EXCHANGE COMMISSION</B></P>
+```
+>etc.
+
+Here is an example of the extra option for Filings.
+
+
 # ABS
 
 ### Start
@@ -900,433 +1305,7 @@ r = HTTP.request("GET", "https://edgar.halider.io/cmbs/dealName", ["x-api-key" =
 }
 ```
 
-# Filing
 
-### Start
-
-```shell
-curl --location --request GET "https:edgar.halider.io/filing/filingDate/filingNumber" --header "yourkey"
-```
-
-```python
-import requests
-ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/filing/filingDate/filingNumber',headers=ploads)
-```
-
-```javascript
-fetch('https://edgar.halider.io/filing/filingDate/filingNumber', {
-    headers: { 
-      'X-Api-Key':'yourkey'}
-})
-  .then(response => response.json())
-  .then(data => console.log(data));
-```
-
-```r
->library(httr)
->library(jsonlite)
->res=GET("https://edgar.halider.io/filing/filingDate/filingNumber",add_headers('x-api-key':'yourkey'))
->rawToChar(res$content)
-```
-
-```julia
-pkg add JSON
-pkg add HTTP
-using JSON, HTTP
-r = HTTP.request("GET", "https://edgar.halider.io/filing/filingDate/filingNumber", ["x-api-key" => "yourkey"])
-```
-
-> Example response.
-
-```JSON
-{
-  "filingDate": "20200630",
-  "filingNumber": "0001539497-20-000910",
-  "filingFile": "0001539497-20-000910.nc",
-  "documents": [ 
-    {
-      "documentType": "ABS-15G",
-      "documentName": "n2235_x1-abs15g.htm",
-      "documentDescription": "FROM ABS-15G"
-    },
-    {
-      "documentType": "EX-99.1",
-      "documentName": "exh99-1.htm",
-      "documentDescription": "REPORT OF INDEPENDENT ACCOUNTANTS ON APPLYING AGREED-UPON PROCEDURES, DATED JUNE 30, 2020"
-    },
-    {
-      "documentType": "GRAPHIC",
-      "documentName": "image_001.jpg",
-      "documentDescription": "GRAPHIC"
-    },
-    {
-      "documentType": "GRAPHIC",
-      "documentName": "image_002.jpg",
-      "documentDescription": "GRAPHIC"
-    }
-  ]
-}
-```
-
-Unlike ABS and CMBS, Filing starts and <b>requires two parameters</b> to use it. It also has a third parameter that can be used optionally.
-
-Parameter | Description 
---------- | -----------
-filingDate | 1.
-filingNumber |  2.
-documentType | 3.
-
-JSON Attributes: 
-
-Attributes | Description
---------- | -----------
-filingDate | 1.
-filingNumber |  2.
-filingFile | 3.
-documents | 4.
-documentName | 5.
-documentDescription | 6.
-
-### documentType
-
-<aside class="warning">
-The results from documentType are not compatible with JSON.
-</aside>
-
-```shell
-curl --location --request GET "https:edgar.halider.io/filing/filingDate/filingNumber/documentType" --header "yourkey"
-```
-
-```python
-import requests
-ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/filing/filingDate/filingNumber/documentType',headers=ploads)
-print(r.text)
-```
-
-```javascript
-fetch('https://edgar.halider.io/filing/filingDate/filingNumber/documentType', {
-    headers: { 
-      'X-Api-Key':'yourkey'}
-})
-  .then(response => response.txt())
-  .then(data => console.log(data));
-```
-
-```julia
-pkg add JSON
-pkg add HTTP
-using JSON, HTTP
-r = HTTP.request("GET", "https://edgar.halider.io/filing/filingDate/filingNumber/documentType", ["x-api-key" => "yourkey"])
-```
-
-> Start of an HTML Example.
-
-```HTML
-<HTML>
-<HEAD>
-<TITLE></TITLE>
-</HEAD>
-<BODY>
-
-
-<P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0"><B>&nbsp;</B></P>
-
-<P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"><B>UNITED STATES</B></P>
-
-<P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"><B>SECURITIES AND EXCHANGE COMMISSION</B></P>
-```
->etc.
-
-Here is an example of the extra option for Filings.
-
-
-
-# Corporate
-
-### Start
-
-The start of corporate is ticker, which gives a list of companies stock tickers and their ciks.
-
-```shell
-curl --location --request GET "https:edgar.halider.io/ticker" --header "yourkey"
-```
-
-```python
-import requests
-ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/ticker',headers=ploads)
-```
-
-```javascript
-fetch('https://edgar.halider.io/ticker', {
-    headers: { 
-      'X-Api-Key':'yourkey'}
-})
-  .then(response => response.json())
-  .then(data => console.log(data));
-```
-
-```r
->library(httr)
->library(jsonlite)
->res=GET("https://edgar.halider.io/ticker",add_headers('x-api-key':'yourkey'))
->rawToChar(res$content)
-```
-
-```julia
-pkg add JSON
-pkg add HTTP
-using JSON, HTTP
-r = HTTP.request("GET", "https://edgar.halider.io/ticker", ["x-api-key" => "yourkey"])
-```
-
->Example Response.
-
-```JSON
-
-  {
-    "ticker": "a",
-    "cik": 1090872
-  }
-```
-
-Parameter | Description 
---------- | -----------
-ticker | 1.
-filing |  2.
-
-JSON Attributes:
-
-Attributes | Description 
---------- | -----------
-ticker | 1.
-cik |  2.
-
-
-### Ticker 
-
-Select a specific company by their stock ticker.
-
-
-```shell
-curl --location --request GET "https:edgar.halider.io/ticker/stockTicker" --header "yourkey"
-```
-
-```python
-import requests
-ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/ticker/stockTicker',headers=ploads)
-```
-
-```javascript
-fetch('https://edgar.halider.io/ticker/stockTicker', {
-    headers: { 
-      'X-Api-Key':'yourkey'}
-})
-  .then(response => response.json())
-  .then(data => console.log(data));
-```
-
-```r
->library(httr)
->library(jsonlite)
->res=GET("https://edgar.halider.io/ticker/stockTicker",add_headers('x-api-key':'yourkey'))
->rawToChar(res$content)
-```
-
-```julia
-pkg add JSON
-pkg add HTTP
-using JSON, HTTP
-r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker", ["x-api-key" => "yourkey"])
-```
-
-> Example Response
-
-
-```JSON
-{
-      "dateFiled": "2020-08-05",
-      "type": "4",
-      "filing": "0001127602-20-022974"
-}
-```
-
-
-JSON Attributes:
-
-Attributes | Description 
---------- | -----------
-dateFiled | 3.
-type | 4.
-filing | 5.
-companyNames | 6.
-filingCounts | 7.
-3 | 8.
-4 | 9.
-5 | 10.
-FWP | 11.
-DEFA14A | 12.
-SC TO-I | 13.
-S-3ASR | 14.
-424B3 | 15.
-11-K | 16.
-CORRESP | 17.
-SC TO-I/A | 18.
-4/A | 19.
-POS AM | 20.
-8-K | 21.
-DFAN14A | 22.
-10-Q | 23.
-10-Q/A | 24.
-SC 13G/A | 25.
-DEFR14A | 26.
-8-K/A | 27.
-S-8 POS | 28.
-S-8 | 29.
-SD | 30.
-424B5 | 31.
-SC 13G | 32.
-ARS | 33.
-NO ACT | 34.
-3/A | 35.
-PRE 14A | 36.
-CT ORDER | 37.
-10-K | 38.
-DEF 14A | 39.
-SC TO-C | 40.
-SC 13D | 41.
-UPLOAD | 42.
-
-
-### Filing  
-
-Select a specific filing from the previously specified company. 
-
-
-```shell
-curl --location --request GET "https:edgar.halider.io/ticker/stockTicker/filing" --header "yourkey"
-```
-
-```python
-import requests
-ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/ticker/stockTicker/filing',headers=ploads)
-```
-
-```javascript
-fetch('https://edgar.halider.io/ticker/stockTicker/filing', {
-    headers: { 
-      'X-Api-Key':'yourkey'}
-})
-  .then(response => response.json())
-  .then(data => console.log(data));
-```
-
-```r
->library(httr)
->library(jsonlite)
->res=GET("https://edgar.halider.io/ticker/stockTicker/filing",add_headers('x-api-key':'yourkey'))
->rawToChar(res$content)
-```
-
-```julia
-pkg add JSON
-pkg add HTTP
-using JSON, HTTP
-r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker/filing", ["x-api-key" => "yourkey"])
-```
-
->Example Response
-
-```JSON
-{
-  "filingDate": "20200805",
-  "filingNumber": "0001127602-20-022974",
-  "filingFile": "0001127602-20-022974.nc",
-  "documents": [
-    {
-      "documentType": "4",
-      "documentName": "form4.xml",
-      "documentDescription": "PRIMARY DOCUMENT",
-      "documentText": "\n<XML>\n<?xml version=\"1.0\"?>\n<ownershipDocument>\n\n    <schemaVersion>X0306</schemaVersion>\n\n    <documentType>4</documentType>\n\n    <periodOfReport>2020-08-03</periodOfReport>\n\n.......
-     etc.
-    }
-  ]
-}
-```
-
-
-JSON Attributes:
-
-Attributes | Description 
---------- | -----------
-filingDate | 43.
-filingNumber | 44.
-filingFile | 45.
-documents | 46.
-documentType | 47.
-documentName | 48.
-documentDescription | 49.
-documentText | 50.
-
-
-### File  
-
-Select a specific file from the previously specified filing. 
-
-<aside class = warning>
- This is another option that isn't compatible with JSON.
-</aside>
-
-```shell
-curl --location --request GET "https:edgar.halider.io/ticker/stockTicker/filing/file" --header "yourkey"
-```
-
-```python
-import requests
-ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/ticker/stockTicker/filing/file',headers=ploads)
-```
-
-```javascript
-fetch('https://edgar.halider.io/ticker/stockTicker/filing/file', {
-    headers: { 
-      'X-Api-Key':'yourkey'}
-})
-  .then(response => response.json())
-  .then(data => console.log(data));
-```
-
-```julia
-pkg add JSON
-pkg add HTTP
-using JSON, HTTP
-r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker/filing/file", ["x-api-key" => "yourkey"])
-```
-
->Example XML Response
-
-```XML
-<XML>
-<?xml version="1.0"?>
-<ownershipDocument>
-
-    <schemaVersion>X0306</schemaVersion>
-
-    <documentType>4</documentType>
-
-    <periodOfReport>2020-08-03</periodOfReport>
-
-    <issuer>
-        <issuerCik>0001090872</issuerCik>
-        <issuerName>AGILENT TECHNOLOGIES, INC.</issuerName>
-        <issuerTradingSymbol>A</issuerTradingSymbol>
-    </issuer>
-```
-> etc.
 
 # Sample Code
 
