@@ -863,12 +863,9 @@ r = HTTP.request("GET", "https://edgar.halider.io/abs/cmbs/dealId/file", ["x-api
 
 JSON Attributes:
 
-Attribute | Description 
+Attribute &nsbp; &nsbp; &nsbp; &nsbp; &nsbp; &nsbp; &nsbp; &nsbp; &nsbp; &nsbp; &nsbp; &nsbp; | Description 
 --------- | -----------
 assetId | A
-
-A        | B
----------| -----------
 dealId | Y 
 dealCik | L
 dealNames | M
