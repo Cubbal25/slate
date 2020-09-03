@@ -288,15 +288,15 @@ r = HTTP.request("GET", "https://edgar.halider.io/ticker", ["x-api-key" => "your
 
 Parameter | Description 
 --------- | -----------
-ticker | 1.
-filing |  2.
+ticker | Default for ticker.
+filing |  A specific filing from the selected company.
 
 JSON Attributes:
 
 Attributes | Description 
 --------- | -----------
-ticker | 1.
-cik |  2.
+ticker | The companies' stock ticker.
+cik |  The CIK of the filing issuer.
 
 
 ### Ticker 
@@ -305,17 +305,17 @@ Select a specific company by their stock ticker.
 
 
 ```shell
-curl --location --request GET "https:edgar.halider.io/ticker/stockTicker" --header "yourkey"
+curl --location --request GET "https:edgar.halider.io/ticker/A" --header "yourkey"
 ```
 
 ```python
 import requests
 ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/ticker/stockTicker',headers=ploads)
+r =requests.get('https://edgar.halider.io/ticker/A',headers=ploads)
 ```
 
 ```javascript
-fetch('https://edgar.halider.io/ticker/stockTicker', {
+fetch('https://edgar.halider.io/ticker/A', {
     headers: { 
       'X-Api-Key':'yourkey'}
 })
@@ -326,7 +326,7 @@ fetch('https://edgar.halider.io/ticker/stockTicker', {
 ```r
 >library(httr)
 >library(jsonlite)
->res=GET("https://edgar.halider.io/ticker/stockTicker",add_headers('x-api-key':'yourkey'))
+>res=GET("https://edgar.halider.io/ticker/A",add_headers('x-api-key':'yourkey'))
 >rawToChar(res$content)
 ```
 
@@ -334,7 +334,7 @@ fetch('https://edgar.halider.io/ticker/stockTicker', {
 pkg add JSON
 pkg add HTTP
 using JSON, HTTP
-r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker", ["x-api-key" => "yourkey"])
+r = HTTP.request("GET", "https://edgar.halider.io/ticker/A", ["x-api-key" => "yourkey"])
 ```
 
 > Example Response
@@ -342,9 +342,9 @@ r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker", ["x-api-k
 
 ```JSON
 {
-      "dateFiled": "2020-08-05",
+      "dateFiled": "2003-03-07",
       "type": "4",
-      "filing": "0001127602-20-022974"
+      "filing": "0001144370-03-000007"
 }
 ```
 
@@ -353,11 +353,11 @@ JSON Attributes:
 
 Attributes | Description 
 --------- | -----------
-dateFiled | 3.
-type | 4.
-filing | 5.
-companyNames | 6.
-filingCounts | 7.
+dateFiled | The date of the filing.
+type | The type of document filed.
+filing | The ID of the filing.
+companyNames | The name(s) of the company.
+filingCounts | The amount of each file type in the filing.
 
 
 
@@ -377,17 +377,17 @@ Select a specific filing from the previously specified company.
 
 
 ```shell
-curl --location --request GET "https:edgar.halider.io/ticker/stockTicker/filing" --header "yourkey"
+curl --location --request GET "https:edgar.halider.io/ticker/A/0001144370-03-000007" --header "yourkey"
 ```
 
 ```python
 import requests
 ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/ticker/stockTicker/filing',headers=ploads)
+r =requests.get('https://edgar.halider.io/ticker/A/0001144370-03-000007',headers=ploads)
 ```
 
 ```javascript
-fetch('https://edgar.halider.io/ticker/stockTicker/filing', {
+fetch('https://edgar.halider.io/ticker/A/0001144370-03-000007', {
     headers: { 
       'X-Api-Key':'yourkey'}
 })
@@ -398,7 +398,7 @@ fetch('https://edgar.halider.io/ticker/stockTicker/filing', {
 ```r
 >library(httr)
 >library(jsonlite)
->res=GET("https://edgar.halider.io/ticker/stockTicker/filing",add_headers('x-api-key':'yourkey'))
+>res=GET("https://edgar.halider.io/ticker/A/0001144370-03-000007",add_headers('x-api-key':'yourkey'))
 >rawToChar(res$content)
 ```
 
@@ -406,41 +406,39 @@ fetch('https://edgar.halider.io/ticker/stockTicker/filing', {
 pkg add JSON
 pkg add HTTP
 using JSON, HTTP
-r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker/filing", ["x-api-key" => "yourkey"])
+r = HTTP.request("GET", "https://edgar.halider.io/ticker/A/0001144370-03-000007", ["x-api-key" => "yourkey"])
 ```
 
 >Example Response
 
 ```JSON
 {
-  "filingDate": "20200805",
-  "filingNumber": "0001127602-20-022974",
-  "filingFile": "0001127602-20-022974.nc",
+  "filingDate": "20030307",
+  "filingNumber": "0001144370-03-000007",
+  "filingFile": "0001144370-03-000007.nc",
   "documents": [
     {
       "documentType": "4",
-      "documentName": "form4.xml",
-      "documentDescription": "PRIMARY DOCUMENT",
-      "documentText": "\n<XML>\n<?xml version=\"1.0\"?>\n<ownershipDocument>\n\n    <schemaVersion>X0306</schemaVersion>\n\n    <documentType>4</documentType>\n\n    <periodOfReport>2020-08-03</periodOfReport>\n\n.......
-     etc.
-    }
+      "documentName": "law261.htm",
+      "documentDescription": "DAVID M. LAWRENCE -- MARCH 5, 2003",
+      "documentText": "\n<HTML>\n<HEAD>\n<TITLE>\n</TITLE>\n</HEAD>\n<BODY>\nSEC Form 4\n<TABLE width=1272 border=1>\n<TR>\n<TD width=254 valign=top>\n    <div align=center><font size=4 face=Tahoma><b>FORM 4</b></font></div>\n    <br><div><font size=1 face=Tahoma><b>[ ] Check this box if no longer<br>subject to Section 16.  Form 4 or Form<br>5 obligations may continue.<br><i>See</i> Instruction 1(b).</b></font></div> 
   ]
 }
 ```
-
+>etc.
 
 JSON Attributes:
 
 Attributes | Description 
 --------- | -----------
-filingDate | 43.
-filingNumber | 44.
-filingFile | 45.
-documents | 46.
-documentType | 47.
-documentName | 48.
-documentDescription | 49.
-documentText | 50.
+filingDate | Date of the filing.
+filingNumber | ID of the filing.
+filingFile | The ID of the specific file .
+documents | Contains the document and some info about it.
+documentType | The type of document.
+documentName | Name of the document.
+documentDescription | Description of the document.
+documentText | The actual document, in code.
 
 
 ### File  
@@ -452,17 +450,17 @@ Select a specific file from the previously specified filing.
 </aside>
 
 ```shell
-curl --location --request GET "https:edgar.halider.io/ticker/stockTicker/filing/file" --header "yourkey"
+curl --location --request GET "https:edgar.halider.io/ticker/A/0001144370-03-000007/4" --header "yourkey"
 ```
 
 ```python
 import requests
 ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/ticker/stockTicker/filing/file',headers=ploads)
+r =requests.get('https://edgar.halider.io/ticker/A/0001144370-03-000007/4',headers=ploads)
 ```
 
 ```javascript
-fetch('https://edgar.halider.io/ticker/stockTicker/filing/file', {
+fetch('https://edgar.halider.io/ticker/A/0001144370-03-000007/4', {
     headers: { 
       'X-Api-Key':'yourkey'}
 })
@@ -474,28 +472,28 @@ fetch('https://edgar.halider.io/ticker/stockTicker/filing/file', {
 pkg add JSON
 pkg add HTTP
 using JSON, HTTP
-r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker/filing/file", ["x-api-key" => "yourkey"])
+r = HTTP.request("GET", "https://edgar.halider.io/ticker/A/0001144370-03-000007/4", ["x-api-key" => "yourkey"])
 ```
 
->Example XML Response
+>Example HTML Response
 
-```XML
-<XML>
-<?xml version="1.0"?>
-<ownershipDocument>
-
-    <schemaVersion>X0306</schemaVersion>
-
-    <documentType>4</documentType>
-
-    <periodOfReport>2020-08-03</periodOfReport>
-
-    <issuer>
-        <issuerCik>0001090872</issuerCik>
-        <issuerName>AGILENT TECHNOLOGIES, INC.</issuerName>
-        <issuerTradingSymbol>A</issuerTradingSymbol>
-    </issuer>
+```HTML
+<HTML>
+<HEAD>
+<TITLE>
+</TITLE>
+</HEAD>
+<BODY>
+SEC Form 4
+<TABLE width=1272 border=1>
+<TR>
+<TD width=254 valign=top>
+    <div align=center><font size=4 face=Tahoma><b>FORM 4</b></font></div>
+    <br><div><font size=1 face=Tahoma><b>[ ] Check this box if no longer<br>subject to Section 16.  Form 4 or Form<br>5 obligations may continue.<br><i>See</i> Instruction 1(b).</b></font></div>
+<br><font size=1 face=Tahoma>(Print or Type Responses)</font>
+</TD>
 ```
+
 > etc.
 
 
@@ -505,17 +503,17 @@ r = HTTP.request("GET", "https://edgar.halider.io/ticker/stockTicker/filing/file
 The main path for filing.
 
 ```shell
-curl --location --request GET "https:edgar.halider.io/filing/filingDate/filingNumber" --header "yourkey"
+curl --location --request GET "https:edgar.halider.io/filing/20200630/0001539497-20-000910" --header "yourkey"
 ```
 
 ```python
 import requests
 ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/filing/filingDate/filingNumber',headers=ploads)
+r =requests.get('https://edgar.halider.io/filing/20200630/0001539497-20-000910',headers=ploads)
 ```
 
 ```javascript
-fetch('https://edgar.halider.io/filing/filingDate/filingNumber', {
+fetch('https://edgar.halider.io/filing/20200630/0001539497-20-000910', {
     headers: { 
       'X-Api-Key':'yourkey'}
 })
@@ -526,7 +524,7 @@ fetch('https://edgar.halider.io/filing/filingDate/filingNumber', {
 ```r
 >library(httr)
 >library(jsonlite)
->res=GET("https://edgar.halider.io/filing/filingDate/filingNumber",add_headers('x-api-key':'yourkey'))
+>res=GET("https://edgar.halider.io/filing/20200630/0001539497-20-000910",add_headers('x-api-key':'yourkey'))
 >rawToChar(res$content)
 ```
 
@@ -534,7 +532,7 @@ fetch('https://edgar.halider.io/filing/filingDate/filingNumber', {
 pkg add JSON
 pkg add HTTP
 using JSON, HTTP
-r = HTTP.request("GET", "https://edgar.halider.io/filing/filingDate/filingNumber", ["x-api-key" => "yourkey"])
+r = HTTP.request("GET", "https://edgar.halider.io/filing/20200630/0001539497-20-000910", ["x-api-key" => "yourkey"])
 ```
 
 > Example response.
@@ -573,40 +571,42 @@ Unlike ABS and CMBS, Filing starts and <b>requires two parameters</b> to use it.
 
 Parameter | Description 
 --------- | -----------
-filingDate | 1.
-filingNumber |  2.
-documentType | 3.
+filingDate | Date of the filing, required.
+filingNumber |  ID of the filing, required.
+documentType | Type of document, optional.
 
 JSON Attributes: 
 
 Attributes | Description
 --------- | -----------
-filingDate | 1.
-filingNumber |  2.
-filingFile | 3.
-documents | 4.
-documentName | 5.
-documentDescription | 6.
+filingDate | Date of the filing.
+filingNumber |  ID of the filing.
+filingFile | ID of the specific file.
+documents | Container for documents and thier information.
+documentName | Name of document.
+documentDescription | Description of document.
 
 ### documentType
+
+Here is an example of the extra option for Filings.
 
 <aside class="warning">
 The results from documentType are not compatible with JSON.
 </aside>
 
 ```shell
-curl --location --request GET "https:edgar.halider.io/filing/filingDate/filingNumber/documentType" --header "yourkey"
+curl --location --request GET "https:edgar.halider.io/filing/20200630/0001539497-20-000910/ABS-15G" --header "yourkey"
 ```
 
 ```python
 import requests
 ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/filing/filingDate/filingNumber/documentType',headers=ploads)
+r =requests.get('https://edgar.halider.io/filing/20200630/0001539497-20-000910/ABS-15G',headers=ploads)
 print(r.text)
 ```
 
 ```javascript
-fetch('https://edgar.halider.io/filing/filingDate/filingNumber/documentType', {
+fetch('https://edgar.halider.io/filing/20200630/0001539497-20-000910/ABS-15G', {
     headers: { 
       'X-Api-Key':'yourkey'}
 })
@@ -618,7 +618,7 @@ fetch('https://edgar.halider.io/filing/filingDate/filingNumber/documentType', {
 pkg add JSON
 pkg add HTTP
 using JSON, HTTP
-r = HTTP.request("GET", "https://edgar.halider.io/filing/filingDate/filingNumber/documentType", ["x-api-key" => "yourkey"])
+r = HTTP.request("GET", "https://edgar.halider.io/filing/20200630/0001539497-20-000910/ABS-15G", ["x-api-key" => "yourkey"])
 ```
 
 > Start of an HTML Example.
@@ -636,10 +636,16 @@ r = HTTP.request("GET", "https://edgar.halider.io/filing/filingDate/filingNumber
 <P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"><B>UNITED STATES</B></P>
 
 <P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"><B>SECURITIES AND EXCHANGE COMMISSION</B></P>
+
+<P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"><B>Washington, D.C. 20549</B></P>
+
+<P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"><B>&nbsp;</B></P>
+
+<P STYLE="font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"><B>FORM ABS-l5G</B></P>
 ```
+    
 >etc.
 
-Here is an example of the extra option for Filings.
 
 
 # ABS
@@ -778,17 +784,17 @@ assetType | CMBS.
 Extracted | One or more names for the CMBS deal.
 
 ```shell
-curl --location --request GET "https:edgar.halider.io/abs/cmbs/dealId" --header "yourkey"
+curl --location --request GET "https:edgar.halider.io/abs/cmbs/1" --header "yourkey"
 ```
 
 ```python
 import requests
 ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/abs/cmbs/dealId',headers=ploads)
+r =requests.get('https://edgar.halider.io/abs/cmbs/1',headers=ploads)
 ```
 
 ```javascript
-fetch('https://edgar.halider.io/abs/cmbs/dealId', {
+fetch('https://edgar.halider.io/abs/cmbs/1', {
     headers: { 
       'X-Api-Key':'yourkey'}
 })
@@ -799,7 +805,7 @@ fetch('https://edgar.halider.io/abs/cmbs/dealId', {
 ```r
 >library(httr)
 >library(jsonlite)
->res=GET("https://edgar.halider.io/abs/cmbs/dealId",add_headers('x-api-key':'yourkey'))
+>res=GET("https://edgar.halider.io/abs/cmbs/1",add_headers('x-api-key':'yourkey'))
 >rawToChar(res$content)
 ```
 
@@ -807,7 +813,7 @@ fetch('https://edgar.halider.io/abs/cmbs/dealId', {
 pkg add JSON
 pkg add HTTP
 using JSON, HTTP
-r = HTTP.request("GET", "https://edgar.halider.io/abs/cmbs/dealId", ["x-api-key" => "yourkey"])
+r = HTTP.request("GET", "https://edgar.halider.io/abs/cmbs/1", ["x-api-key" => "yourkey"])
 ```
 
 
@@ -829,17 +835,17 @@ To find the "FILE" you must scroll down and find the "assetIds" and then insert 
 </aside>
 
 ```shell
-curl --location --request GET "https:edgar.halider.io/abs/cmbs/dealId/file" --header "yourkey"
+curl --location --request GET "https:edgar.halider.io/abs/cmbs/1/1" --header "yourkey"
 ```
 
 ```python
 import requests
 ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/abs/cmbs/dealId/file',headers=ploads)
+r =requests.get('https://edgar.halider.io/abs/cmbs/1/1',headers=ploads)
 ```
 
 ```javascript
-fetch('https://edgar.halider.io/abs/cmbs/dealId/file', {
+fetch('https://edgar.halider.io/abs/cmbs/1/1', {
     headers: { 
       'X-Api-Key':'yourkey'}
 })
@@ -850,7 +856,7 @@ fetch('https://edgar.halider.io/abs/cmbs/dealId/file', {
 ```r
 >library(httr)
 >library(jsonlite)
->res=GET("https://edgar.halider.io/abs/cmbs/dealId/file",add_headers('x-api-key':'yourkey'))
+>res=GET("https://edgar.halider.io/abs/cmbs/1/1",add_headers('x-api-key':'yourkey'))
 >rawToChar(res$content)
 ```
 
@@ -858,19 +864,19 @@ fetch('https://edgar.halider.io/abs/cmbs/dealId/file', {
 pkg add JSON
 pkg add HTTP
 using JSON, HTTP
-r = HTTP.request("GET", "https://edgar.halider.io/abs/cmbs/dealId/file", ["x-api-key" => "yourkey"])
+r = HTTP.request("GET", "https://edgar.halider.io/abs/cmbs/1/1", ["x-api-key" => "yourkey"])
 ```
 
 JSON Attributes:
 
-Attribute | Description &nsbp; &nsbp; &nsbp; &nsbp; &nsbp; &nsbp; &nsbp; &nsbp; &nsbp; &nsbp; &nsbp; &nsbp;
+Attribute | Description
 --------- | -----------
-assetId | A
-dealId | Y 
-dealCik | L
-dealNames | M
-assetType | A
-data | O
+assetId | The ID of the asset.
+dealId | The ID of the deal.
+dealCik | The cik of the deal.
+dealNames | The name of the deal.
+assetType | The type of the asset.
+data | The container for everything below.
 assetTypeNumber | Used to Indentify the source of the Asset number.  For all securitizations this should be "Prospectus Loan ID"
 assetNumber | The identification number(s) assigned to each asset in the annex of the prospectus supplement.  For a partial defeasance where the loan is bifurcated, the Prospectus Loan ID for the original/non-defeased loan is appended with an "A", and the new/defeased loan is appended with a "B".  If there is no Prospectus Loan ID assigned, for example in a single asset deal, the default should be 1. In Schedule AL, this field is named Asset Number.
 reportingPeriodBeginningDate | Reporting period begin date for the first reporting cycle is equal to Closing Date, otherwise it should be populated as the prior month Determination Date plus 1 day.  SS reporting period should follow same as MS.
@@ -966,8 +972,8 @@ primaryServicerName | The entity responsible for collection of the mortgage paym
 {
       "assetTypeNumber": "Prospectus Loan ID",
       "assetNumber": 1,
-      "reportingPeriodBeginningDate": "02-12-2019",
-      "reportingPeriodEndDate": "03-11-2019",
+      "reportingPeriodBeginningDate": "06-12-2019",
+      "reportingPeriodEndDate": "07-11-2019",
       "originatorName": "Barclays Bank PLC",
       "originationDate": "05-31-2017",
       "originalLoanAmount": 70000000,
@@ -1061,11 +1067,11 @@ JSON Attributes:
 
 Attribute | Description 
 --------- | -----------
-deals | 1.
-id | 2.
-cik |  3.
-assetType | 4.
-names | 5.
+deals | Container for all of the deals.
+id | The ID of a deal.
+cik |  The CIK of a deal.
+assetType | In this case it is always autoLoan.
+names | The name(s) of the deal.
 
 ```shell
 curl --location --request GET "https:edgar.halider.io/abs/autoLoan" --header "yourkey"
@@ -1121,11 +1127,11 @@ JSON attributes:
 
 Attribute | Description 
 --------- | -----------
-deals | 1.
-id | 2.
-cik |  3.
-assetType | 4.
-names | 5.
+deals | Container for all of the deals.
+id | The ID of a deal.
+cik |  The CIK of a deal.
+assetType | In this case it is always autoLease.
+names | The name(s) of the deal.
 
 ```shell
 curl --location --request GET "https:edgar.halider.io/abs/autoLease" --header "yourkey"
@@ -1216,8 +1222,8 @@ JSON Attributes:
 
 Attributes | Description
 --------- | -----------
-deals | 1.
-name |  2.
+deals | Container for the deals.
+name |  The name of the deal, in shorthand.
 
 
 >A sample response.
@@ -1233,38 +1239,36 @@ name |  2.
 
 Similar to the other CMBS above, there are several options within CMBS.
 
-Parameters | Description and Placement
+Parameters | Description
 --------- | -----------
-dealName | Name of a specific deal, 1.
-file |  2.
-fileType | 3.
+dealName | Name of a specific deal.
 
 JSON Attributes:
 
 Attributes | Description
 --------- | -----------
-dealname | 1.
-cik |  2.
-companyName | 3.
-filing | 4.
-filenameFull | 5.
-dateFiled | 6.
-dateFiledString | 7.
-createdAt | 8.
-createdBy | 9.
+dealName | Name of the deal.
+cik |  CIK of the deal.
+companyName | Name of the issuing company.
+filing | ID of the filing.
+filenameFull | Full name of the file.
+dateFiled | The date of the filing.
+dateFiledString | The date of the filing, in string format.
+createdAt | The time of the digital document's creation.
+createdBy | Author of the digital document.
 
 ```shell
-curl --location --request GET "https:edgar.halider.io/cmbs/dealName" --header "yourkey"
+curl --location --request GET "https:edgar.halider.io/cmbs/BMARK 2018-B2" --header "yourkey"
 ```
 
 ```python
 import requests
 ploads = {'X-Api-Key':'yourkey'}
-r =requests.get('https://edgar.halider.io/cmbs/dealName',headers=ploads)
+r =requests.get('https://edgar.halider.io/cmbs/BMARK 2018-B2',headers=ploads)
 ```
 
 ```javascript
-fetch('https://edgar.halider.io/cmbs/dealName', {
+fetch('https://edgar.halider.io/cmbs/BMARK 2018-B2', {
     headers: { 
       'X-Api-Key':'yourkey'}
 })
@@ -1275,7 +1279,7 @@ fetch('https://edgar.halider.io/cmbs/dealName', {
 ```r
 >library(httr)
 >library(jsonlite)
->res=GET("https://edgar.halider.io/cmbs/dealName",add_headers('x-api-key':'yourkey'))
+>res=GET("https://edgar.halider.io/cmbs/BMARK 2018-B2",add_headers('x-api-key':'yourkey'))
 >rawToChar(res$content)
 ```
 
@@ -1283,7 +1287,7 @@ fetch('https://edgar.halider.io/cmbs/dealName', {
 pkg add JSON
 pkg add HTTP
 using JSON, HTTP
-r = HTTP.request("GET", "https://edgar.halider.io/cmbs/dealName", ["x-api-key" => "yourkey"])
+r = HTTP.request("GET", "https://edgar.halider.io/cmbs/BMARK 2018-B2", ["x-api-key" => "yourkey"])
 ```
 
 >Example Response.
